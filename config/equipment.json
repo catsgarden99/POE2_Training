@@ -1,0 +1,16 @@
+{
+    "name": "深渊先驱石板",
+    "max_prefix": 2,
+    "max_suffix": 2,
+    "target_prefixes": [
+    ],
+    "target_suffixes": [
+        "地图中的深渊额外生成稀有怪物",
+        "地图额外包含一个深渊"
+    ],
+    "num_target_prefix_min": 0,
+    "num_target_prefix_max": 2,
+    "num_target_suffix_min": 0,
+    "num_target_suffix_max": 2,
+    "total_target": 2
+}

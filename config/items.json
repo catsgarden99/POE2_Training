@@ -1,0 +1,80 @@
+[
+    {
+        "id": "transmutation",
+        "name": "蜕变石",
+        "price": 1,
+        "conditions": {"rarity": 0},
+        "effect": {
+            "type": "add_random",
+            "count": 1,
+            "affix_pool": "all",
+            "upgrade_rarity_to": 1
+        }
+    },
+    {
+        "id": "augment",
+        "name": "增幅石",
+        "price": 2,
+        "conditions": {"rarity": 1},
+        "effect": {
+            "type": "add_random",
+            "count": 1,
+            "affix_pool": "all"
+        }
+    },
+    {
+        "id": "regal",
+        "name": "富豪石",
+        "price": 5,
+        "conditions": {"rarity": 1},
+        "effect": {
+            "type": "add_random",
+            "count": 1,
+            "affix_pool": "all",
+            "upgrade_rarity_to": 2
+        }
+    },
+    {
+        "id": "alchemy",
+        "name": "点金石",
+        "price": 4,
+        "conditions": {"rarity": [0, 1]},
+        "effect": {
+            "type": "reroll_all",
+            "num_affixes": 4,
+            "affix_pool": "all",
+            "set_rarity": 2
+        }
+    },
+    {
+        "id": "chaos",
+        "name": "混沌石",
+        "price": 6,
+        "conditions": {"rarity": 2},
+        "effect": {
+            "type": "reforge_one",
+            "affix_pool": "all"
+        }
+    },
+    {
+        "id": "exalted",
+        "name": "崇高石",
+        "price": 10,
+        "conditions": {"rarity": 2},
+        "effect": {
+            "type": "add_random",
+            "count": 1,
+            "affix_pool": "all"
+        }
+    },
+    {
+        "id": "annulment",
+        "name": "剥离石",
+        "price": 8,
+        "conditions": {"rarity_in": [1,2]},
+        "effect": {
+            "type": "remove_random",
+            "count": 1
+        }
+    }
+]

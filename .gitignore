@@ -1,0 +1,42 @@
+# Python 缓存文件
+__pycache__/
+*.py[cod]
+*.so
+
+# 虚拟环境（根据你的环境名）
+poe_crafting/
+venv/
+env/
+ENV/
+
+# 训练输出文件
+*.pth
+*.pt
+*.h5
+logs/
+runs/
+training_curve.png
+*.log
+
+# 配置文件（如果你不想将具体配置提交到仓库，可以取消注释）
+# config/items.json
+# config/affixes.json
+# config/equipment.json
+# config/training.json
+
+# IDE 相关
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook 检查点
+.ipynb_checkpoints/
+
+# 其他临时文件
+*.bak
+*.tmp

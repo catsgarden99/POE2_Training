@@ -1,0 +1,23 @@
+{
+    "epsilon": {
+        "initial": 1.0,
+        "min": 0.01,
+        "decay_per_episode": 0.998
+    },
+    "agent": {
+        "learning_rate": 0.001,
+        "gamma": 0.99,
+        "hidden_dim": 128
+    },
+    "reward": {
+        "success_bonus": 1000,
+        "illegal_action_penalty_multiplier": 10
+    },
+    "training": {
+        "num_episodes": 5000,
+        "batch_size": 128,
+        "target_update_freq": 10,
+        "replay_buffer_capacity": 10000,
+        "max_steps_per_episode": 100
+    }
+}

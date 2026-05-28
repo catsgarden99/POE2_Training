@@ -71,9 +71,10 @@ def train(env: GameEnv, agent: DQNAgent, replay_buffer: ReplayBuffer, config: di
         writer.add_scalar('Reward/Train', total_reward, episode)
         writer.add_scalar('Epsilon', epsilon, episode)
         
-        if (episode + 1) % 100 == 0:
-            print(f"Episode {episode+1}/{num_episodes} | Epsilon: {epsilon:.3f} | Last Reward: {total_reward:.1f}")
-
+        # 每 20 轮就打印一次，让进度条动得更频繁，并加入 flush=True 强行清空缓冲区吐给网页
+        if (episode + 1) % 20 == 0:
+            print(f"PROGRESS:Episode {episode+1}/{num_episodes} | Epsilon: {epsilon:.3f} | Last Reward: {total_reward:.1f}", flush=True)
+    
     return episode_rewards
 
 

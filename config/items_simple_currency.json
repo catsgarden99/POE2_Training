@@ -1,0 +1,115 @@
+{
+  "Orb_of_Transmutation": {
+    "id": "Orb_of_Transmutation",
+    "name": "蜕变石",
+    "conditions": {
+      "rarity": 0
+    },
+    "effect": {
+      "type": "add_random",
+      "delta_affix_count": 1,
+      "min_ilvl": 1,
+      "upgrade_rarity_to": 1
+    }
+  },
+  "Greater_Orb_of_Transmutation": {
+    "id": "Greater_Orb_of_Transmutation",
+    "name": "高级蜕变石",
+    "conditions": {
+      "rarity": 0
+    },
+    "effect": {
+      "type": "add_random",
+      "delta_affix_count": 1,
+      "min_ilvl": 55,
+      "upgrade_rarity_to": 1
+    }
+  },
+  "Perfect_Orb_of_Transmutation": {
+    "id": "Perfect_Orb_of_Transmutation",
+    "name": "完美蜕变石",
+    "conditions": {
+      "rarity": 0
+    },
+    "effect": {
+      "type": "add_random",
+      "delta_affix_count": 1,
+      "min_ilvl": 70,
+      "upgrade_rarity_to": 1
+    }
+  },
+  "Orb_of_Augmentation": {
+    "id": "Orb_of_Augmentation",
+    "name": "增幅石",
+    "conditions": {
+      "rarity": 1,
+      "has_empty_slot": true
+    },
+    "effect": {
+      "type": "add_random",
+      "delta_affix_count": 1,
+      "min_ilvl": 1
+    }
+  },
+  "Regal_Orb": {
+    "id": "Regal_Orb",
+    "name": "富豪石",
+    "conditions": {
+      "rarity": 1
+    },
+    "effect": {
+      "type": "add_random",
+      "delta_affix_count": 1,
+      "min_ilvl": 1,
+      "upgrade_rarity_to": 2
+    }
+  },
+  "Chaos_Orb": {
+    "id": "Chaos_Orb",
+    "name": "混沌石",
+    "conditions": {
+      "rarity": 2,
+      "min_affix_count": 1
+    },
+    "effect": {
+      "type": "reroll_single_mod",
+      "delta_affix_count": 0,
+      "min_ilvl": 1
+    }
+  },
+  "Exalted_Orb": {
+    "id": "Exalted_Orb",
+    "name": "崇高石",
+    "conditions": {
+      "rarity": 2,
+      "has_empty_slot": true
+    },
+    "effect": {
+      "type": "add_random",
+      "delta_affix_count": 1,
+      "min_ilvl": 1
+    }
+  },
+  "Orb_of_Annulment": {
+    "id": "Orb_of_Annulment",
+    "name": "剥离石",
+    "conditions": {
+      "min_affix_count": 1
+    },
+    "effect": {
+      "type": "remove_random_mod",
+      "delta_affix_count": -1
+    }
+  },
+  "Divine_Orb": {
+    "id": "Divine_Orb",
+    "name": "神圣石",
+    "conditions": {
+      "min_affix_count": 1
+    },
+    "effect": {
+      "type": "reroll_values",
+      "keep_tiers": true
+    }
+  }
+}

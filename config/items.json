@@ -1,80 +1,288 @@
 [
-    {
-        "id": "transmutation",
-        "name": "蜕变石",
-        "price": 1,
-        "conditions": {"rarity": 0},
-        "effect": {
-            "type": "add_random",
-            "count": 1,
-            "affix_pool": "all",
-            "upgrade_rarity_to": 1
-        }
+  {
+    "id": "scroll_of_wisdom",
+    "name": "知识卷轴",
+    "price": 0.01,
+    "conditions": {
+      "rarity": 0
     },
-    {
-        "id": "augment",
-        "name": "增幅石",
-        "price": 2,
-        "conditions": {"rarity": 1},
-        "effect": {
-            "type": "add_random",
-            "count": 1,
-            "affix_pool": "all"
-        }
-    },
-    {
-        "id": "regal",
-        "name": "富豪石",
-        "price": 5,
-        "conditions": {"rarity": 1},
-        "effect": {
-            "type": "add_random",
-            "count": 1,
-            "affix_pool": "all",
-            "upgrade_rarity_to": 2
-        }
-    },
-    {
-        "id": "alchemy",
-        "name": "点金石",
-        "price": 4,
-        "conditions": {"rarity": [0, 1]},
-        "effect": {
-            "type": "reroll_all",
-            "num_affixes": 4,
-            "affix_pool": "all",
-            "set_rarity": 2
-        }
-    },
-    {
-        "id": "chaos",
-        "name": "混沌石",
-        "price": 6,
-        "conditions": {"rarity": 2},
-        "effect": {
-            "type": "reforge_one",
-            "affix_pool": "all"
-        }
-    },
-    {
-        "id": "exalted",
-        "name": "崇高石",
-        "price": 10,
-        "conditions": {"rarity": 2},
-        "effect": {
-            "type": "add_random",
-            "count": 1,
-            "affix_pool": "all"
-        }
-    },
-    {
-        "id": "annulment",
-        "name": "剥离石",
-        "price": 8,
-        "conditions": {"rarity_in": [1,2]},
-        "effect": {
-            "type": "remove_random",
-            "count": 1
-        }
+    "effect": {
+      "type": "identify"
     }
+  },
+  {
+    "id": "orb_of_transmutation",
+    "name": "蜕变石",
+    "price": 0.1,
+    "conditions": {
+      "rarity": 0
+    },
+    "effect": {
+      "type": "upgrade_to_magic"
+    }
+  },
+  {
+    "id": "orb_of_augmentation",
+    "name": "增幅石",
+    "price": 0.15,
+    "conditions": {
+      "rarity": 1
+    },
+    "effect": {
+      "type": "add_mod_magic"
+    }
+  },
+  {
+    "id": "regal_orb",
+    "name": "富豪石",
+    "price": 0.5,
+    "conditions": {
+      "rarity": 1
+    },
+    "effect": {
+      "type": "upgrade_to_rare"
+    }
+  },
+  {
+    "id": "chaos_orb",
+    "name": "混沌石",
+    "price": 1,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "reroll_all"
+    }
+  },
+  {
+    "id": "greater_chaos_orb",
+    "name": "高级混沌石",
+    "price": 3,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "reroll_all"
+    }
+  },
+  {
+    "id": "perfect_chaos_orb",
+    "name": "完美混沌石",
+    "price": 10,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "reroll_all"
+    }
+  },
+  {
+    "id": "exalted_orb",
+    "name": "崇高石",
+    "price": 5,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "add_mod_rare"
+    }
+  },
+  {
+    "id": "greater_exalted_orb",
+    "name": "高级崇高石",
+    "price": 20,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "add_mod_rare"
+    }
+  },
+  {
+    "id": "perfect_exalted_orb",
+    "name": "完美崇高石",
+    "price": 50,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "add_mod_rare"
+    }
+  },
+  {
+    "id": "divine_orb",
+    "name": "神圣石",
+    "price": 8,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "reroll_values"
+    }
+  },
+  {
+    "id": "orb_of_annulment",
+    "name": "剥离石",
+    "price": 3,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "remove_random_mod"
+    }
+  },
+  {
+    "id": "vaal_orb",
+    "name": "瓦尔宝珠",
+    "price": 2,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "corrupt"
+    }
+  },
+  {
+    "id": "orb_of_chance",
+    "name": "机会石",
+    "price": 0.5,
+    "conditions": {
+      "rarity": 0
+    },
+    "effect": {
+      "type": "upgrade_to_unique_or_destroy"
+    }
+  },
+  {
+    "id": "orb_of_alchemy",
+    "name": "点金石",
+    "price": 1.5,
+    "conditions": {
+      "rarity": 0
+    },
+    "effect": {
+      "type": "upgrade_to_rare"
+    }
+  },
+  {
+    "id": "fracturing_orb",
+    "name": "破溃宝珠",
+    "price": 25,
+    "conditions": {
+      "rarity": 2
+    },
+    "effect": {
+      "type": "fracture_mod"
+    }
+  },
+  {
+    "id": "hinekoras_lock",
+    "name": "辛格拉的发辫",
+    "price": 100,
+    "conditions": {
+      "rarity": 3
+    },
+    "effect": {
+      "type": "preview_next_currency"
+    }
+  },
+  {
+    "id": "mirror_of_kalandra",
+    "name": "卡兰德的魔镜",
+    "price": 500,
+    "conditions": {
+      "rarity": 3
+    },
+    "effect": {
+      "type": "mirror_item"
+    }
+  },
+  {
+    "id": "lesser_jewellers_orb",
+    "name": "低等工匠石",
+    "price": 0.3,
+    "conditions": {
+      "rarity": 1
+    },
+    "effect": {
+      "type": "add_support_slots_3"
+    }
+  },
+  {
+    "id": "greater_jewellers_orb",
+    "name": "高等工匠石",
+    "price": 2,
+    "conditions": {
+      "rarity": 1
+    },
+    "effect": {
+      "type": "add_support_slots_4"
+    }
+  },
+  {
+    "id": "perfect_jewellers_orb",
+    "name": "完美工匠石",
+    "price": 15,
+    "conditions": {
+      "rarity": 1
+    },
+    "effect": {
+      "type": "add_support_slots_5"
+    }
+  },
+  {
+    "id": "artificers_orb",
+    "name": "巧匠石",
+    "price": 1,
+    "conditions": {
+      "rarity": 1
+    },
+    "effect": {
+      "type": "add_socket"
+    }
+  },
+  {
+    "id": "armourers_scrap",
+    "name": "护甲片",
+    "price": 0.1,
+    "conditions": {
+      "rarity": 0
+    },
+    "effect": {
+      "type": "quality_armour"
+    }
+  },
+  {
+    "id": "blacksmiths_whetstone",
+    "name": "磨刀石",
+    "price": 0.1,
+    "conditions": {
+      "rarity": 0
+    },
+    "effect": {
+      "type": "quality_weapon"
+    }
+  },
+  {
+    "id": "gemcutters_prism",
+    "name": "宝石匠的棱镜",
+    "price": 2,
+    "conditions": {
+      "rarity": 1
+    },
+    "effect": {
+      "type": "quality_gem"
+    }
+  },
+  {
+    "id": "glassblowers_bauble",
+    "name": "玻璃吹制珠",
+    "price": 0.5,
+    "conditions": {
+      "rarity": 0
+    },
+    "effect": {
+      "type": "quality_flask"
+    }
+  }
 ]

@@ -1,28 +1,1784 @@
-{
-    "prefix": [
-        {"name": "怪物的强度提高", "weight": 100},
-        {"name": "地图内获取物品的稀有度提高", "weight": 100},
-        {"name": "地图内怪物群规模提高", "weight": 100},
-        {"name": "地图内魔法怪物数量提高", "weight": 100},
-        {"name": "地图内稀有怪物数量提高", "weight": 100},
-        {"name": "地图内找到的金币数量提高", "weight": 100},
-        {"name": "地图内的经验值获取提高", "weight": 100},
-        {"name": "地图包含额外的稀有宝箱", "weight": 100},
-        {"name": "地图包含一个额外的精华", "weight": 100},
-        {"name": "地图内找到的引路石数量提高", "weight": 100},
-        {"name": "地图包含一个额外的阿兹莫里之灵", "weight": 100},
-        {"name": "地图内会出现一个额外的盗贼流放者", "weight": 100},
-        {"name": "地图包含一个额外的召唤法阵", "weight": 100}
+[
+  {
+    "id": "strength_suffix",
+    "name": "力量",
+    "group": "Strength",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "axe",
+      "belt",
+      "body_armour",
+      "boots",
+      "crossbow",
+      "flail",
+      "gloves",
+      "helmet",
+      "mace",
+      "ring",
+      "sceptre",
+      "spear",
+      "str_armour",
+      "str_dex_armour",
+      "str_dex_int_armour",
+      "str_int_armour",
+      "sword",
+      "talisman"
     ],
-    "suffix": [
-        {"name": "地图中的深渊生成的怪物数量提高", "weight": 100},
-        {"name": "地图中的深渊额外生成稀有怪物", "weight": 100},
-        {"name": "每关闭一个巨坑，地图中的深渊怪物的难度与奖励都会提高", "weight": 100},
-        {"name": "地图中的深渊通往绝望深渊的几率提高", "weight": 100},
-        {"name": "地图额外包含一个深渊", "weight": 100},
-        {"name": "地图中的深渊巨坑有双倍几率有奖励", "weight": 100},
-        {"name": "地图有几率额外包含四个深渊", "weight": 100},
-        {"name": "地图中的深渊怪物带有深渊词缀的几率提高", "weight": 100},
-        {"name": "地图中的深渊掉落渎灵通货的几率提高", "weight": 100}
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 11
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 22
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 33
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 44
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 55
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 66
+      },
+      {
+        "tier": 8,
+        "weight": 1000,
+        "ilvl": 74
+      }
     ]
-}
+  },
+  {
+    "id": "dexterity_suffix",
+    "name": "敏捷",
+    "group": "Dexterity",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "body_armour",
+      "boots",
+      "bow",
+      "claw",
+      "crossbow",
+      "dagger",
+      "dex_armour",
+      "dex_int_armour",
+      "gloves",
+      "helmet",
+      "quiver",
+      "ring",
+      "spear",
+      "str_dex_armour",
+      "str_dex_int_armour",
+      "sword",
+      "trap",
+      "warstaff"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 11
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 22
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 33
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 44
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 55
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 66
+      },
+      {
+        "tier": 8,
+        "weight": 1000,
+        "ilvl": 74
+      },
+      {
+        "tier": 9,
+        "weight": 1000,
+        "ilvl": 81
+      }
+    ]
+  },
+  {
+    "id": "fire_resistance_suffix",
+    "name": "火焰抗性",
+    "group": "Fire_Resistance",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "armour",
+      "belt",
+      "body_armour",
+      "boots",
+      "gloves",
+      "helmet",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 12
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 24
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 36
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 48
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 60
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 71
+      },
+      {
+        "tier": 8,
+        "weight": 1000,
+        "ilvl": 82
+      }
+    ]
+  },
+  {
+    "id": "cold_resistance_suffix",
+    "name": "冰霜抗性",
+    "group": "Cold_Resistance",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "armour",
+      "belt",
+      "body_armour",
+      "boots",
+      "gloves",
+      "helmet",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 14
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 26
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 38
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 50
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 60
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 71
+      },
+      {
+        "tier": 8,
+        "weight": 1000,
+        "ilvl": 82
+      }
+    ]
+  },
+  {
+    "id": "lightning_resistance_suffix",
+    "name": "闪电抗性",
+    "group": "Lightning_Resistance",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "armour",
+      "belt",
+      "body_armour",
+      "boots",
+      "gloves",
+      "helmet",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 13
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 25
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 37
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 49
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 60
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 71
+      },
+      {
+        "tier": 8,
+        "weight": 1000,
+        "ilvl": 82
+      }
+    ]
+  },
+  {
+    "id": "chaos_resistance_suffix",
+    "name": "混沌抗性",
+    "group": "Chaos_Resistance",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "armour",
+      "belt",
+      "body_armour",
+      "boots",
+      "gloves",
+      "helmet",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 250,
+        "ilvl": 16
+      },
+      {
+        "tier": 2,
+        "weight": 250,
+        "ilvl": 30
+      },
+      {
+        "tier": 3,
+        "weight": 250,
+        "ilvl": 44
+      },
+      {
+        "tier": 4,
+        "weight": 250,
+        "ilvl": 56
+      },
+      {
+        "tier": 5,
+        "weight": 250,
+        "ilvl": 68
+      },
+      {
+        "tier": 6,
+        "weight": 250,
+        "ilvl": 81
+      }
+    ]
+  },
+  {
+    "id": "maximum_life_prefix",
+    "name": "最大生命",
+    "group": "Maximum_Life",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "amulet",
+      "belt",
+      "body_armour",
+      "boots",
+      "gloves",
+      "helmet",
+      "ring",
+      "shield"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 6
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 24
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 33
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 38
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 46
+      },
+      {
+        "tier": 8,
+        "weight": 1000,
+        "ilvl": 54
+      },
+      {
+        "tier": 9,
+        "weight": 1000,
+        "ilvl": 60
+      }
+    ]
+  },
+  {
+    "id": "maximum_mana_prefix",
+    "name": "最大魔力",
+    "group": "Maximum_Mana",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "amulet",
+      "belt",
+      "boots",
+      "focus",
+      "gloves",
+      "helmet",
+      "ring",
+      "sceptre",
+      "trap",
+      "wand"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 6
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 25
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 33
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 38
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 46
+      },
+      {
+        "tier": 8,
+        "weight": 1000,
+        "ilvl": 54
+      },
+      {
+        "tier": 9,
+        "weight": 1000,
+        "ilvl": 60
+      }
+    ]
+  },
+  {
+    "id": "baselocaldefences_prefix",
+    "name": "护甲",
+    "group": "BaseLocalDefences",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "body_armour",
+      "boots",
+      "dex_armour",
+      "dex_int_armour",
+      "gloves",
+      "helmet",
+      "int_armour",
+      "str_armour",
+      "str_dex_armour",
+      "str_dex_int_armour",
+      "str_int_armour"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 8
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 25
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 33
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 46
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 54
+      }
+    ]
+  },
+  {
+    "id": "defences_percent_prefix",
+    "name": "护甲提高",
+    "group": "Defences_Percent",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "body_armour",
+      "boots",
+      "dex_armour",
+      "dex_int_armour",
+      "gloves",
+      "helmet",
+      "int_armour",
+      "str_armour",
+      "str_dex_armour",
+      "str_int_armour"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 2
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 35
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 46
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 54
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 60
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 65
+      }
+    ]
+  },
+  {
+    "id": "baselocaldefencesandlife_prefix",
+    "name": "护甲提高 最大生命",
+    "group": "BaseLocalDefencesAndLife",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "body_armour",
+      "boots",
+      "dex_armour",
+      "dex_int_armour",
+      "focus",
+      "gloves",
+      "helmet",
+      "int_armour",
+      "shield",
+      "str_armour",
+      "str_dex_armour",
+      "str_int_armour"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 8
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 33
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 46
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 60
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 78
+      }
+    ]
+  },
+  {
+    "id": "localattributerequirements_suffix",
+    "name": "属性需求降低",
+    "group": "LocalAttributeRequirements",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "body_armour",
+      "boots",
+      "focus",
+      "gloves",
+      "helmet",
+      "sceptre",
+      "shield",
+      "staff",
+      "wand",
+      "weapon"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 700,
+        "ilvl": 24
+      },
+      {
+        "tier": 2,
+        "weight": 700,
+        "ilvl": 32
+      },
+      {
+        "tier": 3,
+        "weight": 700,
+        "ilvl": 40
+      },
+      {
+        "tier": 4,
+        "weight": 700,
+        "ilvl": 52
+      },
+      {
+        "tier": 5,
+        "weight": 700,
+        "ilvl": 60
+      }
+    ]
+  },
+  {
+    "id": "physicaldamage_prefix",
+    "name": "攻击附加 - 物理伤害",
+    "group": "PhysicalDamage",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "gloves",
+      "quiver",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 8
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 33
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 46
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 54
+      },
+      {
+        "tier": 7,
+        "weight": 800,
+        "ilvl": 60
+      },
+      {
+        "tier": 8,
+        "weight": 600,
+        "ilvl": 65
+      },
+      {
+        "tier": 9,
+        "weight": 400,
+        "ilvl": 75
+      }
+    ]
+  },
+  {
+    "id": "firedamage_prefix",
+    "name": "攻击附加 - 基础火焰伤害",
+    "group": "FireDamage",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "gloves",
+      "quiver",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 500,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 500,
+        "ilvl": 8
+      },
+      {
+        "tier": 3,
+        "weight": 500,
+        "ilvl": 16
+      },
+      {
+        "tier": 4,
+        "weight": 500,
+        "ilvl": 33
+      },
+      {
+        "tier": 5,
+        "weight": 500,
+        "ilvl": 46
+      },
+      {
+        "tier": 6,
+        "weight": 500,
+        "ilvl": 54
+      },
+      {
+        "tier": 7,
+        "weight": 400,
+        "ilvl": 60
+      },
+      {
+        "tier": 8,
+        "weight": 300,
+        "ilvl": 65
+      },
+      {
+        "tier": 9,
+        "weight": 200,
+        "ilvl": 75
+      }
+    ]
+  },
+  {
+    "id": "colddamage_prefix",
+    "name": "攻击附加 - 基础冰霜伤害",
+    "group": "ColdDamage",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "gloves",
+      "quiver",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 500,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 500,
+        "ilvl": 8
+      },
+      {
+        "tier": 3,
+        "weight": 500,
+        "ilvl": 16
+      },
+      {
+        "tier": 4,
+        "weight": 500,
+        "ilvl": 33
+      },
+      {
+        "tier": 5,
+        "weight": 500,
+        "ilvl": 46
+      },
+      {
+        "tier": 6,
+        "weight": 500,
+        "ilvl": 54
+      },
+      {
+        "tier": 7,
+        "weight": 400,
+        "ilvl": 60
+      },
+      {
+        "tier": 8,
+        "weight": 300,
+        "ilvl": 65
+      },
+      {
+        "tier": 9,
+        "weight": 200,
+        "ilvl": 75
+      }
+    ]
+  },
+  {
+    "id": "lightningdamage_prefix",
+    "name": "攻击附加 - 基础闪电伤害",
+    "group": "LightningDamage",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "gloves",
+      "quiver",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 500,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 500,
+        "ilvl": 8
+      },
+      {
+        "tier": 3,
+        "weight": 500,
+        "ilvl": 16
+      },
+      {
+        "tier": 4,
+        "weight": 500,
+        "ilvl": 33
+      },
+      {
+        "tier": 5,
+        "weight": 500,
+        "ilvl": 46
+      },
+      {
+        "tier": 6,
+        "weight": 500,
+        "ilvl": 54
+      },
+      {
+        "tier": 7,
+        "weight": 400,
+        "ilvl": 60
+      },
+      {
+        "tier": 8,
+        "weight": 300,
+        "ilvl": 65
+      },
+      {
+        "tier": 9,
+        "weight": 200,
+        "ilvl": 75
+      }
+    ]
+  },
+  {
+    "id": "increasesocketedgemlevel_suffix",
+    "name": "所有近战技能等级",
+    "group": "IncreaseSocketedGemLevel",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "gloves"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 500,
+        "ilvl": 5
+      },
+      {
+        "tier": 2,
+        "weight": 250,
+        "ilvl": 41
+      }
+    ]
+  },
+  {
+    "id": "lifeleech_suffix",
+    "name": "物理攻击伤害的 的百分比 转化为生命偷取",
+    "group": "LifeLeech",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "gloves",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 21
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 38
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 54
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 68
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 81
+      }
+    ]
+  },
+  {
+    "id": "manaleech_suffix",
+    "name": "物理攻击伤害的 的百分比 转化为魔力偷取",
+    "group": "ManaLeech",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "gloves",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 21
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 38
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 54
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 68
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 81
+      }
+    ]
+  },
+  {
+    "id": "life_gained_on_kill_suffix",
+    "name": "每击败一名敌人获得 点生命",
+    "group": "Life_Gained_On_Kill",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "gloves",
+      "quiver",
+      "ring",
+      "staff",
+      "trap",
+      "wand",
+      "weapon"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 750,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 750,
+        "ilvl": 11
+      },
+      {
+        "tier": 3,
+        "weight": 750,
+        "ilvl": 22
+      },
+      {
+        "tier": 4,
+        "weight": 750,
+        "ilvl": 33
+      },
+      {
+        "tier": 5,
+        "weight": 750,
+        "ilvl": 44
+      },
+      {
+        "tier": 6,
+        "weight": 750,
+        "ilvl": 55
+      },
+      {
+        "tier": 7,
+        "weight": 750,
+        "ilvl": 66
+      },
+      {
+        "tier": 8,
+        "weight": 750,
+        "ilvl": 77
+      }
+    ]
+  },
+  {
+    "id": "mana_gained_on_kill_suffix",
+    "name": "每击败一名敌人获得 点魔力",
+    "group": "Mana_Gained_On_Kill",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "gloves",
+      "quiver",
+      "ring",
+      "staff",
+      "trap",
+      "wand",
+      "weapon"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 750,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 750,
+        "ilvl": 12
+      },
+      {
+        "tier": 3,
+        "weight": 750,
+        "ilvl": 23
+      },
+      {
+        "tier": 4,
+        "weight": 750,
+        "ilvl": 34
+      },
+      {
+        "tier": 5,
+        "weight": 750,
+        "ilvl": 45
+      },
+      {
+        "tier": 6,
+        "weight": 750,
+        "ilvl": 56
+      },
+      {
+        "tier": 7,
+        "weight": 750,
+        "ilvl": 67
+      },
+      {
+        "tier": 8,
+        "weight": 750,
+        "ilvl": 78
+      }
+    ]
+  },
+  {
+    "id": "life_gained_per_hit_suffix",
+    "name": "攻击每击中一名敌人获得点生命",
+    "group": "Life_Gained_Per_Hit",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "gloves"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 8
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 20
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 30
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 40
+      }
+    ]
+  },
+  {
+    "id": "attack_speed_suffix",
+    "name": "攻击速度加快",
+    "group": "Attack_Speed",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "gloves",
+      "quiver"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 500,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 500,
+        "ilvl": 22
+      },
+      {
+        "tier": 3,
+        "weight": 500,
+        "ilvl": 37
+      },
+      {
+        "tier": 4,
+        "weight": 500,
+        "ilvl": 60
+      }
+    ]
+  },
+  {
+    "id": "accuracy_prefix",
+    "name": "命中值",
+    "group": "Accuracy",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "amulet",
+      "gloves",
+      "helmet",
+      "quiver",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 800,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 800,
+        "ilvl": 11
+      },
+      {
+        "tier": 3,
+        "weight": 800,
+        "ilvl": 18
+      },
+      {
+        "tier": 4,
+        "weight": 800,
+        "ilvl": 26
+      },
+      {
+        "tier": 5,
+        "weight": 800,
+        "ilvl": 36
+      },
+      {
+        "tier": 6,
+        "weight": 800,
+        "ilvl": 48
+      },
+      {
+        "tier": 7,
+        "weight": 800,
+        "ilvl": 58
+      },
+      {
+        "tier": 8,
+        "weight": 400,
+        "ilvl": 67
+      },
+      {
+        "tier": 9,
+        "weight": 200,
+        "ilvl": 76
+      }
+    ]
+  },
+  {
+    "id": "critical_damage_bonus_suffix",
+    "name": "暴击伤害加成提高",
+    "group": "Critical_Damage_Bonus",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "gloves"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 8
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 21
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 31
+      },
+      {
+        "tier": 4,
+        "weight": 500,
+        "ilvl": 45
+      },
+      {
+        "tier": 5,
+        "weight": 250,
+        "ilvl": 59
+      }
+    ]
+  },
+  {
+    "id": "item_rarity_suffix",
+    "name": "物品稀有度提高",
+    "group": "Item_Rarity",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "boots",
+      "gloves",
+      "helmet",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 3
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 24
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 40
+      }
+    ]
+  },
+  {
+    "id": "armour_applies_to_elemental_suffix",
+    "name": "的护甲同样作用于元素伤害",
+    "group": "Armour_Applies_To_Elemental",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "body_armour",
+      "boots",
+      "gloves",
+      "helmet",
+      "str_armour",
+      "str_dex_armour",
+      "str_dex_int_armour",
+      "str_int_armour"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 36
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 48
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 66
+      }
+    ]
+  },
+  {
+    "id": "evasionappliestodeflection_suffix",
+    "name": "获得相当于闪避值 的偏转值",
+    "group": "EvasionAppliesToDeflection",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "body_armour",
+      "boots",
+      "dex_armour",
+      "dex_int_armour",
+      "gloves",
+      "helmet",
+      "str_dex_armour",
+      "str_dex_int_armour"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 36
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 48
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 66
+      }
+    ]
+  },
+  {
+    "id": "intelligence_suffix",
+    "name": "智慧",
+    "group": "Intelligence",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "body_armour",
+      "boots",
+      "dagger",
+      "dex_int_armour",
+      "flail",
+      "gloves",
+      "helmet",
+      "int_armour",
+      "ring",
+      "sceptre",
+      "staff",
+      "str_dex_int_armour",
+      "str_int_armour",
+      "talisman",
+      "trap",
+      "wand",
+      "warstaff"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 11
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 22
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 33
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 44
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 55
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 66
+      },
+      {
+        "tier": 8,
+        "weight": 1000,
+        "ilvl": 74
+      }
+    ]
+  },
+  {
+    "id": "energyshieldregeneration_suffix",
+    "name": "能量护盾充能率提高",
+    "group": "EnergyShieldRegeneration",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "body_armour",
+      "boots",
+      "dex_int_armour",
+      "focus",
+      "gloves",
+      "helmet",
+      "int_armour",
+      "str_dex_int_armour",
+      "str_int_armour"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 36
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 48
+      }
+    ]
+  },
+  {
+    "id": "defencespercentandstunthreshold_prefix",
+    "name": "护甲提高 晕眩阈值",
+    "group": "DefencesPercentAndStunThreshold",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "body_armour",
+      "boots",
+      "dex_armour",
+      "dex_int_armour",
+      "focus",
+      "gloves",
+      "helmet",
+      "int_armour",
+      "str_armour",
+      "str_dex_armour",
+      "str_int_armour"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 10
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 19
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 38
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 48
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 63
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 74
+      }
+    ]
+  },
+  {
+    "id": "stun_threshold_suffix",
+    "name": "晕眩阈值",
+    "group": "Stun_Threshold",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "belt",
+      "body_armour",
+      "boots",
+      "gloves",
+      "helmet",
+      "shield"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 800,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 800,
+        "ilvl": 8
+      },
+      {
+        "tier": 3,
+        "weight": 800,
+        "ilvl": 15
+      },
+      {
+        "tier": 4,
+        "weight": 800,
+        "ilvl": 22
+      },
+      {
+        "tier": 5,
+        "weight": 800,
+        "ilvl": 29
+      },
+      {
+        "tier": 6,
+        "weight": 800,
+        "ilvl": 36
+      },
+      {
+        "tier": 7,
+        "weight": 800,
+        "ilvl": 45
+      },
+      {
+        "tier": 8,
+        "weight": 800,
+        "ilvl": 54
+      },
+      {
+        "tier": 9,
+        "weight": 800,
+        "ilvl": 63
+      },
+      {
+        "tier": 10,
+        "weight": 800,
+        "ilvl": 72
+      },
+      {
+        "tier": 11,
+        "weight": 800,
+        "ilvl": 80
+      }
+    ]
+  },
+  {
+    "id": "movement_speed_prefix",
+    "name": "移动速度加快",
+    "group": "Movement_Speed",
+    "is_prefix": true,
+    "valid_for_tags": [
+      "boots"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 16
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 33
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 46
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 65
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 82
+      }
+    ]
+  },
+  {
+    "id": "liferegeneration_suffix",
+    "name": "生命每秒再生",
+    "group": "LifeRegeneration",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "amulet",
+      "belt",
+      "body_armour",
+      "boots",
+      "gloves",
+      "helmet",
+      "ring"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 1000,
+        "ilvl": 1
+      },
+      {
+        "tier": 2,
+        "weight": 1000,
+        "ilvl": 5
+      },
+      {
+        "tier": 3,
+        "weight": 1000,
+        "ilvl": 11
+      },
+      {
+        "tier": 4,
+        "weight": 1000,
+        "ilvl": 17
+      },
+      {
+        "tier": 5,
+        "weight": 1000,
+        "ilvl": 26
+      },
+      {
+        "tier": 6,
+        "weight": 1000,
+        "ilvl": 35
+      },
+      {
+        "tier": 7,
+        "weight": 1000,
+        "ilvl": 47
+      },
+      {
+        "tier": 8,
+        "weight": 1000,
+        "ilvl": 58
+      }
+    ]
+  },
+  {
+    "id": "reducedailmentduration_suffix",
+    "name": "你被感电的持续时间缩短",
+    "group": "ReducedAilmentDuration",
+    "is_prefix": false,
+    "valid_for_tags": [
+      "boots"
+    ],
+    "tiers": [
+      {
+        "tier": 1,
+        "weight": 500,
+        "ilvl": 20
+      },
+      {
+        "tier": 2,
+        "weight": 500,
+        "ilvl": 36
+      },
+      {
+        "tier": 3,
+        "weight": 500,
+        "ilvl": 49
+      },
+      {
+        "tier": 4,
+        "weight": 500,
+        "ilvl": 63
+      },
+      {
+        "tier": 5,
+        "weight": 500,
+        "ilvl": 75
+      }
+    ]
+  }
+]

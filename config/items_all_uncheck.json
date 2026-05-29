@@ -1,0 +1,2153 @@
+{
+  "Orb_of_Transmutation": {
+    "id": "Orb_of_Transmutation",
+    "name": "蜕变石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": 1,
+      "conditions": [
+        "item_is_normal"
+      ]
+    }
+  },
+  "Greater_Orb_of_Transmutation": {
+    "id": "Greater_Orb_of_Transmutation",
+    "name": "高级蜕变石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 2,
+      "affix_pool": "all",
+      "upgrade_rarity_to": 1,
+      "conditions": [
+        "item_is_normal"
+      ]
+    }
+  },
+  "Perfect_Orb_of_Transmutation": {
+    "id": "Perfect_Orb_of_Transmutation",
+    "name": "完美蜕变石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 3,
+      "affix_pool": "all",
+      "upgrade_rarity_to": 1,
+      "conditions": [
+        "item_is_normal"
+      ]
+    }
+  },
+  "Orb_of_Augmentation": {
+    "id": "Orb_of_Augmentation",
+    "name": "增幅石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_magic",
+        "affix_count_less_than_max"
+      ]
+    }
+  },
+  "Greater_Orb_of_Augmentation": {
+    "id": "Greater_Orb_of_Augmentation",
+    "name": "高级增幅石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 1,
+      "affix_pool": "prefix",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_magic",
+        "affix_count_less_than_max"
+      ]
+    }
+  },
+  "Perfect_Orb_of_Augmentation": {
+    "id": "Perfect_Orb_of_Augmentation",
+    "name": "完美增幅石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 1,
+      "affix_pool": "suffix",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_magic",
+        "affix_count_less_than_max"
+      ]
+    }
+  },
+  "Regal_Orb": {
+    "id": "Regal_Orb",
+    "name": "富豪石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Regal_Orb": {
+    "id": "Greater_Regal_Orb",
+    "name": "高级富豪石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 2,
+      "affix_pool": "all",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Perfect_Regal_Orb": {
+    "id": "Perfect_Regal_Orb",
+    "name": "完美富豪石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 3,
+      "affix_pool": "all",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Exalted_Orb": {
+    "id": "Exalted_Orb",
+    "name": "崇高石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare",
+        "affix_count_less_than_max"
+      ]
+    }
+  },
+  "Greater_Exalted_Orb": {
+    "id": "Greater_Exalted_Orb",
+    "name": "高级崇高石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 1,
+      "affix_pool": "prefix",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare",
+        "affix_count_less_than_max"
+      ]
+    }
+  },
+  "Perfect_Exalted_Orb": {
+    "id": "Perfect_Exalted_Orb",
+    "name": "完美崇高石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 1,
+      "affix_pool": "suffix",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare",
+        "affix_count_less_than_max"
+      ]
+    }
+  },
+  "Orb_of_Alchemy": {
+    "id": "Orb_of_Alchemy",
+    "name": "点金石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_random",
+      "count": 4,
+      "affix_pool": "all",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_normal"
+      ]
+    }
+  },
+  "Chaos_Orb": {
+    "id": "Chaos_Orb",
+    "name": "混沌石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_affixes",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Greater_Chaos_Orb": {
+    "id": "Greater_Chaos_Orb",
+    "name": "高级混沌石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_affixes",
+      "count": 1,
+      "affix_pool": "prefix",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Chaos_Orb": {
+    "id": "Perfect_Chaos_Orb",
+    "name": "完美混沌石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_affixes",
+      "count": 1,
+      "affix_pool": "suffix",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Orb_of_Annulment": {
+    "id": "Orb_of_Annulment",
+    "name": "剥离石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "remove_random",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_has_affixes"
+      ]
+    }
+  },
+  "Divine_Orb": {
+    "id": "Divine_Orb",
+    "name": "神圣石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_values",
+      "count": null,
+      "affix_pool": "all",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_has_affixes"
+      ]
+    }
+  },
+  "Vaal_Orb": {
+    "id": "Vaal_Orb",
+    "name": "瓦尔宝珠",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "corrupt_random",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_not_corrupted"
+      ]
+    }
+  },
+  "Orb_of_Chance": {
+    "id": "Orb_of_Chance",
+    "name": "机会石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "gamble_upgrade",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": 3,
+      "destroy_on_fail": true,
+      "conditions": [
+        "item_is_normal"
+      ]
+    }
+  },
+  "Fracturing_Orb": {
+    "id": "Fracturing_Orb",
+    "name": "破溃宝珠",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "fracture_random",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare",
+        "min_affix_count_4"
+      ]
+    }
+  },
+  "Orb_of_Extraction": {
+    "id": "Orb_of_Extraction",
+    "name": "萃取石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "extract_affix",
+      "count": 1,
+      "affix_pool": "all",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Scroll_of_Wisdom": {
+    "id": "Scroll_of_Wisdom",
+    "name": "知识卷轴",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "identify",
+      "count": 1,
+      "affix_pool": null,
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_unidentified"
+      ]
+    }
+  },
+  "Blacksmiths_Whetstone": {
+    "id": "Blacksmiths_Whetstone",
+    "name": "磨刀石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "weapon",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_weapon"
+      ]
+    }
+  },
+  "Armourers_Scrap": {
+    "id": "Armourers_Scrap",
+    "name": "护甲片",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "armour",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_armour"
+      ]
+    }
+  },
+  "Glassblowers_Bauble": {
+    "id": "Glassblowers_Bauble",
+    "name": "玻璃弹珠",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "flask",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_flask"
+      ]
+    }
+  },
+  "Gemcutters_Prism": {
+    "id": "Gemcutters_Prism",
+    "name": "宝石匠的棱镜",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "gem",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_gem"
+      ]
+    }
+  },
+  "Artificers_Orb": {
+    "id": "Artificers_Orb",
+    "name": "巧匠石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_socket",
+      "count": 1,
+      "affix_pool": null,
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_has_sockets"
+      ]
+    }
+  },
+  "Lesser_Jewellers_Orb": {
+    "id": "Lesser_Jewellers_Orb",
+    "name": "低等工匠石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "set_socket_count",
+      "count": 3,
+      "affix_pool": null,
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_gem"
+      ]
+    }
+  },
+  "Greater_Jewellers_Orb": {
+    "id": "Greater_Jewellers_Orb",
+    "name": "高等工匠石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "set_socket_count",
+      "count": 4,
+      "affix_pool": null,
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_gem"
+      ]
+    }
+  },
+  "Perfect_Jewellers_Orb": {
+    "id": "Perfect_Jewellers_Orb",
+    "name": "完美工匠石",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "set_socket_count",
+      "count": 5,
+      "affix_pool": null,
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_gem"
+      ]
+    }
+  },
+  "Hinekoras_Lock": {
+    "id": "Hinekoras_Lock",
+    "name": "辛格拉的发辫",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "preview_next_currency",
+      "count": 1,
+      "affix_pool": null,
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_not_corrupted"
+      ]
+    }
+  },
+  "Mirror_of_Kalandra": {
+    "id": "Mirror_of_Kalandra",
+    "name": "卡兰德的魔镜",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "mirror_item",
+      "count": 1,
+      "affix_pool": null,
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare",
+        "item_not_corrupted"
+      ]
+    }
+  },
+  "Crystallised_Corruption": {
+    "id": "Crystallised_Corruption",
+    "name": "结晶腐化",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_corrupted_gem",
+      "count": 1,
+      "affix_pool": null,
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_gem",
+        "item_is_corrupted"
+      ]
+    }
+  },
+  "Lesser_Essence_of_the_Body": {
+    "id": "Lesser_Essence_of_the_Body",
+    "name": "次级身躯精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "life",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_the_Mind": {
+    "id": "Lesser_Essence_of_the_Mind",
+    "name": "次级心灵精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "mana",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Enhancement": {
+    "id": "Lesser_Essence_of_Enhancement",
+    "name": "次级强化精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "defence_percent",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Abrasion": {
+    "id": "Lesser_Essence_of_Abrasion",
+    "name": "次级磨蚀精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "physical_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Flames": {
+    "id": "Lesser_Essence_of_Flames",
+    "name": "次级烈焰精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "fire_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Ice": {
+    "id": "Lesser_Essence_of_Ice",
+    "name": "次级冰霜精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cold_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Electricity": {
+    "id": "Lesser_Essence_of_Electricity",
+    "name": "次级电光精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "lightning_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Ruin": {
+    "id": "Lesser_Essence_of_Ruin",
+    "name": "次级摧灭精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "chaos_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Battle": {
+    "id": "Lesser_Essence_of_Battle",
+    "name": "次级激战精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "attack",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Sorcery": {
+    "id": "Lesser_Essence_of_Sorcery",
+    "name": "次级魔法精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "spell",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Haste": {
+    "id": "Lesser_Essence_of_Haste",
+    "name": "次级急速精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "speed",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_the_Infinite": {
+    "id": "Lesser_Essence_of_the_Infinite",
+    "name": "次级永恒精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "attribute",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Seeking": {
+    "id": "Lesser_Essence_of_Seeking",
+    "name": "次级寻觅精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Alacrity": {
+    "id": "Lesser_Essence_of_Alacrity",
+    "name": "次级迅捷精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cast_speed",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Opulence": {
+    "id": "Lesser_Essence_of_Opulence",
+    "name": "次级丰裕精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "gold_find",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Command": {
+    "id": "Lesser_Essence_of_Command",
+    "name": "次级命令精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "minion",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Insulation": {
+    "id": "Lesser_Essence_of_Insulation",
+    "name": "次级绝缘精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "fire_resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Thawing": {
+    "id": "Lesser_Essence_of_Thawing",
+    "name": "次级熔解精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cold_resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Lesser_Essence_of_Grounding": {
+    "id": "Lesser_Essence_of_Grounding",
+    "name": "次级接地精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "lightning_resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_the_Body": {
+    "id": "Essence_of_the_Body",
+    "name": "身躯精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "life",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_the_Mind": {
+    "id": "Essence_of_the_Mind",
+    "name": "心灵精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "mana",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Enhancement": {
+    "id": "Essence_of_Enhancement",
+    "name": "强化精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "defence_percent",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Abrasion": {
+    "id": "Essence_of_Abrasion",
+    "name": "磨蚀精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "physical_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Flames": {
+    "id": "Essence_of_Flames",
+    "name": "烈焰精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "fire_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Ice": {
+    "id": "Essence_of_Ice",
+    "name": "冰霜精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cold_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Electricity": {
+    "id": "Essence_of_Electricity",
+    "name": "电光精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "lightning_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Ruin": {
+    "id": "Essence_of_Ruin",
+    "name": "摧灭精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "chaos_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Battle": {
+    "id": "Essence_of_Battle",
+    "name": "激战精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "attack",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Sorcery": {
+    "id": "Essence_of_Sorcery",
+    "name": "魔法精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "spell",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Haste": {
+    "id": "Essence_of_Haste",
+    "name": "急速精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "speed",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_the_Infinite": {
+    "id": "Essence_of_the_Infinite",
+    "name": "永恒精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "attribute",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Seeking": {
+    "id": "Essence_of_Seeking",
+    "name": "寻觅精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Alacrity": {
+    "id": "Essence_of_Alacrity",
+    "name": "迅捷精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cast_speed",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Opulence": {
+    "id": "Essence_of_Opulence",
+    "name": "丰裕精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "gold_find",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Command": {
+    "id": "Essence_of_Command",
+    "name": "命令精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "minion",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Insulation": {
+    "id": "Essence_of_Insulation",
+    "name": "绝缘精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "fire_resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Thawing": {
+    "id": "Essence_of_Thawing",
+    "name": "熔解精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cold_resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Essence_of_Grounding": {
+    "id": "Essence_of_Grounding",
+    "name": "接地精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "lightning_resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_the_Body": {
+    "id": "Greater_Essence_of_the_Body",
+    "name": "强效身躯精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "life",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_the_Mind": {
+    "id": "Greater_Essence_of_the_Mind",
+    "name": "强效心灵精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "mana",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Enhancement": {
+    "id": "Greater_Essence_of_Enhancement",
+    "name": "强效增强精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "defence_percent",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Abrasion": {
+    "id": "Greater_Essence_of_Abrasion",
+    "name": "强效磨蚀精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "physical_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Flames": {
+    "id": "Greater_Essence_of_Flames",
+    "name": "强效火焰精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "fire_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Ice": {
+    "id": "Greater_Essence_of_Ice",
+    "name": "强效冰霜精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cold_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Electricity": {
+    "id": "Greater_Essence_of_Electricity",
+    "name": "强效电光精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "lightning_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Ruin": {
+    "id": "Greater_Essence_of_Ruin",
+    "name": "强效摧灭精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "chaos_damage",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Battle": {
+    "id": "Greater_Essence_of_Battle",
+    "name": "强效激战精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "attack",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Sorcery": {
+    "id": "Greater_Essence_of_Sorcery",
+    "name": "强效魔法精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "spell",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Haste": {
+    "id": "Greater_Essence_of_Haste",
+    "name": "强效急速精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "speed",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_the_Infinite": {
+    "id": "Greater_Essence_of_the_Infinite",
+    "name": "强效永恒精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "attribute",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Seeking": {
+    "id": "Greater_Essence_of_Seeking",
+    "name": "强效寻觅精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Alacrity": {
+    "id": "Greater_Essence_of_Alacrity",
+    "name": "强效迅捷精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cast_speed",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Opulence": {
+    "id": "Greater_Essence_of_Opulence",
+    "name": "强效丰裕精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "gold_find",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Command": {
+    "id": "Greater_Essence_of_Command",
+    "name": "强效命令精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "minion",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Insulation": {
+    "id": "Greater_Essence_of_Insulation",
+    "name": "强效绝缘精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "fire_resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Thawing": {
+    "id": "Greater_Essence_of_Thawing",
+    "name": "强效熔解精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cold_resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Greater_Essence_of_Grounding": {
+    "id": "Greater_Essence_of_Grounding",
+    "name": "强效接地精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "lightning_resistance",
+      "upgrade_rarity_to": 2,
+      "conditions": [
+        "item_is_magic"
+      ]
+    }
+  },
+  "Perfect_Essence_of_the_Body": {
+    "id": "Perfect_Essence_of_the_Body",
+    "name": "完美身躯精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "life_percent",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_the_Mind": {
+    "id": "Perfect_Essence_of_the_Mind",
+    "name": "完美心灵精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "mana_percent",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Enhancement": {
+    "id": "Perfect_Essence_of_Enhancement",
+    "name": "完美强化精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "global_defence",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Abrasion": {
+    "id": "Perfect_Essence_of_Abrasion",
+    "name": "完美磨蚀精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "physical_damage",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Flames": {
+    "id": "Perfect_Essence_of_Flames",
+    "name": "完美烈焰精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "fire_damage",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Ice": {
+    "id": "Perfect_Essence_of_Ice",
+    "name": "完美冰霜精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cold_damage",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Electricity": {
+    "id": "Perfect_Essence_of_Electricity",
+    "name": "完美电光精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "lightning_damage",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Ruin": {
+    "id": "Perfect_Essence_of_Ruin",
+    "name": "完美摧灭精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "chaos_damage",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Battle": {
+    "id": "Perfect_Essence_of_Battle",
+    "name": "完美激战精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "attack",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Sorcery": {
+    "id": "Perfect_Essence_of_Sorcery",
+    "name": "完美魔法精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "spell",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Haste": {
+    "id": "Perfect_Essence_of_Haste",
+    "name": "完美急速精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "speed",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_the_Infinite": {
+    "id": "Perfect_Essence_of_the_Infinite",
+    "name": "完美永恒精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "attribute",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Seeking": {
+    "id": "Perfect_Essence_of_Seeking",
+    "name": "完美寻觅精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "critical_damage_reduction",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Alacrity": {
+    "id": "Perfect_Essence_of_Alacrity",
+    "name": "完美迅捷精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "mana_efficiency",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Opulence": {
+    "id": "Perfect_Essence_of_Opulence",
+    "name": "完美丰裕精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "gold_find",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Command": {
+    "id": "Perfect_Essence_of_Command",
+    "name": "完美命令精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "minion",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Insulation": {
+    "id": "Perfect_Essence_of_Insulation",
+    "name": "完美绝缘精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "fire_recoup",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Thawing": {
+    "id": "Perfect_Essence_of_Thawing",
+    "name": "完美熔解精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "cold_recoup",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Perfect_Essence_of_Grounding": {
+    "id": "Perfect_Essence_of_Grounding",
+    "name": "完美接地精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "lightning_recoup",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Essence_of_Hysteria": {
+    "id": "Essence_of_Hysteria",
+    "name": "浮夸精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "hysteria_special",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Essence_of_Delirium": {
+    "id": "Essence_of_Delirium",
+    "name": "谵妄精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "delirium_random_keystone",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Essence_of_Horror": {
+    "id": "Essence_of_Horror",
+    "name": "极恐精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "horror_socketed_effect",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Essence_of_Insanity": {
+    "id": "Essence_of_Insanity",
+    "name": "错乱精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "insanity_double_enchant",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Essence_of_the_Abyss": {
+    "id": "Essence_of_the_Abyss",
+    "name": "深渊精华",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "reroll_to_guaranteed",
+      "count": 1,
+      "affix_pool": "all",
+      "guaranteed_tag": "abyss_socket",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_rare"
+      ]
+    }
+  },
+  "Flesh_Catalyst": {
+    "id": "Flesh_Catalyst",
+    "name": "身躯催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "life",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Neural_Catalyst": {
+    "id": "Neural_Catalyst",
+    "name": "神经催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "mana",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Carapace_Catalyst": {
+    "id": "Carapace_Catalyst",
+    "name": "甲壳催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "defence",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Xophs_Catalyst": {
+    "id": "Xophs_Catalyst",
+    "name": "索伏催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "fire",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Tuls_Catalyst": {
+    "id": "Tuls_Catalyst",
+    "name": "托沃催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "cold",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Eshs_Catalyst": {
+    "id": "Eshs_Catalyst",
+    "name": "艾许催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "lightning",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Chayulas_Catalyst": {
+    "id": "Chayulas_Catalyst",
+    "name": "夏乌拉催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "chaos",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Uul_Netols_Catalyst": {
+    "id": "Uul_Netols_Catalyst",
+    "name": "乌尔尼托催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "physical",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Reaver_Catalyst": {
+    "id": "Reaver_Catalyst",
+    "name": "袭击催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "attack",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Sibilant_Catalyst": {
+    "id": "Sibilant_Catalyst",
+    "name": "嘶语催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "spell",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Skittering_Catalyst": {
+    "id": "Skittering_Catalyst",
+    "name": "飞掠催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "speed",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  },
+  "Adaptive_Catalyst": {
+    "id": "Adaptive_Catalyst",
+    "name": "应变催化剂",
+    "valid_for_tags": [
+      "currency"
+    ],
+    "effect": {
+      "type": "add_quality",
+      "count": 1,
+      "affix_pool": null,
+      "quality_category": "jewellery",
+      "quality_tag": "attribute",
+      "upgrade_rarity_to": null,
+      "conditions": [
+        "item_is_ring_or_amulet"
+      ]
+    }
+  }
+}

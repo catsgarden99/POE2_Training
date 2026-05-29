@@ -1,115 +1,133 @@
 {
-  "Orb_of_Transmutation": {
-    "id": "Orb_of_Transmutation",
-    "name": "蜕变石",
-    "conditions": {
-      "rarity": 0
+    "Orb_of_Transmutation": {
+        "id": "Orb_of_Transmutation",
+        "name": "蜕变石",
+        "enabled": true,
+        "conditions": {
+            "rarity": 0
+        },
+        "effect": {
+            "type": "add_random",
+            "delta_affix_count": 1,
+            "min_ilvl": 1,
+            "upgrade_rarity_to": 1
+        },
+        "price": 1.0
     },
-    "effect": {
-      "type": "add_random",
-      "delta_affix_count": 1,
-      "min_ilvl": 1,
-      "upgrade_rarity_to": 1
-    }
-  },
-  "Greater_Orb_of_Transmutation": {
-    "id": "Greater_Orb_of_Transmutation",
-    "name": "高级蜕变石",
-    "conditions": {
-      "rarity": 0
+    "Greater_Orb_of_Transmutation": {
+        "id": "Greater_Orb_of_Transmutation",
+        "name": "高级蜕变石",
+        "enabled": true,
+        "conditions": {
+            "rarity": 0
+        },
+        "effect": {
+            "type": "add_random",
+            "delta_affix_count": 1,
+            "min_ilvl": 55,
+            "upgrade_rarity_to": 1
+        },
+        "price": 10.0
     },
-    "effect": {
-      "type": "add_random",
-      "delta_affix_count": 1,
-      "min_ilvl": 55,
-      "upgrade_rarity_to": 1
-    }
-  },
-  "Perfect_Orb_of_Transmutation": {
-    "id": "Perfect_Orb_of_Transmutation",
-    "name": "完美蜕变石",
-    "conditions": {
-      "rarity": 0
+    "Perfect_Orb_of_Transmutation": {
+        "id": "Perfect_Orb_of_Transmutation",
+        "name": "完美蜕变石",
+        "enabled": true,
+        "conditions": {
+            "rarity": 0
+        },
+        "effect": {
+            "type": "add_random",
+            "delta_affix_count": 1,
+            "min_ilvl": 70,
+            "upgrade_rarity_to": 1
+        },
+        "price": 50.0
     },
-    "effect": {
-      "type": "add_random",
-      "delta_affix_count": 1,
-      "min_ilvl": 70,
-      "upgrade_rarity_to": 1
-    }
-  },
-  "Orb_of_Augmentation": {
-    "id": "Orb_of_Augmentation",
-    "name": "增幅石",
-    "conditions": {
-      "rarity": 1,
-      "has_empty_slot": true
+    "Orb_of_Augmentation": {
+        "id": "Orb_of_Augmentation",
+        "name": "增幅石",
+        "enabled": true,
+        "conditions": {
+            "rarity": 1,
+            "has_empty_slot": true
+        },
+        "effect": {
+            "type": "add_random",
+            "delta_affix_count": 1,
+            "min_ilvl": 1
+        },
+        "price": 20.0
     },
-    "effect": {
-      "type": "add_random",
-      "delta_affix_count": 1,
-      "min_ilvl": 1
-    }
-  },
-  "Regal_Orb": {
-    "id": "Regal_Orb",
-    "name": "富豪石",
-    "conditions": {
-      "rarity": 1
+    "Regal_Orb": {
+        "id": "Regal_Orb",
+        "name": "富豪石",
+        "enabled": true,
+        "conditions": {
+            "rarity": 1
+        },
+        "effect": {
+            "type": "add_random",
+            "delta_affix_count": 1,
+            "min_ilvl": 1,
+            "upgrade_rarity_to": 2
+        },
+        "price": 100.0
     },
-    "effect": {
-      "type": "add_random",
-      "delta_affix_count": 1,
-      "min_ilvl": 1,
-      "upgrade_rarity_to": 2
-    }
-  },
-  "Chaos_Orb": {
-    "id": "Chaos_Orb",
-    "name": "混沌石",
-    "conditions": {
-      "rarity": 2,
-      "min_affix_count": 1
+    "Chaos_Orb": {
+        "id": "Chaos_Orb",
+        "name": "混沌石",
+        "enabled": true,
+        "conditions": {
+            "rarity": 2,
+            "min_affix_count": 1
+        },
+        "effect": {
+            "type": "reroll_single_mod",
+            "delta_affix_count": 0,
+            "min_ilvl": 1
+        },
+        "price": 200.0
     },
-    "effect": {
-      "type": "reroll_single_mod",
-      "delta_affix_count": 0,
-      "min_ilvl": 1
-    }
-  },
-  "Exalted_Orb": {
-    "id": "Exalted_Orb",
-    "name": "崇高石",
-    "conditions": {
-      "rarity": 2,
-      "has_empty_slot": true
+    "Exalted_Orb": {
+        "id": "Exalted_Orb",
+        "name": "崇高石",
+        "enabled": true,
+        "conditions": {
+            "rarity": 2,
+            "has_empty_slot": true
+        },
+        "effect": {
+            "type": "add_random",
+            "delta_affix_count": 1,
+            "min_ilvl": 1
+        },
+        "price": 100.0
     },
-    "effect": {
-      "type": "add_random",
-      "delta_affix_count": 1,
-      "min_ilvl": 1
-    }
-  },
-  "Orb_of_Annulment": {
-    "id": "Orb_of_Annulment",
-    "name": "剥离石",
-    "conditions": {
-      "min_affix_count": 1
+    "Orb_of_Annulment": {
+        "id": "Orb_of_Annulment",
+        "name": "剥离石",
+        "enabled": true,
+        "conditions": {
+            "min_affix_count": 1
+        },
+        "effect": {
+            "type": "remove_random_mod",
+            "delta_affix_count": -1
+        },
+        "price": 1000.0
     },
-    "effect": {
-      "type": "remove_random_mod",
-      "delta_affix_count": -1
+    "Divine_Orb": {
+        "id": "Divine_Orb",
+        "name": "神圣石",
+        "enabled": false,
+        "conditions": {
+            "min_affix_count": 1
+        },
+        "effect": {
+            "type": "reroll_values",
+            "keep_tiers": true
+        },
+        "price": 88800.0
     }
-  },
-  "Divine_Orb": {
-    "id": "Divine_Orb",
-    "name": "神圣石",
-    "conditions": {
-      "min_affix_count": 1
-    },
-    "effect": {
-      "type": "reroll_values",
-      "keep_tiers": true
-    }
-  }
 }

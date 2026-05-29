@@ -5,11 +5,11 @@ import pandas as pd
 import json
 import os
 import subprocess
-import torch # 新增
+import torch
 from utils import GameData
-from env import GameEnv # 新增
-from dqn import DQNAgent # 新增
-from evaluate import generate_optimal_route # 新增
+from env import GameEnv
+from dqn import DQNAgent
+from evaluate import generate_optimal_route
 
 st.set_page_config(page_title="POE2 做装强化学习控制台", layout="wide")
 
@@ -19,40 +19,92 @@ st.caption("基于 Double DQN + Action Masking 动态机制")
 # 确保配置目录存在
 os.makedirs("config", exist_ok=True)
 
+# ----------------- 0. 加载项目主配置 -----------------
+@st.cache_data(ttl=2)
+def load_project_config():
+    """加载项目主配置文件"""
+    with open("config/project.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
+try:
+    project_config = load_project_config()
+    st.sidebar.info(f"📂 当前通货池: `{project_config['currency_pool']}`")
+except FileNotFoundError:
+    st.error("⚠️ 找不到 config/project.json，请先创建项目主配置文件")
+    st.stop()
+except Exception as e:
+    st.error(f"⚠️ 加载项目配置失败: {e}")
+    st.stop()
+
 # ----------------- 1. 数据加载 -----------------
-@st.cache_data(ttl=2)  # 缓存2秒，方便刷新
+@st.cache_data(ttl=2)
 def load_raw_json(path):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 try:
-    game_data = GameData("config/items.json", "config/affixes.json")
-    items_raw = load_raw_json("config/items.json")
+    game_data = GameData(
+        project_config["currency_pool"],
+        project_config["affixes_pool"]
+    )
+    items_raw = load_raw_json(project_config["currency_pool"])
 except Exception as e:
-    st.error(f"⚠️ 数据加载失败，请确保 config/ 目录下有 items.json 和 affixes.json。错误: {e}")
+    st.error(f"⚠️ 数据加载失败，请检查配置路径。错误: {e}")
     st.stop()
 
 # ----------------- 2. 侧边栏：通货资产与市场价维护 -----------------
 st.sidebar.header("💰 通货市场价格/条件动态调整")
-st.sidebar.info("在这里修改的价格会实时写入 items.json，强化学习会将价格作为负奖励（成本）进行寻优。")
+st.sidebar.info("在这里修改的价格会实时写入配置文件，强化学习会将价格作为负奖励（成本）进行寻优。")
 
-# 将原始 json 转换为 Dataframe 供用户直观修改
-df_items = pd.DataFrame(items_raw)
+# 处理字典格式的 JSON（items_simple_currency.json 格式）
+if isinstance(items_raw, dict):
+    # 将字典转换为列表格式以便显示
+    items_list = []
+    for key, data in items_raw.items():
+        items_list.append({
+            "key": key,
+            "id": data.get("id", key),
+            "name": data.get("name", ""),
+            "price": data.get("price", 100) / 100,  # 关键：存储的是整数，显示时除以100
+            "enabled": data.get("enabled", True)
+        })
+    df_items = pd.DataFrame(items_list)
+else:
+    # 原有的列表格式
+    df_items = pd.DataFrame(items_raw)
+
 # 在侧边栏提供一个可交互的编辑表格
 edited_df = st.sidebar.data_editor(
-    df_items[["id", "name", "price"]], 
+    df_items[["key", "name", "price", "enabled"]] if "key" in df_items.columns else df_items[["id", "name", "price"]],
     hide_index=True,
-    disabled=["id", "name"],
-    column_config={"price": st.column_config.NumberColumn("当前价格 (代币/混沌)", min_value=1)}
+    disabled=["key", "id", "name"] if "key" in df_items.columns else ["id", "name"],
+    column_config={
+        "price": st.column_config.NumberColumn(
+            "当前价格 (代币/混沌)", 
+            min_value=0.000,          # 最小值改为0.01
+            step=0.001,               # 步长改为0.01，支持小数
+            format="%.2f"            # 显示两位小数
+        ),
+        "enabled": st.column_config.CheckboxColumn("启用该通货", default=True)
+    }
 )
 
 # 保存价格改动
 if st.sidebar.button("💾 保存通货价格改动"):
-    for idx, row in edited_df.iterrows():
-        items_raw[idx]["price"] = int(row["price"])
-    with open("config/items.json", "w", encoding="utf-8") as f:
+    if isinstance(items_raw, dict):
+        for _, row in edited_df.iterrows():
+            key = row["key"]
+            if key in items_raw:
+                items_raw[key]["price"] = float(row["price"]*100)  # 改为 float
+                items_raw[key]["enabled"] = bool(row["enabled"])
+    else:
+        for idx, row in edited_df.iterrows():
+            items_raw[idx]["price"] = float(row["price"])  # 改为 float
+    
+    with open(project_config["currency_pool"], "w", encoding="utf-8") as f:
         json.dump(items_raw, f, indent=4, ensure_ascii=False)
-    st.sidebar.success("🔥 价格已成功固化到 JSON，下次训练生效！")
+    st.sidebar.success("🔥 价格已成功固化到配置文件，下次训练生效！")
+    st.cache_data.clear()
 
 # ----------------- 3. 主界面：做装成品目标配置 -----------------
 col1, col2 = st.columns(2)
@@ -95,15 +147,20 @@ if st.button("🚀 启动 AI 强化学习：开始寻找最低成本做装路径
             "max_prefix": int(max_prefix),
             "max_suffix": int(max_suffix)
         }
-        with open("config/equipment.json", "w", encoding="utf-8") as f:
+        with open(project_config["equipment_target"], "w", encoding="utf-8") as f:
             json.dump(equip_config, f, indent=4, ensure_ascii=False)
             
         # 动态更新 training.json 中的超参数
         try:
-            with open("config/training.json", "r", encoding="utf-8") as f:
+            with open(project_config["training_params"], "r", encoding="utf-8") as f:
                 train_json = json.load(f)
         except FileNotFoundError:
-            train_json = {"training": {}, "agent": {}, "epsilon": {"initial": 1.0, "min": 0.05, "decay_per_episode": 0.9995}, "reward": {}}
+            train_json = {
+                "training": {}, 
+                "agent": {}, 
+                "epsilon": {"initial": 1.0, "min": 0.05, "decay_per_episode": 0.9995}, 
+                "reward": {}
+            }
             
         train_json["training"]["num_episodes"] = int(num_episodes)
         train_json["training"]["batch_size"] = int(batch_size)
@@ -115,65 +172,59 @@ if st.button("🚀 启动 AI 强化学习：开始寻找最低成本做装路径
         train_json["agent"]["hidden_dim"] = 128
         train_json["reward"]["success_bonus"] = float(success_bonus)
         
-        with open("config/training.json", "w", encoding="utf-8") as f:
+        with open(project_config["training_params"], "w", encoding="utf-8") as f:
             json.dump(train_json, f, indent=4, ensure_ascii=False)
 
         st.success("📝 配置写入完毕！正在后台强制切入 `train.py` 进行重构训练...")
         
-        # 在网页前端利用子进程跑训练，并实时把终端日志抓出来显示
         with st.spinner("AI 正在疯狂点通货洗装备中，请稍候..."):
-            process = subprocess.Popen(["python", "train.py"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+            process = subprocess.Popen(
+                ["python", "train.py"], 
+                stdout=subprocess.PIPE, 
+                stderr=subprocess.STDOUT, 
+                text=True
+            )
             
-            # --- 新增进度条和动态提示组件 ---
             progress_bar = st.progress(0.0)
             status_text = st.empty()
-            
             log_area = st.empty()
             log_text = ""
             
-            # 实时读取终端输出并动态解析进度
             while True:
+                if process.stdout is None:
+                    st.error("❌ 无法获取子进程输出流")
+                    break
+                    
                 output = process.stdout.readline()
                 if output == '' and process.poll() is not None:
                     break
                 if output:
                     log_text += output
-                    
-                    # 1. 动态裁剪日志：只保留最后 10 行，防止网页撑爆
                     lines = log_text.splitlines()
                     log_area.code("\n".join(lines[-10:]))
                     
-                    # 2. 精准捕捉 train.py 吐出的实时进度
                     for line in reversed(lines):
                         if "PROGRESS:Episode" in line and "/" in line:
                             try:
-                                # 提取 "PROGRESS:Episode 120/10000" 中的数字部分
                                 part = line.split("PROGRESS:Episode")[1].split("|")[0].strip()
                                 current_ep, total_ep = map(int, part.split("/"))
-                                
-                                # 计算百分比并无缝更新进度条
                                 progress_percent = float(current_ep / total_ep)
                                 progress_bar.progress(min(1.0, progress_percent))
-                                
-                                # 实时更新漂亮的文字状态提示
                                 status_text.markdown(f"**⚡ 打造进度：** 已经模拟了 `{current_ep}` / `{total_ep}` 件装备 | **当前进度：** `{progress_percent*100:.1f}%`")
-                                break  # 找到最新的一条进度就足够了，跳出当前查线循环
+                                break
                             except Exception:
                                 pass
             
             rc = process.poll()
             if rc == 0:
-                # 训练完成，进度条拉满
                 progress_bar.progress(1.0)
                 status_text.success("✨ AI 已经完全掌握该装备的做装逻辑！")
                 st.balloons()
                 st.success("🎉 强化学习训练成功！最低成本做装大脑 (dqn_model.pth) 已成功炼成！")
                 
-                # 顺便跑一下评估，把最佳路线渲染在网页上
                 st.markdown("---")
                 st.markdown("### 🏆 AI 为你量身定制的最省钱做装路线树")
                 
-                # 在前端直接无缝实例化环境与加载刚刚练好的大脑
                 try:
                     eval_env = GameEnv(game_data, equip_config, train_json['reward'])
                     eval_agent = DQNAgent(
@@ -183,11 +234,11 @@ if st.button("🚀 启动 AI 强化学习：开始寻找最低成本做装路径
                         gamma=train_json['agent']['gamma'],
                         hidden_dim=train_json['agent']['hidden_dim']
                     )
-                    # 强行无损读取热腾腾刚出炉的权重
-                    eval_agent.policy_net.load_state_dict(torch.load("dqn_model.pth", map_location=eval_agent.device))
+                    eval_agent.policy_net.load_state_dict(
+                        torch.load("dqn_model.pth", map_location=eval_agent.device)
+                    )
                     eval_agent.policy_net.eval()
                     
-                    # 运行路径推演
                     route, total_cost = generate_optimal_route(eval_env, eval_agent)
                     
                     st.metric(label="📊 达成目标预期总成本", value=f"{total_cost} 点通货价值")
@@ -195,7 +246,6 @@ if st.button("🚀 启动 AI 强化学习：开始寻找最低成本做装路径
                     if not route:
                         st.warning("⚠️ 提示：AI 没能生成有效路线，可能因为训练轮数太少或目标定得太严苛，AI 迷路了。")
                     else:
-                        # 漂亮的卡片化折叠步骤树展示
                         for s in route:
                             with st.expander(f"【步骤 {s['step']}】: 使用了 [{s['action']}] ➔ 消耗成本: {s['cost']}"):
                                 st.code(s['equipment_status'], language="text")

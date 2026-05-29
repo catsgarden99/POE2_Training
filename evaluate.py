@@ -7,6 +7,13 @@ from dqn import DQNAgent
 from utils import GameData
 import json
 
+
+def load_project_config(config_path: str = "config/project.json") -> dict:
+    """加载项目主配置文件"""
+    with open(config_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
 def generate_optimal_route(env: GameEnv, agent: DQNAgent, max_attempts: int = 20, max_steps: int = 50):
     """
     100% 确定性策略推演的最佳路线。
@@ -28,20 +35,20 @@ def generate_optimal_route(env: GameEnv, agent: DQNAgent, max_attempts: int = 20
             action_idx = agent.select_action(state, action_mask, epsilon=0.0)
             action = env.actions[action_idx]
             
-            # 记录执行动作前的装备状态快照
-            current_equipment_status = env.render()
-            
             # 执行动作
             next_state, reward, done, info = env.step(action_idx)
             cost = int(action.price)
+            
+            # 关键修改：在执行动作后记录装备状态（展示操作结果）
+            current_equipment_status = env.render()
             
             step_info = {
                 'step': step + 1,
                 'action': action.name,
                 'cost': cost,
-                'equipment_status': current_equipment_status,
+                'equipment_status': current_equipment_status,  # 操作后的状态
                 'rarity': env.rarity,
-                'affixes': [a.name for a in env.current_affixes] # 记录当前词缀组合
+                'affixes': [a.name for a in env.current_affixes]  # 操作后的词缀
             }
             current_route.append(step_info)
             total_cost += cost
@@ -50,28 +57,20 @@ def generate_optimal_route(env: GameEnv, agent: DQNAgent, max_attempts: int = 20
             step += 1
 
         # 【逻辑清洗过滤门】：
-        # 1. 必须是成功做出了神装的路线 (done == True)
-        # 2. 我们追求成本更低的“欧皇路线”（排除掉中间被混沌石、重铸石洗坏了、反复折腾了 40 步的冗余路线）
         if done and total_cost < min_cost:
             min_cost = total_cost
             best_route = current_route
 
     # --- 智能化路线后处理：剔除无效的中间无效状态 ---
-    # 如果路线上某个动作完全把装备重置了（比如用了重铸石），那么重铸石之前的动作对最终成品是没有贡献的废动作
     cleaned_route = []
     if best_route:
-        # 逆向寻找最后一次大重置（比如 reroll_all 动作，或者稀有度归零）
         last_reset_idx = 0
         for i, step_data in enumerate(best_route):
-            # 假设你的 items.json 中重铸石或混沌石的效果类型是 reroll_all
-            # 如果使用了重铸/混沌这类洗全身的通货，它前面的步骤在“展示”上都可以舍弃
             if "重铸" in step_data['action'] or "混沌" in step_data['action']:
                 last_reset_idx = i
         
-        # 只保留最后一次洗底之后、一路变强的核心干净路线
         raw_cleaned = best_route[last_reset_idx:]
         
-        # 重新编排步骤序号
         for new_step_idx, step_data in enumerate(raw_cleaned):
             step_data['step'] = new_step_idx + 1
             cleaned_route.append(step_data)
@@ -80,13 +79,19 @@ def generate_optimal_route(env: GameEnv, agent: DQNAgent, max_attempts: int = 20
 
 
 if __name__ == "__main__":
-    # 保留原有的脚本测试入口，方便单独调试
-    with open("config/training.json", "r", encoding="utf-8") as f:
+    # 1. 加载项目主配置
+    project_config = load_project_config()
+
+    # 2. 根据主配置加载数据
+    with open(project_config["training_params"], "r", encoding="utf-8") as f:
         train_config = json.load(f)
-    with open("config/equipment.json", "r", encoding="utf-8") as f:
+    with open(project_config["equipment_target"], "r", encoding="utf-8") as f:
         equip_config = json.load(f)
 
-    game_data = GameData("config/items.json", "config/affixes.json")
+    game_data = GameData(
+        project_config["currency_pool"],
+        project_config["affixes_pool"]
+    )
     env = GameEnv(game_data, equip_config, train_config['reward'])
 
     agent = DQNAgent(state_dim=env.state_dim, action_dim=env.num_actions)

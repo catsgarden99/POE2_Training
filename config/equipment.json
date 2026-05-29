@@ -1,8 +1,10 @@
 {
     "target_prefixes": [
-        "怪物的强度提高"
+        "最大生命"
     ],
-    "target_suffixes": [],
-    "max_prefix": 1,
-    "max_suffix": 1
+    "target_suffixes": [
+        "力量"
+    ],
+    "max_prefix": 2,
+    "max_suffix": 2
 }

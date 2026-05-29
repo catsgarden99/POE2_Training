@@ -1,0 +1,7 @@
+{
+  "description": "POE2做装强化学习 - 项目主配置",
+  "currency_pool": "config/items_simple_currency.json",
+  "affixes_pool": "config/affixes.json",
+  "equipment_target": "config/equipment.json",
+  "training_params": "config/training.json"
+}

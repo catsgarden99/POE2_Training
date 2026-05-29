@@ -45,21 +45,27 @@ class GameData:
             raw_items = json.load(f)
             
         # 解析通货并塞入 action 空间
-        for idx, (currency_key, data) in enumerate(raw_items.items()):
+        action_id = 0  # 独立计数器，确保ID连续无缝
+        for currency_key, data in raw_items.items():
+            # 跳过被屏蔽的通货（enabled=false 或未声明enabled字段默认为true）
+            if not data.get("enabled", True):
+                continue
+
             action = ItemAction(
-                id=idx,  # 将 0-8 的离散数字作为 ID，完美对齐 DQN 的 action_dim
+                id=action_id,  #  使用连续递增的离散数字作为 ID
                 name=data["name"],
                 price=data.get("price", 1), # 如果无价格默认1
                 conditions=data.get("conditions", {}),  # 声明式字典
                 effect=data.get("effect", {})           # 物理效果字典
             )
             self.actions.append(action)
+            action_id += 1
 
         # 2. 加载词缀库 (维持原有的逻辑不变)
         with open(affixes_path, "r", encoding="utf-8") as f:
             raw_affixes = json.load(f)
             for entry in raw_affixes:
-                # 兼容旧词缀池加载或你原本的底层设计
+                # 兼容旧词缀池
                 affix = Affix(
                     name=entry["name"],
                     group=entry["group"],

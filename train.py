@@ -6,8 +6,14 @@ from utils import GameData
 import json
 import numpy as np
 import torch
-from torch.utils.tensorboard import SummaryWriter
+from torch.utils.tensorboard.writer import SummaryWriter
 import matplotlib.pyplot as plt
+
+
+def load_project_config(config_path: str = "config/project.json") -> dict:
+    """加载项目主配置文件，获取各模块的配置路径"""
+    with open(config_path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 
 def train(env: GameEnv, agent: DQNAgent, replay_buffer: ReplayBuffer, config: dict, writer: SummaryWriter):
@@ -33,45 +39,29 @@ def train(env: GameEnv, agent: DQNAgent, replay_buffer: ReplayBuffer, config: di
         done = False
 
         while not done and step < max_steps:
-            # 1. 核心改动：获取当前状态下的合法动作掩码
             action_mask = env.get_valid_actions()
-
-            # 2. 将掩码传入智能体，保证探索和利用都绝对合法
             action_idx = agent.select_action(state, action_mask, epsilon)
-
-            # 3. 环境步进
             next_state, reward, done, info = env.step(action_idx)
-
-            # 4. 获取下一步状态的动作掩码，用于 Double DQN 计算目标 Q 值
             next_action_mask = env.get_valid_actions()
-
-            # 5. 将带有掩码的经验存入缓冲区
             replay_buffer.push(state, action_idx, reward, next_state, done, next_action_mask)
-
-            # 6. 智能体自我更新
             agent.update(replay_buffer, batch_size)
 
             state = next_state
             total_reward += reward
             step += 1
 
-        # 统计成功率（根据环境 info 或最终状态判断）
         if done and total_reward > 0: 
             success_count += 1
 
-        # 衰减探索率
         epsilon = max(epsilon_min, epsilon * epsilon_decay)
         episode_rewards.append(total_reward)
 
-        # 定期同步目标网络
         if episode % target_update_freq == 0:
             agent.update_target_network()
 
-        # 记录 TensorBoard 日志
         writer.add_scalar('Reward/Train', total_reward, episode)
         writer.add_scalar('Epsilon', epsilon, episode)
         
-        # 每 20 轮就打印一次，让进度条动得更频繁，并加入 flush=True 强行清空缓冲区吐给网页
         if (episode + 1) % 20 == 0:
             print(f"PROGRESS:Episode {episode+1}/{num_episodes} | Epsilon: {epsilon:.3f} | Last Reward: {total_reward:.1f}", flush=True)
     
@@ -79,13 +69,20 @@ def train(env: GameEnv, agent: DQNAgent, replay_buffer: ReplayBuffer, config: di
 
 
 if __name__ == "__main__":
-    # 加载静态游戏数据
-    game_data = GameData("config/items.json", "config/affixes.json")
+    # 1. 加载项目主配置
+    project_config = load_project_config()
+    print(f"[CONFIG] 项目配置已加载: {project_config.get('description', '无描述')}")
 
-    # 加载全局训练配置与装备目标配置
-    with open("config/training.json", "r", encoding="utf-8") as f:
+    # 2. 根据主配置加载游戏数据
+    game_data = GameData(
+        project_config["currency_pool"],
+        project_config["affixes_pool"]
+    )
+
+    # 3. 加载训练配置与装备目标
+    with open(project_config["training_params"], "r", encoding="utf-8") as f:
         train_config = json.load(f)
-    with open("config/equipment.json", "r", encoding="utf-8") as f:
+    with open(project_config["equipment_target"], "r", encoding="utf-8") as f:
         equip_config = json.load(f)
 
     # 初始化带动作掩码的游戏环境
@@ -98,12 +95,13 @@ if __name__ == "__main__":
     agent = DQNAgent(
         state_dim=state_dim,
         action_dim=action_dim,
-        lr=train_config['agent']['learning_rate'],\
+        lr=train_config['agent']['learning_rate'],
         gamma=train_config['agent']['gamma'],
         hidden_dim=train_config['agent']['hidden_dim']
     )
 
     print(f"正在构建做装智能体。运行设备: {agent.device}")
+    print(f"[INFO] 通货池: {project_config['currency_pool']} | 动作数量: {action_dim}")
 
     # 创建升级版经验回放区
     replay_buffer = ReplayBuffer(capacity=train_config['training']['replay_buffer_capacity'])

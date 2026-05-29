@@ -33,12 +33,43 @@ class GameData:
     """游戏数据管理器：负责加载词缀池和通货定义，并提供严密的游戏规则抽样逻辑"""
 
     def __init__(self, items_path: str, affixes_path: str):
+        """
+        初始化游戏数据加载：完美适配声明式条件的精简通货文件
+        """
+        self.actions: List[ItemAction] = []
         self.prefixes: List[Affix] = []
         self.suffixes: List[Affix] = []
-        self.actions: List[ItemAction] = []
 
-        self._load_items(items_path)
-        self._load_affixes(affixes_path)
+        # 1. 加载通货字典 (键为英文ID，如 Orb_of_Transmutation)
+        with open(items_path, "r", encoding="utf-8") as f:
+            raw_items = json.load(f)
+            
+        # 解析通货并塞入 action 空间
+        for idx, (currency_key, data) in enumerate(raw_items.items()):
+            action = ItemAction(
+                id=idx,  # 将 0-8 的离散数字作为 ID，完美对齐 DQN 的 action_dim
+                name=data["name"],
+                price=data.get("price", 1), # 如果无价格默认1
+                conditions=data.get("conditions", {}),  # 声明式字典
+                effect=data.get("effect", {})           # 物理效果字典
+            )
+            self.actions.append(action)
+
+        # 2. 加载词缀库 (维持原有的逻辑不变)
+        with open(affixes_path, "r", encoding="utf-8") as f:
+            raw_affixes = json.load(f)
+            for entry in raw_affixes:
+                # 兼容旧词缀池加载或你原本的底层设计
+                affix = Affix(
+                    name=entry["name"],
+                    group=entry["group"],
+                    weight=entry.get("weight", 1000),
+                    is_prefix=entry["is_prefix"],
+                )
+                if affix.is_prefix:
+                    self.prefixes.append(affix)
+                else:
+                    self.suffixes.append(affix)
 
     def _load_items(self, path: str) -> None:
         """从 JSON 配置文件加载游戏动作/通货"""

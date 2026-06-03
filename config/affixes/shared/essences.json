@@ -694,6 +694,131 @@
       "slot_groups": {
         "jewellery": {"note": "品质上限+20% (基底词缀)"}
       }
+    },
+    "runic_alloy": {
+      "name": "Runic Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 20,
+      "slot_groups": {
+        "ring": {"note": "符文结界上限 +(37-49)"},
+        "necklace": {"note": "符文结界上限提高 (6-10)%"},
+        "belt": {"note": "符文结界再生率提高 (15-20)%"}
+      }
+    },
+    "adaptive_alloy": {
+      "name": "Adaptive Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 20,
+      "slot_groups": {
+        "staff": {"note": "Gain (42-52)% of Damage as Extra Fire while missing Runic Ward"},
+        "wand": {"note": "Gain (21-26)% of Damage as Extra Fire while missing Runic Ward"},
+        "sceptre": {"note": "(30-50)% Puppet Master stack on Command skill"},
+        "gloves": {"note": "(10-15)% increased Attack Speed while missing Runic Ward"}
+      }
+    },
+    "protective_alloy": {
+      "name": "Protective Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 20,
+      "slot_groups": {
+        "belt": {"note": "Recover (32-45) Runic Ward when Charm used"},
+        "weapons": {"note": "符文结界上限 +(51-74)"},
+        "shield": {"note": "Recover (10-15) Runic Ward on Block"}
+      }
+    },
+    "expansive_alloy": {
+      "name": "Expansive Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 20,
+      "slot_groups": {
+        "gloves": {"note": "残片收集距离延长 (35-50)%"},
+        "chest": {"note": "在场范围提高 (35-50)%"},
+        "helmet": {"note": "魔力消耗效能提高 (18-29)%"},
+        "boots": {"note": "临时召唤生物上限 +(1-2)"}
+      }
+    },
+    "swift_alloy": {
+      "name": "Swift Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 20,
+      "slot_groups": {
+        "gloves": {"note": "施法速度提高 (9-12)%"},
+        "ring": {"note": "攻击速度提高 (7-9)%"},
+        "belt": {"note": "药剂每秒获得 (0.75-1) 次充能"},
+        "shield_focus": {"note": "图腾放置速度提高 (30-49)%"}
+      }
+    },
+    "cyclonic_alloy": {
+      "name": "Cyclonic Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 20,
+      "slot_groups": {
+        "chest": {"note": "异常状态减速强度降低 (15-30)%"},
+        "boots": {"note": "技能效果持续时间提高 (15-19)%"},
+        "gloves": {"note": "伤害性异常状态持续时间提高 (20-25)%"},
+        "helmet": {"note": "执政官增益持续时间提高 (35-42)%"}
+      }
+    },
+    "prismatic_alloy": {
+      "name": "Prismatic Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 20,
+      "slot_groups": {
+        "gloves": {"note": "伤害穿透 (9-15)% 元素抗性"},
+        "martial_weapon": {"note": "异常状态强度提高 (20-30)%"},
+        "focus_staff_wand": {"note": "曝露效果提高 (40-50)%"},
+        "sceptre": {"note": "召唤生物伤害性异常状态强度提高 (40-49)%"}
+      }
+    },
+    "mystic_alloy": {
+      "name": "Mystic Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 20,
+      "slot_groups": {
+        "helmet": {"note": "法术技能效果区域提高 (10-15)%"},
+        "gloves": {"note": "攻击技能效果区域提高 (10-15)%"},
+        "boots": {"note": "精魂 +(10-15)"},
+        "quiver": {"note": "(25-35)% 几率额外连锁一次"},
+        "caster_weapon": {"note": "元素灌注数量上限 +1"}
+      }
+    },
+    "sovereign_alloy": {
+      "name": "Sovereign Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 20,
+      "slot_groups": {
+        "weapons": {"note": "镶嵌的物品效果提高 (20-30)%"},
+        "armour": {"note": "符文结界提高 (24-30)%"},
+        "jewellery_belt": {"note": "外延抗性词缀增幅提高 (20-30)%"}
+      }
+    },
+    "celestial_alloy": {
+      "name": "Celestial Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 30,
+      "slot_groups": {
+        "staff_wand": {"note": "魔力上限+(142-188), 所有法术技能等级+1"},
+        "martial_weapon": {"note": "命中值+(327-427), 攻击速度提高(5-8)%"}
+      }
+    },
+    "transcendent_alloy": {
+      "name": "Transcendent Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 30,
+      "slot_groups": {
+        "focus_staff_wand": {"note": "施法速度提高(39-47)%, 获得(11-16)%额外冰霜伤害"},
+        "martial_weapon": {"note": "物理伤害提高(15-20)%, 全属性+(7-10)"}
+      }
+    },
+    "the_runebinders_alloy": {
+      "name": "The Runebinder's Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 40,
+      "slot_groups": {
+        "staff": {"note": "(25-50)% gain Nature's Archon when Plants Overgrow"},
+        "wand": {"note": "元素技能上限 +1"},
+        "sceptre": {"note": "Puppet Master stacks +(4-5)"},
+        "crossbow": {"note": "+2 召唤弩炮图腾数量上限"},
+        "bow": {"note": "印记技能效果提高 (40-50)%"}
+      }
+    },
+    "the_runefathers_alloy": {
+      "name": "The Runefather's Alloy", "family": "alloy", "tier": "alloy",
+      "type": "essence_reroll", "price": 40,
+      "slot_groups": {
+        "mace": {"note": "(60-75)% retain 40% Glory on skill use"},
+        "quarterstaff": {"note": "Tempest Bells destroyed after +(4-5) Hits"},
+        "spear": {"note": "武器范围 +(8-10)"},
+        "talisman": {"note": "击中闪电伤害作用于易燃和点燃强度"}
+      }
     }
   }
 }

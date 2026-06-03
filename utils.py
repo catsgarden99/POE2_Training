@@ -61,16 +61,21 @@ class GameData:
             self.actions.append(action)
             action_id += 1
 
-        # 2. 加载词缀库 (维持原有的逻辑不变)
+        # 2. 加载词缀库 (兼容旧列表格式和新 per-equipment-type dict 格式)
         with open(affixes_path, "r", encoding="utf-8") as f:
             raw_affixes = json.load(f)
-            for entry in raw_affixes:
-                # 兼容旧词缀池
+            if isinstance(raw_affixes, list):
+                entries = raw_affixes
+            elif isinstance(raw_affixes, dict):
+                entries = raw_affixes.get("prefixes", []) + raw_affixes.get("suffixes", [])
+            else:
+                entries = []
+            for entry in entries:
                 affix = Affix(
-                    name=entry["name"],
-                    group=entry["group"],
-                    weight=entry.get("weight", 1000),
-                    is_prefix=entry["is_prefix"],
+                    name=entry.get("id", entry.get("name", "unknown")),
+                    group=entry.get("group", "Unknown"),
+                    weight=sum(t.get("weight", 1000) for t in entry.get("tiers", [{"weight": 1000}])),
+                    is_prefix=entry.get("is_prefix", False),
                 )
                 if affix.is_prefix:
                     self.prefixes.append(affix)

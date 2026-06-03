@@ -47,167 +47,17 @@
         "effect": {"type": "remove_random_mod", "delta_affix_count": -1},
         "price": 1000
     },
-    "Greater_Essence_of_Insulation": {
-        "name": "强效绝缘精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_insulation", "upgrade_rarity_to": 2},
-        "price": 10
+    "Use_Essence": {
+        "name": "使用精华", "enabled": true,
+        "conditions": {"rarity_min": 1},
+        "effect": {"type": "use_essence"},
+        "price": 0
     },
-    "Greater_Essence_of_Thawing": {
-        "name": "强效熔解精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_thawing", "upgrade_rarity_to": 2},
-        "price": 10
-    },
-    "Greater_Essence_of_Grounding": {
-        "name": "强效接地精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_grounding", "upgrade_rarity_to": 2},
-        "price": 10
-    },
-    "Greater_Essence_of_Ruin": {
-        "name": "强效摧灭精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_ruin", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_the_Mind": {
-        "name": "强效心灵精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_the_mind", "upgrade_rarity_to": 2},
-        "price": 12
-    },
-    "Greater_Essence_of_the_Body": {
-        "name": "强效身躯精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_the_body", "upgrade_rarity_to": 2},
-        "price": 12
-    },
-    "Greater_Essence_of_Enhancement": {
-        "name": "强效增强精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_enhancement", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Abrasion": {
-        "name": "强效磨蚀精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_abrasion", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Flames": {
-        "name": "强效火焰精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_flames", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Ice": {
-        "name": "强效冰霜精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_ice", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Electricity": {
-        "name": "强效电光精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_electricity", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Battle": {
-        "name": "强效激战精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_battle", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Sorcery": {
-        "name": "强效魔法精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_sorcery", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Haste": {
-        "name": "强效急速精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_haste", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Seeking": {
-        "name": "强效寻觅精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_seeking", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Alacrity": {
-        "name": "强效迅捷精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_alacrity", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Opulence": {
-        "name": "强效丰裕精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_opulence", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_Command": {
-        "name": "强效命令精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_command", "upgrade_rarity_to": 2},
-        "price": 15
-    },
-    "Greater_Essence_of_the_Infinite": {
-        "name": "强效永恒精华", "enabled": true,
-        "conditions": {"rarity": 1, "has_empty_slot": true},
-        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_the_infinite", "upgrade_rarity_to": 2},
-        "price": 25
-    },
-    "Essence_of_Hysteria": {
-        "name": "浮夸精华", "enabled": true,
-        "conditions": {"rarity": 2, "min_affix_count": 1},
-        "effect": {"type": "essence_reroll", "essence_key": "essence_of_hysteria"},
-        "price": 20
-    },
-    "Essence_of_Delirium": {
-        "name": "谵妄精华", "enabled": true,
-        "conditions": {"rarity": 2, "min_affix_count": 1},
-        "effect": {"type": "essence_reroll", "essence_key": "essence_of_delirium"},
-        "price": 30
-    },
-    "Essence_of_Horror": {
-        "name": "极恐精华", "enabled": true,
-        "conditions": {"rarity": 2, "min_affix_count": 1},
-        "effect": {"type": "essence_reroll", "essence_key": "essence_of_horror"},
-        "price": 25
-    },
-    "Essence_of_Insanity": {
-        "name": "错乱精华", "enabled": true,
-        "conditions": {"rarity": 2, "min_affix_count": 1},
-        "effect": {"type": "essence_reroll", "essence_key": "essence_of_insanity"},
-        "price": 40
-    },
-    "Essence_of_the_Abyss": {
-        "name": "深渊精华", "enabled": true,
-        "conditions": {"rarity": 2, "min_affix_count": 1},
-        "effect": {"type": "essence_abyss"},
-        "price": 80
-    },
-    "Essence_of_the_Breach": {
-        "name": "裂隙精华", "enabled": true,
-        "conditions": {"rarity": 2},
-        "effect": {"type": "essence_special", "essence_key": "essence_of_the_breach"},
-        "price": 50
-    },
-    "Perfect_Essence_of_the_Mind": {
-        "name": "完美心灵精华", "enabled": true,
-        "conditions": {"rarity": 2, "min_affix_count": 1},
-        "effect": {"type": "essence_special", "essence_key": "perfect_essence_of_the_mind"},
-        "price": 100
-    },
-    "Perfect_Essence_of_the_Body": {
-        "name": "完美身躯精华", "enabled": true,
-        "conditions": {"rarity": 2, "min_affix_count": 1},
-        "effect": {"type": "essence_special", "essence_key": "perfect_essence_of_the_body"},
-        "price": 80
+    "Cheapest_Essence": {
+        "name": "最低价精华", "enabled": false,
+        "conditions": {"rarity_min": 1},
+        "effect": {"type": "cheapest_essence"},
+        "price": 0
     },
     "Omen_of_Sinistral_Annulment": {
         "name": "左旋剥离预兆", "enabled": true, "conditions": {},

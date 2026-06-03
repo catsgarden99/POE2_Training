@@ -58,8 +58,8 @@ class GameEnv:
         self.current_affixes: List[Affix] = []
         self.omen: int = OMEN_NONE  # 当前激活的预兆
 
-        # 状态: 9原始 + 4预兆标记 = 13维
-        self.state_dim: int = 13
+        # 状态: 9原始 + 4预兆标记 + 1精华价格 + 1工艺词缀 = 15维
+        self.state_dim: int = 15
         self.reset()
 
     def _load_essences(self):
@@ -116,6 +116,7 @@ class GameEnv:
         elif self.omen == OMEN_EXALT_SUFFIX:
             omen_flags[1] = 1.0  # 复用: 添加限定后缀
 
+        ess_price = self._cheapest_target_essence_price()
         state = np.array(
             [
                 float(self.rarity),                     # [0]
@@ -131,6 +132,8 @@ class GameEnv:
                 omen_flags[0],                          # [10] sinistral
                 omen_flags[1],                          # [11] dextral
                 omen_flags[2],                          # [12] light
+                ess_price,                              # [13] cheapest_matching_essence_price
+                0.0,                                    # [14] has_crafted_mod (future use)
             ],
             dtype=np.float32,
         )
@@ -162,25 +165,22 @@ class GameEnv:
 
             if "rarity" in conds and self.rarity != conds["rarity"]:
                 continue
+            if "rarity_min" in conds and self.rarity < conds["rarity_min"]:
+                continue
             if conds.get("has_empty_slot", False) and not has_room:
                 continue
             if "min_affix_count" in conds and current_total < conds["min_affix_count"]:
                 continue
-            if etype in ("essence_normal", "essence_add"):
-                if self.rarity == 0 or not has_room:
+            if etype == "use_essence":
+                if self._pick_best_essence() is None:
                     continue
-            if etype == "essence_reroll":
-                if self.rarity < 1 or not has_affixes:
+            elif etype == "cheapest_essence":
+                if self._pick_cheapest_essence() is None:
                     continue
-            if etype in ("essence_special", "essence_abyss"):
-                if self.rarity == 0 or not has_affixes:
-                    continue
-            if etype == "omen":
-                # 不能同时激活两个预兆
+            elif etype == "omen":
                 if self.omen != OMEN_NONE:
                     continue
             else:
-                # 如果 omen 限定移除方向, 检查当前是否符合条件
                 if self.omen in (OMEN_LIGHT,) and etype == "remove_random_mod":
                     if not any(getattr(a, "is_desecrated", False) for a in self.current_affixes):
                         continue
@@ -209,21 +209,13 @@ class GameEnv:
             elif etype == "reroll_single_mod":
                 self._handle_reroll(effect)
             elif etype == "remove_random_mod":
-                self._handle_remove(action)
+                self._handle_remove()
             elif etype == "reroll_values":
                 pass
-            elif etype in ("essence_normal", "essence_add"):
-                if "upgrade_rarity_to" in effect:
-                    self.rarity = effect["upgrade_rarity_to"]
-                reward += self._handle_essence_add(action)
-            elif etype == "essence_reroll":
-                if self.current_affixes:
-                    self._remove_random_affix()
-                reward += self._handle_essence_add(action)
-            elif etype == "essence_special":
-                reward += self._handle_essence_special(action)
-            elif etype == "essence_abyss":
-                reward += self._handle_essence_abyss()
+            elif etype == "use_essence":
+                reward += self._apply_best_essence()
+            elif etype == "cheapest_essence":
+                reward += self._apply_cheapest_essence()
             elif etype == "omen":
                 self.omen = int(effect.get("omen_type", OMEN_NONE))
                 reward -= OMEN_PRICES.get(self.omen, 0)
@@ -258,7 +250,7 @@ class GameEnv:
             self._remove_random_affix()
             self._roll_and_add_affix(min_ilvl=effect.get("min_ilvl", 1))
 
-    def _handle_remove(self, action: ItemAction):
+    def _handle_remove(self):
         """受 omen 影响的移除逻辑"""
         if not self.current_affixes:
             return
@@ -284,21 +276,136 @@ class GameEnv:
         if self.omen in (OMEN_ANNUL_PREFIX, OMEN_ANNUL_SUFFIX, OMEN_LIGHT):
             self.omen = OMEN_NONE
 
-    def _handle_essence_add(self, action: ItemAction) -> float:
-        essence_key = action.effect.get("essence_key", "")
+    # ── 精华自动匹配系统 ──
+
+    def _essence_matches_target(self, entry: dict) -> bool:
+        slot_groups = entry.get("slot_groups", {})
+        needed_prefixes = [t for t in self.target_prefixes
+                           if t not in {a.name for a in self.current_affixes if a.is_prefix}]
+        needed_suffixes = [t for t in self.target_suffixes
+                           if t not in {a.name for a in self.current_affixes if not a.is_prefix}]
+        if not needed_prefixes and not needed_suffixes:
+            return False
+        for sgrp_data in slot_groups.values():
+            affix_id = sgrp_data.get("affix_id", "")
+            possible = sgrp_data.get("possible_affixes", [affix_id] if affix_id else [])
+            for a_id in possible:
+                if a_id in needed_prefixes or a_id in needed_suffixes:
+                    return True
+        return False
+
+    def _is_essence_usable(self, entry: dict) -> bool:
+        etype = entry.get("type", "")
+        if etype == "essence_normal":
+            return self.rarity == 1 and self._has_empty_slot()
+        if etype in ("essence_reroll", "essence_abyss"):
+            return self.rarity == 2 and len(self.current_affixes) >= 1
+        if etype == "essence_special":
+            return self.rarity >= 1
+        return False
+
+    def _has_empty_slot(self) -> bool:
+        pre_max = 1 if self.rarity == 1 else self.max_prefix
+        suf_max = 1 if self.rarity == 1 else self.max_suffix
+        pre = len([a for a in self.current_affixes if a.is_prefix])
+        suf = len([a for a in self.current_affixes if not a.is_prefix])
+        return pre < pre_max or suf < suf_max
+
+    def _pick_best_essence(self):
+        best = None
+        for key, entry in self.essence_map.items():
+            if not self._is_essence_usable(entry):
+                continue
+            if not self._essence_matches_target(entry):
+                continue
+            price = entry.get("price", 999)
+            if best is None or price < best[1]:
+                best = (key, price)
+        return best
+
+    def _pick_cheapest_essence(self):
+        best = None
+        for key, entry in self.essence_map.items():
+            if not self._is_essence_usable(entry):
+                continue
+            price = entry.get("price", 999)
+            if best is None or price < best[1]:
+                best = (key, price)
+        return best
+
+    def _cheapest_target_essence_price(self) -> float:
+        best = self._pick_best_essence()
+        if best is None:
+            return 0.0
+        return best[1] / 100.0  # 归一化到 [0,1]
+
+    def _apply_best_essence(self) -> float:
+        best = self._pick_best_essence()
+        if best is None:
+            return 0.0
+        return self._apply_essence_by_key(best[0])
+
+    def _apply_cheapest_essence(self) -> float:
+        best = self._pick_cheapest_essence()
+        if best is None:
+            return 0.0
+        return self._apply_essence_by_key(best[0])
+
+    def _apply_essence_by_key(self, essence_key: str) -> float:
         entry = self.essence_map.get(essence_key)
         if not entry:
             return 0.0
 
+        etype = entry.get("type", "")
+        price = entry.get("price", 0)
+        reward = -price
+
+        # essence_normal: 升级稀有度 + 添加词缀
+        if etype == "essence_normal":
+            if "upgrade_rarity_to" in entry.get("effect", {}):
+                self.rarity = entry["effect"]["upgrade_rarity_to"]
+            self._add_essence_affix(entry)
+
+        # essence_reroll: 移除 + 添加
+        elif etype == "essence_reroll":
+            self._essence_remove_affix()
+            self._add_essence_affix(entry)
+
+        # essence_abyss: 移除 + 亵渎
+        elif etype == "essence_abyss":
+            self._essence_remove_affix()
+            self._add_desecrated_affix()
+
+        # essence_special: 品质/专属词缀, 不影响词缀计数
+        elif etype == "essence_special":
+            pass
+
+        return reward
+
+    def _essence_remove_affix(self):
+        if not self.current_affixes:
+            return
+        if self.omen == OMEN_ESSENCE_PREFIX:
+            cand = [a for a in self.current_affixes if a.is_prefix]
+        elif self.omen == OMEN_ESSENCE_SUFFIX:
+            cand = [a for a in self.current_affixes if not a.is_prefix]
+        else:
+            cand = list(self.current_affixes)
+        if not cand:
+            cand = list(self.current_affixes)
+        idx = random.randint(0, len(cand) - 1)
+        self.current_affixes.remove(cand[idx])
+        if self.omen in (OMEN_ESSENCE_PREFIX, OMEN_ESSENCE_SUFFIX):
+            self.omen = OMEN_NONE
+
+    def _add_essence_affix(self, entry: dict):
         slot_groups = entry.get("slot_groups", {})
-        if not slot_groups:
-            return 0.0
-
         affix_type_file = self.game_data.affix_file
-        with open(affix_type_file, "r", encoding="utf-8") as f:
-            eq_data = json.load(f)
-
-        added = False
+        try:
+            with open(affix_type_file, "r", encoding="utf-8") as f:
+                eq_data = json.load(f)
+        except FileNotFoundError:
+            return
         for sgrp_data in slot_groups.values():
             affix_id = sgrp_data.get("affix_id", "")
             if not affix_id:
@@ -315,17 +422,13 @@ class GameEnv:
                     if a["id"] == affix_id:
                         found = a; is_pref = False; break
             if found:
-                possible_affixes = sgrp_data.get("possible_affixes", [affix_id])
-                chosen_id = random.choice(possible_affixes)
+                possible = sgrp_data.get("possible_affixes", [affix_id])
+                chosen_id = random.choice(possible)
                 if chosen_id != affix_id:
                     for a in p_affixes + s_affixes:
                         if a["id"] == chosen_id:
                             found = a; break
-                latest_tier = max(t["tier"] for t in found["tiers"])
-                lt = found["tiers"][0]
-                for t in found["tiers"]:
-                    if t["tier"] == latest_tier:
-                        lt = t; break
+                lt = max(found["tiers"], key=lambda t: t["tier"])
                 new_affix = Affix(
                     name=chosen_id,
                     group=found["group"],
@@ -333,48 +436,7 @@ class GameEnv:
                     is_prefix=is_pref,
                 )
                 self.current_affixes.append(new_affix)
-                added = True
             break
-
-        if self.omen in (OMEN_ESSENCE_PREFIX, OMEN_ESSENCE_SUFFIX):
-            if self.current_affixes:
-                self._handle_remove(action)
-            self.omen = OMEN_NONE
-
-        return 0.0
-
-    def _handle_essence_special(self, action: ItemAction) -> float:
-        essence_key = action.effect.get("essence_key", "")
-        entry = self.essence_map.get(essence_key)
-        if not entry:
-            return 0.0
-        # 裂隙精华: 品质上限+20% (基底修改, 不占词缀)
-        # 完美心灵精华: 魔力上限提高4-6% (不占前缀/后缀, 精华专属)
-        # 目前实现: 直接应用效果, 不影响词缀计数
-        return 0.0
-
-    def _handle_essence_abyss(self) -> float:
-        """深渊精华: 移除一条随机词缀 + 添加亵渎词缀"""
-        if self.current_affixes:
-            # 受 omen 影响的移除
-            if self.omen == OMEN_ESSENCE_PREFIX:
-                cand = [a for a in self.current_affixes if a.is_prefix]
-                if cand:
-                    idx = random.randint(0, len(cand) - 1)
-                    self.current_affixes.remove(cand[idx])
-                self.omen = OMEN_NONE
-            elif self.omen == OMEN_ESSENCE_SUFFIX:
-                cand = [a for a in self.current_affixes if not a.is_prefix]
-                if cand:
-                    idx = random.randint(0, len(cand) - 1)
-                    self.current_affixes.remove(cand[idx])
-                self.omen = OMEN_NONE
-            else:
-                self._remove_random_affix()
-
-        # 添加亵渎词缀 (从 desecrated 池按权重抽)
-        self._add_desecrated_affix()
-        return 0.0
 
     def _add_desecrated_affix(self):
         """从亵渎池添加一条随机亵渎词缀"""

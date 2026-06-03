@@ -44,11 +44,11 @@ class GameEnv:
         self.target_suffixes: List[str] = equipment_config["target_suffixes"]
         self.max_prefix: int = equipment_config.get("max_prefix", 3)
         self.max_suffix: int = equipment_config.get("max_suffix", 3)
+        self.equipment_type: str = equipment_config.get("equipment_type", "ring")
 
         self.actions: List[ItemAction] = game_data.actions
         self.num_actions: int = len(self.actions)
 
-        # 加载精华映射表和亵渎词缀池
         self.essence_map = {}
         self.desecrated_pool = {"prefixes": [], "suffixes": []}
         self._load_essences()
@@ -56,10 +56,13 @@ class GameEnv:
 
         self.rarity: int = 0
         self.current_affixes: List[Affix] = []
-        self.omen: int = OMEN_NONE  # 当前激活的预兆
+        self.omen: int = OMEN_NONE
+        self.steps_taken: int = 0
+        self.budget_remaining: float = float(self.reward_config.get("max_budget", 5000))
+        self.max_budget: float = float(self.reward_config.get("max_budget", 5000))
+        self.max_tier: int = 12
 
-        # 状态: 9原始 + 4预兆标记 + 1精华价格 + 1工艺词缀 = 15维
-        self.state_dim: int = 15
+        self.state_dim: int = 24
         self.reset()
 
     def _load_essences(self):
@@ -86,6 +89,8 @@ class GameEnv:
         self.rarity = 0
         self.current_affixes = []
         self.omen = OMEN_NONE
+        self.steps_taken = 0
+        self.budget_remaining = self.max_budget
         return self._get_state()
 
     def _get_state(self) -> np.ndarray:
@@ -103,37 +108,51 @@ class GameEnv:
 
         has_desecrated = 1.0 if any(getattr(a, "is_desecrated", False) for a in self.current_affixes) else 0.0
 
-        # [9] ~ [12]: 4 个预兆标记
         omen_flags = np.zeros(4, dtype=np.float32)
         if self.omen == OMEN_ANNUL_PREFIX:
-            omen_flags[0] = 1.0  # 移除限定前缀
+            omen_flags[0] = 1.0
         elif self.omen == OMEN_ANNUL_SUFFIX:
-            omen_flags[1] = 1.0  # 移除限定后缀
+            omen_flags[1] = 1.0
         elif self.omen == OMEN_LIGHT:
-            omen_flags[2] = 1.0  # 移除限定亵渎
+            omen_flags[2] = 1.0
         elif self.omen == OMEN_EXALT_PREFIX:
-            omen_flags[0] = 1.0  # 复用: 添加限定前缀
+            omen_flags[0] = 1.0
         elif self.omen == OMEN_EXALT_SUFFIX:
-            omen_flags[1] = 1.0  # 复用: 添加限定后缀
+            omen_flags[1] = 1.0
 
-        ess_price = self._cheapest_target_essence_price()
+        # 品质指标
+        pqt = self._target_quality(True)
+        sqt = self._target_quality(False)
+        best, worst, avg_nt = self._affix_tier_metrics()
+        target_names = set(self.target_prefixes) | set(self.target_suffixes)
+        non_target_count = sum(1 for a in self.current_affixes if a.name not in target_names)
+
         state = np.array(
             [
-                float(self.rarity),                     # [0]
-                float(num_prefixes),                    # [1]
-                float(num_suffixes),                    # [2]
-                float(self.max_prefix - num_prefixes),  # [3]
-                float(self.max_suffix - num_suffixes),  # [4]
-                float(satisfied_prefixes),              # [5]
-                float(satisfied_suffixes),              # [6]
-                float(len(self.current_affixes)),       # [7]
-                1.0 if goal_reached else 0.0,           # [8]
-                has_desecrated,                         # [9]
-                omen_flags[0],                          # [10] sinistral
-                omen_flags[1],                          # [11] dextral
-                omen_flags[2],                          # [12] light
-                ess_price,                              # [13] cheapest_matching_essence_price
-                0.0,                                    # [14] has_crafted_mod (future use)
+                float(self.rarity),                             # [0]
+                float(num_prefixes),                            # [1]
+                float(num_suffixes),                            # [2]
+                float(self.max_prefix - num_prefixes),          # [3]
+                float(self.max_suffix - num_suffixes),          # [4]
+                float(satisfied_prefixes),                      # [5]
+                float(satisfied_suffixes),                      # [6]
+                float(len(self.current_affixes)),               # [7]
+                1.0 if goal_reached else 0.0,                    # [8]
+                has_desecrated,                                 # [9]
+                omen_flags[0],                                  # [10]
+                omen_flags[1],                                  # [11]
+                omen_flags[2],                                  # [12]
+                self._cheapest_target_essence_price(),          # [13]
+                0.0,                                            # [14] has_crafted_mod (future)
+                self.budget_remaining / max(self.max_budget, 1),# [15]
+                pqt,                                            # [16]
+                sqt,                                            # [17]
+                best,                                           # [18]
+                worst,                                          # [19]
+                avg_nt,                                         # [20]
+                self.steps_taken / 50.0,                        # [21]
+                1.0 if self.equipment_type == "ring" else 0.0,  # [22]
+                float(non_target_count),                        # [23]
             ],
             dtype=np.float32,
         )
@@ -202,7 +221,10 @@ class GameEnv:
                     {"valid": False, "action_name": action.name, "error": "Illegal"})
 
         try:
-            reward = -float(action.price)
+            old_value = self._state_value()
+            cost = float(action.price)
+            reward_scale = float(self.reward_config.get("reward_scale", 100.0))
+            success_bonus = float(self.reward_config.get("success_bonus", 10000.0))
 
             if etype == "add_random":
                 self._handle_add_random(effect)
@@ -213,19 +235,29 @@ class GameEnv:
             elif etype == "reroll_values":
                 pass
             elif etype == "use_essence":
-                reward += self._apply_best_essence()
+                cost += self._apply_best_essence()
             elif etype == "cheapest_essence":
-                reward += self._apply_cheapest_essence()
+                cost += self._apply_cheapest_essence()
             elif etype == "omen":
                 self.omen = int(effect.get("omen_type", OMEN_NONE))
-                reward -= OMEN_PRICES.get(self.omen, 0)
+                cost += OMEN_PRICES.get(self.omen, 0)
             else:
                 pass
+
+            self.steps_taken += 1
+            self.budget_remaining -= cost
+
+            new_value = self._state_value()
+            progress = (new_value - old_value) * reward_scale
+            reward = -cost + progress
 
             state = self._get_state()
             done = bool(state[8] == 1.0)
             if done:
-                reward += float(self.reward_config["success_bonus"])
+                reward += success_bonus
+            elif self.budget_remaining <= 0 or self.steps_taken >= 50:
+                done = True
+                reward += float(self.reward_config.get("failure_penalty", -1000.0))
 
             return state, reward, done, {"valid": True, "action_name": action.name, "affixes_count": len(self.current_affixes)}
 
@@ -275,6 +307,43 @@ class GameEnv:
         # 消耗预兆
         if self.omen in (OMEN_ANNUL_PREFIX, OMEN_ANNUL_SUFFIX, OMEN_LIGHT):
             self.omen = OMEN_NONE
+
+    # ── 词缀品质指标 ──
+
+    def _target_quality(self, is_prefix: bool) -> float:
+        targets = self.target_prefixes if is_prefix else self.target_suffixes
+        if not targets:
+            return 0.0
+        matching = [a for a in self.current_affixes if a.is_prefix == is_prefix]
+        total = 0
+        count = 0
+        for t in targets:
+            for a in matching:
+                if a.name == t and a.tier > 0:
+                    total += 1.0 - (a.tier / self.max_tier)
+                    count += 1
+                    break
+        if count == 0:
+            return 0.0
+        return total / len(targets)
+
+    def _affix_tier_metrics(self):
+        tiers = [a.tier for a in self.current_affixes if a.tier > 0]
+        if not tiers:
+            return 0.0, 0.0, 0.0
+        best = 1.0 - (min(tiers) / self.max_tier)
+        worst = 1.0 - (max(tiers) / self.max_tier)
+        target_names = set(self.target_prefixes) | set(self.target_suffixes)
+        non_target_tiers = [a.tier for a in self.current_affixes if a.tier > 0 and a.name not in target_names]
+        avg_nt = 1.0 - (sum(non_target_tiers) / max(len(non_target_tiers) * self.max_tier, 1)) if non_target_tiers else 0.5
+        return best, worst, avg_nt
+
+    def _state_value(self) -> float:
+        pqt = self._target_quality(True)
+        sqt = self._target_quality(False)
+        target_names = set(self.target_prefixes) | set(self.target_suffixes)
+        non_target = sum(1 for a in self.current_affixes if a.name not in target_names)
+        return pqt + sqt - non_target * 0.05
 
     # ── 精华自动匹配系统 ──
 
@@ -429,11 +498,13 @@ class GameEnv:
                         if a["id"] == chosen_id:
                             found = a; break
                 lt = max(found["tiers"], key=lambda t: t["tier"])
+                tier_val = lt.get("tier", 0) if isinstance(lt, dict) and "tier" in lt else 0
                 new_affix = Affix(
                     name=chosen_id,
                     group=found["group"],
                     weight=lt["weight"],
                     is_prefix=is_pref,
+                    tier=tier_val,
                 )
                 self.current_affixes.append(new_affix)
             break
@@ -458,6 +529,7 @@ class GameEnv:
             group=chosen["group"],
             weight=chosen.get("weight", 1000),
             is_prefix=chosen in prefixes,
+            tier=0,
         )
         new_affix.is_desecrated = True
         self.current_affixes.append(new_affix)
@@ -519,6 +591,7 @@ class GameEnv:
             group=chosen_entry["group"],
             weight=tier["weight"],
             is_prefix=roll_prefix,
+            tier=tier["tier"],
         )
         self.current_affixes.append(new_affix)
 

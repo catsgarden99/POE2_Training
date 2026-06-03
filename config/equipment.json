@@ -1,10 +1,11 @@
 {
+    "equipment_type": "ring",
     "target_prefixes": [
-        "最大生命"
+        "maximum_life"
     ],
     "target_suffixes": [
-        "力量"
+        "fire_resistance"
     ],
-    "max_prefix": 2,
-    "max_suffix": 2
+    "max_prefix": 3,
+    "max_suffix": 3
 }

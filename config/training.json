@@ -11,7 +11,9 @@
     },
     "reward": {
         "success_bonus": 10000.0,
-        "illegal_action_penalty_multiplier": 10
+        "failure_penalty": -1000.0,
+        "reward_scale": 100.0,
+        "max_budget": 5000
     },
     "training": {
         "num_episodes": 5000,

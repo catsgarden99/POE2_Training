@@ -8,13 +8,14 @@ from typing import List, Optional, Dict, Any
 
 @dataclass
 class Affix:
-    name: str        # 词缀具体名称，例如 "T1_Maximum_Life"
-    group: str       # 互斥组名称，例如 "Life"
+    name: str        # 词缀具体名称，例如 "maximum_life"
+    group: str       # 互斥组名称，例如 "IncreasedLife"
     weight: int      # 抽样权重
     is_prefix: bool  # True为前缀，False为后缀
+    tier: int = 0    # T阶 (1=最好, 越大越差, 0=无T阶/亵渎)
 
     def __repr__(self) -> str:
-        return f"Affix(name={self.name}, group={self.group}, weight={self.weight}, prefix={self.is_prefix})"
+        return f"Affix(name={self.name}, group={self.group}, tier=T{self.tier}, prefix={self.is_prefix})"
 
 
 @dataclass

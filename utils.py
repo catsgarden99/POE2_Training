@@ -39,6 +39,7 @@ class GameData:
         self.actions: List[ItemAction] = []
         self.prefixes: List[Affix] = []
         self.suffixes: List[Affix] = []
+        self.affix_file: str = affixes_path
 
         # 1. 加载通货字典 (键为英文ID，如 Orb_of_Transmutation)
         with open(items_path, "r", encoding="utf-8") as f:

@@ -285,48 +285,42 @@ class GameEnv:
             self.omen = OMEN_NONE
 
     def _handle_essence_add(self, action: ItemAction) -> float:
-        """添加精华指定的词缀(固定 tier, 固定 group)"""
         essence_key = action.effect.get("essence_key", "")
         entry = self.essence_map.get(essence_key)
         if not entry:
             return 0.0
 
-        grants = entry.get("grants", {})
-        affix_id = grants.get("affix_id", "")
-        tier_target = grants.get("tier", 1)
-        affix_group = grants.get("affix_group", "")
+        slot_groups = entry.get("slot_groups", {})
+        affix_type_file = self.game_data.affix_file
 
-        # 从 ring.json 找对应的词缀数据
-        affix_data = None
-        with open("config/affixes/equipment_types/ring.json", "r", encoding="utf-8") as f:
-            ring_data = json.load(f)
+        for sgrp_key, sgrp_data in slot_groups.items():
+            affix_id = sgrp_data.get("affix_id", "")
+            if not affix_id:
+                continue
+            tier_target = sgrp_data.get("tier", 1)
+            affix_data = None
+            is_prefix = True
+            with open(affix_type_file, "r", encoding="utf-8") as f:
+                eq_data = json.load(f)
+            for pool, is_pref in [(eq_data.get("prefixes", []), True), (eq_data.get("suffixes", []), False)]:
+                for a in pool:
+                    if a["id"] == affix_id:
+                        affix_data = a
+                        is_prefix = is_pref
+                        break
+            if affix_data:
+                for t in affix_data["tiers"]:
+                    if t["tier"] == tier_target:
+                        new_affix = Affix(
+                            name=affix_id,
+                            group=affix_data["group"],
+                            weight=t["weight"],
+                            is_prefix=is_prefix,
+                        )
+                        self.current_affixes.append(new_affix)
+                        break
+            break
 
-        for pool, is_pref in [(ring_data["prefixes"], True), (ring_data["suffixes"], False)]:
-            for a in pool:
-                if affix_id and a["id"] == affix_id:
-                    affix_data = a
-                    is_prefix = is_pref
-                    break
-                if affix_group and affix_group in a.get("group", ""):
-                    # 永恒精华类: 给随机属性
-                    affix_data = a
-                    is_prefix = is_pref
-                    break
-
-        if affix_data:
-            # 找到对应的 tier
-            for t in affix_data["tiers"]:
-                if t["tier"] == tier_target:
-                    new_affix = Affix(
-                        name=affix_id or affix_data["id"],
-                        group=affix_data["group"],
-                        weight=t["weight"],
-                        is_prefix=is_prefix,
-                    )
-                    self.current_affixes.append(new_affix)
-                    break
-
-        # 如果 omen 限定精华移除方向, 在精华使用前先移除一条
         if self.omen in (OMEN_ESSENCE_PREFIX, OMEN_ESSENCE_SUFFIX):
             if self.current_affixes:
                 self._handle_remove(action)

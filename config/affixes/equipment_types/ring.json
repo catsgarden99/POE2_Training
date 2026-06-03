@@ -1,0 +1,462 @@
+{
+  "equipment_type": "ring",
+  "tags": ["ring", "accessory"],
+  "max_prefix": 3,
+  "max_suffix": 3,
+  "prefixes": [
+    {
+      "id": "maximum_life",
+      "cn_name": "生命上限",
+      "group": "IncreasedLife",
+      "tags": ["life"],
+      "tiers": [
+        {"tier": 1, "ilvl": 54, "weight": 1000, "value": "100-119"},
+        {"tier": 2, "ilvl": 46, "weight": 1000, "value": "85-99"},
+        {"tier": 3, "ilvl": 38, "weight": 1000, "value": "70-84"},
+        {"tier": 4, "ilvl": 33, "weight": 1000, "value": "60-69"},
+        {"tier": 5, "ilvl": 24, "weight": 1000, "value": "40-59"},
+        {"tier": 6, "ilvl": 16, "weight": 1000, "value": "30-39"},
+        {"tier": 7, "ilvl": 6, "weight": 1000, "value": "20-29"},
+        {"tier": 8, "ilvl": 1, "weight": 1000, "value": "10-19"}
+      ]
+    },
+    {
+      "id": "maximum_mana",
+      "cn_name": "魔力上限",
+      "group": "IncreasedMana",
+      "tags": ["mana"],
+      "tiers": [
+        {"tier": 1, "ilvl": 75, "weight": 1000, "value": "165-179"},
+        {"tier": 2, "ilvl": 70, "weight": 1000, "value": "150-164"},
+        {"tier": 3, "ilvl": 65, "weight": 1000, "value": "125-149"},
+        {"tier": 4, "ilvl": 60, "weight": 1000, "value": "105-124"},
+        {"tier": 5, "ilvl": 54, "weight": 1000, "value": "90-104"},
+        {"tier": 6, "ilvl": 46, "weight": 1000, "value": "80-89"},
+        {"tier": 7, "ilvl": 38, "weight": 1000, "value": "65-79"},
+        {"tier": 8, "ilvl": 33, "weight": 1000, "value": "55-64"},
+        {"tier": 9, "ilvl": 25, "weight": 1000, "value": "35-54"},
+        {"tier": 10, "ilvl": 16, "weight": 1000, "value": "25-34"},
+        {"tier": 11, "ilvl": 6, "weight": 1000, "value": "15-24"},
+        {"tier": 12, "ilvl": 1, "weight": 1000, "value": "10-14"}
+      ]
+    },
+    {
+      "id": "evasion_rating",
+      "cn_name": "闪避值",
+      "group": "IncreasedEvasionRating",
+      "tags": ["evasion"],
+      "tiers": [
+        {"tier": 1, "ilvl": 70, "weight": 1000, "value": "203-233"},
+        {"tier": 2, "ilvl": 65, "weight": 1000, "value": "175-202"},
+        {"tier": 3, "ilvl": 54, "weight": 1000, "value": "142-174"},
+        {"tier": 4, "ilvl": 46, "weight": 1000, "value": "108-141"},
+        {"tier": 5, "ilvl": 33, "weight": 1000, "value": "80-107"},
+        {"tier": 6, "ilvl": 25, "weight": 1000, "value": "52-79"},
+        {"tier": 7, "ilvl": 16, "weight": 1000, "value": "39-51"},
+        {"tier": 8, "ilvl": 11, "weight": 1000, "value": "18-38"},
+        {"tier": 9, "ilvl": 1, "weight": 1000, "value": "8-17"}
+      ]
+    },
+    {
+      "id": "physical_damage",
+      "cn_name": "攻击附加物理伤害",
+      "group": "PhysicalDamage",
+      "tags": ["damage", "physical", "attack"],
+      "tiers": [
+        {"tier": 1, "ilvl": 75, "weight": 400, "value": "12-19 to 22-32"},
+        {"tier": 2, "ilvl": 65, "weight": 600, "value": "10-15 to 18-26"},
+        {"tier": 3, "ilvl": 60, "weight": 800, "value": "7-11 to 14-20"},
+        {"tier": 4, "ilvl": 54, "weight": 1000, "value": "6-10 to 12-17"},
+        {"tier": 5, "ilvl": 46, "weight": 1000, "value": "5-7 to 9-13"},
+        {"tier": 6, "ilvl": 33, "weight": 1000, "value": "4-6 to 8-11"},
+        {"tier": 7, "ilvl": 16, "weight": 1000, "value": "2-4 to 5-8"},
+        {"tier": 8, "ilvl": 8, "weight": 1000, "value": "2-3 to 4-6"},
+        {"tier": 9, "ilvl": 1, "weight": 1000, "value": "1-2 to 3"}
+      ]
+    },
+    {
+      "id": "fire_damage",
+      "cn_name": "攻击附加基础火焰伤害",
+      "group": "FireDamage",
+      "tags": ["damage", "elemental", "fire", "attack"],
+      "tiers": [
+        {"tier": 1, "ilvl": 75, "weight": 200, "value": "25-29 to 37-45"},
+        {"tier": 2, "ilvl": 65, "weight": 300, "value": "20-24 to 33-36"},
+        {"tier": 3, "ilvl": 60, "weight": 400, "value": "13-19 to 27-32"},
+        {"tier": 4, "ilvl": 54, "weight": 500, "value": "11-16 to 21-26"},
+        {"tier": 5, "ilvl": 46, "weight": 500, "value": "12-13 to 18-20"},
+        {"tier": 6, "ilvl": 33, "weight": 500, "value": "9-11 to 14-17"},
+        {"tier": 7, "ilvl": 16, "weight": 500, "value": "6-8 to 10-13"},
+        {"tier": 8, "ilvl": 8, "weight": 500, "value": "3-5 to 6-9"},
+        {"tier": 9, "ilvl": 1, "weight": 500, "value": "1-2 to 3"}
+      ]
+    },
+    {
+      "id": "cold_damage",
+      "cn_name": "攻击附加基础冰霜伤害",
+      "group": "ColdDamage",
+      "tags": ["damage", "elemental", "cold", "attack"],
+      "tiers": [
+        {"tier": 1, "ilvl": 75, "weight": 200, "value": "21-24 to 32-37"},
+        {"tier": 2, "ilvl": 65, "weight": 300, "value": "16-20 to 25-31"},
+        {"tier": 3, "ilvl": 60, "weight": 400, "value": "14-15 to 22-24"},
+        {"tier": 4, "ilvl": 54, "weight": 500, "value": "11-13 to 18-21"},
+        {"tier": 5, "ilvl": 46, "weight": 500, "value": "9-10 to 15-17"},
+        {"tier": 6, "ilvl": 33, "weight": 500, "value": "7-8 to 12-14"},
+        {"tier": 7, "ilvl": 16, "weight": 500, "value": "5-6 to 9-11"},
+        {"tier": 8, "ilvl": 8, "weight": 500, "value": "3-4 to 5-8"},
+        {"tier": 9, "ilvl": 1, "weight": 500, "value": "1 to 2-3"}
+      ]
+    },
+    {
+      "id": "lightning_damage",
+      "cn_name": "攻击附加基础闪电伤害",
+      "group": "LightningDamage",
+      "tags": ["damage", "elemental", "lightning", "attack"],
+      "tiers": [
+        {"tier": 1, "ilvl": 75, "weight": 200, "value": "1-4 to 60-71"},
+        {"tier": 2, "ilvl": 65, "weight": 300, "value": "1-3 to 48-59"},
+        {"tier": 3, "ilvl": 60, "weight": 400, "value": "1-2 to 41-47"},
+        {"tier": 4, "ilvl": 54, "weight": 500, "value": "1-2 to 33-40"},
+        {"tier": 5, "ilvl": 46, "weight": 500, "value": "1 to 28-32"},
+        {"tier": 6, "ilvl": 33, "weight": 500, "value": "1 to 23-27"},
+        {"tier": 7, "ilvl": 16, "weight": 500, "value": "1 to 16-22"},
+        {"tier": 8, "ilvl": 8, "weight": 500, "value": "1 to 10-15"},
+        {"tier": 9, "ilvl": 1, "weight": 500, "value": "1 to 4-6"}
+      ]
+    },
+    {
+      "id": "accuracy",
+      "cn_name": "命中值",
+      "group": "IncreasedAccuracy",
+      "tags": ["attack"],
+      "tiers": [
+        {"tier": 1, "ilvl": 67, "weight": 400, "value": "347-450"},
+        {"tier": 2, "ilvl": 58, "weight": 800, "value": "237-346"},
+        {"tier": 3, "ilvl": 48, "weight": 800, "value": "168-236"},
+        {"tier": 4, "ilvl": 36, "weight": 800, "value": "124-167"},
+        {"tier": 5, "ilvl": 26, "weight": 800, "value": "85-123"},
+        {"tier": 6, "ilvl": 18, "weight": 800, "value": "61-84"},
+        {"tier": 7, "ilvl": 11, "weight": 800, "value": "33-60"},
+        {"tier": 8, "ilvl": 1, "weight": 800, "value": "11-32"}
+      ]
+    },
+    {
+      "id": "fire_damage_percent",
+      "cn_name": "火焰伤害提高",
+      "group": "FireDamagePercentage",
+      "tags": ["damage", "elemental", "fire"],
+      "tiers": [
+        {"tier": 1, "ilvl": 75, "weight": 500, "value": "27-30%"},
+        {"tier": 2, "ilvl": 65, "weight": 500, "value": "23-26%"},
+        {"tier": 3, "ilvl": 46, "weight": 500, "value": "18-22%"},
+        {"tier": 4, "ilvl": 33, "weight": 500, "value": "13-17%"},
+        {"tier": 5, "ilvl": 16, "weight": 500, "value": "8-12%"},
+        {"tier": 6, "ilvl": 8, "weight": 500, "value": "3-7%"}
+      ]
+    },
+    {
+      "id": "cold_damage_percent",
+      "cn_name": "冰霜伤害提高",
+      "group": "ColdDamagePercentage",
+      "tags": ["damage", "elemental", "cold"],
+      "tiers": [
+        {"tier": 1, "ilvl": 75, "weight": 500, "value": "27-30%"},
+        {"tier": 2, "ilvl": 65, "weight": 500, "value": "23-26%"},
+        {"tier": 3, "ilvl": 46, "weight": 500, "value": "18-22%"},
+        {"tier": 4, "ilvl": 33, "weight": 500, "value": "13-17%"},
+        {"tier": 5, "ilvl": 16, "weight": 500, "value": "8-12%"},
+        {"tier": 6, "ilvl": 8, "weight": 500, "value": "3-7%"}
+      ]
+    },
+    {
+      "id": "lightning_damage_percent",
+      "cn_name": "闪电伤害提高",
+      "group": "LightningDamagePercentage",
+      "tags": ["damage", "elemental", "lightning"],
+      "tiers": [
+        {"tier": 1, "ilvl": 75, "weight": 500, "value": "27-30%"},
+        {"tier": 2, "ilvl": 65, "weight": 500, "value": "23-26%"},
+        {"tier": 3, "ilvl": 46, "weight": 500, "value": "18-22%"},
+        {"tier": 4, "ilvl": 33, "weight": 500, "value": "13-17%"},
+        {"tier": 5, "ilvl": 16, "weight": 500, "value": "8-12%"},
+        {"tier": 6, "ilvl": 8, "weight": 500, "value": "3-7%"}
+      ]
+    },
+    {
+      "id": "chaos_damage_percent",
+      "cn_name": "混沌伤害提高",
+      "group": "IncreasedChaosDamage",
+      "tags": ["damage", "chaos"],
+      "tiers": [
+        {"tier": 1, "ilvl": 75, "weight": 500, "value": "27-30%"},
+        {"tier": 2, "ilvl": 65, "weight": 500, "value": "23-26%"},
+        {"tier": 3, "ilvl": 46, "weight": 500, "value": "18-22%"},
+        {"tier": 4, "ilvl": 33, "weight": 500, "value": "13-17%"},
+        {"tier": 5, "ilvl": 16, "weight": 500, "value": "8-12%"},
+        {"tier": 6, "ilvl": 8, "weight": 500, "value": "3-7%"}
+      ]
+    },
+    {
+      "id": "item_rarity_prefix",
+      "cn_name": "物品稀有度提高(前缀)",
+      "group": "ItemFoundRarityIncreasePrefix",
+      "tags": [],
+      "tiers": [
+        {"tier": 1, "ilvl": 47, "weight": 1000, "value": "16-19%"},
+        {"tier": 2, "ilvl": 29, "weight": 1000, "value": "12-15%"},
+        {"tier": 3, "ilvl": 10, "weight": 1000, "value": "8-11%"}
+      ]
+    }
+  ],
+  "suffixes": [
+    {
+      "id": "strength",
+      "cn_name": "力量",
+      "group": "Strength",
+      "tags": ["attribute"],
+      "tiers": [
+        {"tier": 1, "ilvl": 74, "weight": 1000, "value": "31-33"},
+        {"tier": 2, "ilvl": 66, "weight": 1000, "value": "28-30"},
+        {"tier": 3, "ilvl": 55, "weight": 1000, "value": "25-27"},
+        {"tier": 4, "ilvl": 44, "weight": 1000, "value": "21-24"},
+        {"tier": 5, "ilvl": 33, "weight": 1000, "value": "17-20"},
+        {"tier": 6, "ilvl": 22, "weight": 1000, "value": "13-16"},
+        {"tier": 7, "ilvl": 11, "weight": 1000, "value": "9-12"},
+        {"tier": 8, "ilvl": 1, "weight": 1000, "value": "5-8"}
+      ]
+    },
+    {
+      "id": "dexterity",
+      "cn_name": "敏捷",
+      "group": "Dexterity",
+      "tags": ["attribute"],
+      "tiers": [
+        {"tier": 1, "ilvl": 74, "weight": 1000, "value": "31-33"},
+        {"tier": 2, "ilvl": 66, "weight": 1000, "value": "28-30"},
+        {"tier": 3, "ilvl": 55, "weight": 1000, "value": "25-27"},
+        {"tier": 4, "ilvl": 44, "weight": 1000, "value": "21-24"},
+        {"tier": 5, "ilvl": 33, "weight": 1000, "value": "17-20"},
+        {"tier": 6, "ilvl": 22, "weight": 1000, "value": "13-16"},
+        {"tier": 7, "ilvl": 11, "weight": 1000, "value": "9-12"},
+        {"tier": 8, "ilvl": 1, "weight": 1000, "value": "5-8"}
+      ]
+    },
+    {
+      "id": "intelligence",
+      "cn_name": "智慧",
+      "group": "Intelligence",
+      "tags": ["attribute"],
+      "tiers": [
+        {"tier": 1, "ilvl": 74, "weight": 1000, "value": "31-33"},
+        {"tier": 2, "ilvl": 66, "weight": 1000, "value": "28-30"},
+        {"tier": 3, "ilvl": 55, "weight": 1000, "value": "25-27"},
+        {"tier": 4, "ilvl": 44, "weight": 1000, "value": "21-24"},
+        {"tier": 5, "ilvl": 33, "weight": 1000, "value": "17-20"},
+        {"tier": 6, "ilvl": 22, "weight": 1000, "value": "13-16"},
+        {"tier": 7, "ilvl": 11, "weight": 1000, "value": "9-12"},
+        {"tier": 8, "ilvl": 1, "weight": 1000, "value": "5-8"}
+      ]
+    },
+    {
+      "id": "all_attributes",
+      "cn_name": "全属性",
+      "group": "AllAttributes",
+      "tags": ["attribute"],
+      "tiers": [
+        {"tier": 1, "ilvl": 33, "weight": 400, "value": "11-13"},
+        {"tier": 2, "ilvl": 22, "weight": 400, "value": "8-10"},
+        {"tier": 3, "ilvl": 11, "weight": 400, "value": "5-7"},
+        {"tier": 4, "ilvl": 1, "weight": 400, "value": "2-4"}
+      ]
+    },
+    {
+      "id": "fire_resistance",
+      "cn_name": "火焰抗性",
+      "group": "FireResistance",
+      "tags": ["elemental", "fire", "resistance"],
+      "tiers": [
+        {"tier": 1, "ilvl": 82, "weight": 1000, "value": "41-45%"},
+        {"tier": 2, "ilvl": 71, "weight": 1000, "value": "36-40%"},
+        {"tier": 3, "ilvl": 60, "weight": 1000, "value": "31-35%"},
+        {"tier": 4, "ilvl": 48, "weight": 1000, "value": "26-30%"},
+        {"tier": 5, "ilvl": 36, "weight": 1000, "value": "21-25%"},
+        {"tier": 6, "ilvl": 24, "weight": 1000, "value": "16-20%"},
+        {"tier": 7, "ilvl": 12, "weight": 1000, "value": "11-15%"},
+        {"tier": 8, "ilvl": 1, "weight": 1000, "value": "6-10%"}
+      ]
+    },
+    {
+      "id": "cold_resistance",
+      "cn_name": "冰霜抗性",
+      "group": "ColdResistance",
+      "tags": ["elemental", "cold", "resistance"],
+      "tiers": [
+        {"tier": 1, "ilvl": 82, "weight": 1000, "value": "41-45%"},
+        {"tier": 2, "ilvl": 71, "weight": 1000, "value": "36-40%"},
+        {"tier": 3, "ilvl": 60, "weight": 1000, "value": "31-35%"},
+        {"tier": 4, "ilvl": 50, "weight": 1000, "value": "26-30%"},
+        {"tier": 5, "ilvl": 38, "weight": 1000, "value": "21-25%"},
+        {"tier": 6, "ilvl": 26, "weight": 1000, "value": "16-20%"},
+        {"tier": 7, "ilvl": 14, "weight": 1000, "value": "11-15%"},
+        {"tier": 8, "ilvl": 1, "weight": 1000, "value": "6-10%"}
+      ]
+    },
+    {
+      "id": "lightning_resistance",
+      "cn_name": "闪电抗性",
+      "group": "LightningResistance",
+      "tags": ["elemental", "lightning", "resistance"],
+      "tiers": [
+        {"tier": 1, "ilvl": 82, "weight": 1000, "value": "41-45%"},
+        {"tier": 2, "ilvl": 71, "weight": 1000, "value": "36-40%"},
+        {"tier": 3, "ilvl": 60, "weight": 1000, "value": "31-35%"},
+        {"tier": 4, "ilvl": 49, "weight": 1000, "value": "26-30%"},
+        {"tier": 5, "ilvl": 37, "weight": 1000, "value": "21-25%"},
+        {"tier": 6, "ilvl": 25, "weight": 1000, "value": "16-20%"},
+        {"tier": 7, "ilvl": 13, "weight": 1000, "value": "11-15%"},
+        {"tier": 8, "ilvl": 1, "weight": 1000, "value": "6-10%"}
+      ]
+    },
+    {
+      "id": "all_resistances",
+      "cn_name": "所有元素抗性",
+      "group": "AllResistances",
+      "tags": ["elemental", "fire", "cold", "lightning", "resistance"],
+      "tiers": [
+        {"tier": 1, "ilvl": 68, "weight": 800, "value": "15-16%"},
+        {"tier": 2, "ilvl": 54, "weight": 800, "value": "12-14%"},
+        {"tier": 3, "ilvl": 40, "weight": 800, "value": "9-11%"},
+        {"tier": 4, "ilvl": 26, "weight": 800, "value": "6-8%"},
+        {"tier": 5, "ilvl": 12, "weight": 800, "value": "3-5%"}
+      ]
+    },
+    {
+      "id": "chaos_resistance",
+      "cn_name": "混沌抗性",
+      "group": "ChaosResistance",
+      "tags": ["chaos", "resistance"],
+      "tiers": [
+        {"tier": 1, "ilvl": 81, "weight": 250, "value": "24-27%"},
+        {"tier": 2, "ilvl": 68, "weight": 250, "value": "20-23%"},
+        {"tier": 3, "ilvl": 56, "weight": 250, "value": "16-19%"},
+        {"tier": 4, "ilvl": 44, "weight": 250, "value": "12-15%"},
+        {"tier": 5, "ilvl": 30, "weight": 250, "value": "8-11%"},
+        {"tier": 6, "ilvl": 16, "weight": 250, "value": "4-7%"}
+      ]
+    },
+    {
+      "id": "life_regeneration",
+      "cn_name": "生命每秒再生",
+      "group": "LifeRegeneration",
+      "tags": ["life"],
+      "tiers": [
+        {"tier": 1, "ilvl": 47, "weight": 1000, "value": "13.1-18"},
+        {"tier": 2, "ilvl": 35, "weight": 1000, "value": "9.1-13"},
+        {"tier": 3, "ilvl": 26, "weight": 1000, "value": "6.1-9"},
+        {"tier": 4, "ilvl": 17, "weight": 1000, "value": "4.1-6"},
+        {"tier": 5, "ilvl": 11, "weight": 1000, "value": "3.1-4"},
+        {"tier": 6, "ilvl": 5, "weight": 1000, "value": "2.1-3"},
+        {"tier": 7, "ilvl": 1, "weight": 1000, "value": "1-2"}
+      ]
+    },
+    {
+      "id": "mana_regeneration",
+      "cn_name": "魔力再生率提高",
+      "group": "ManaRegeneration",
+      "tags": ["mana"],
+      "tiers": [
+        {"tier": 1, "ilvl": 79, "weight": 1000, "value": "60-69%"},
+        {"tier": 2, "ilvl": 55, "weight": 1000, "value": "50-59%"},
+        {"tier": 3, "ilvl": 42, "weight": 1000, "value": "40-49%"},
+        {"tier": 4, "ilvl": 29, "weight": 1000, "value": "30-39%"},
+        {"tier": 5, "ilvl": 18, "weight": 1000, "value": "20-29%"},
+        {"tier": 6, "ilvl": 1, "weight": 1000, "value": "10-19%"}
+      ]
+    },
+    {
+      "id": "life_leech",
+      "cn_name": "物理攻击伤害偷取生命",
+      "group": "LifeLeech",
+      "tags": ["life", "physical", "attack"],
+      "tiers": [
+        {"tier": 1, "ilvl": 38, "weight": 1000, "value": "7-7.9%"},
+        {"tier": 2, "ilvl": 21, "weight": 1000, "value": "6-6.9%"}
+      ]
+    },
+    {
+      "id": "mana_leech",
+      "cn_name": "物理攻击伤害偷取魔力",
+      "group": "ManaLeech",
+      "tags": ["mana", "physical", "attack"],
+      "tiers": [
+        {"tier": 1, "ilvl": 38, "weight": 1000, "value": "6-6.9%"},
+        {"tier": 2, "ilvl": 21, "weight": 1000, "value": "5-5.9%"}
+      ]
+    },
+    {
+      "id": "life_on_kill",
+      "cn_name": "击败获得生命",
+      "group": "LifeGainedFromEnemyDeath",
+      "tags": ["life"],
+      "tiers": [
+        {"tier": 1, "ilvl": 55, "weight": 750, "value": "41-53"},
+        {"tier": 2, "ilvl": 44, "weight": 750, "value": "29-40"},
+        {"tier": 3, "ilvl": 33, "weight": 750, "value": "19-28"},
+        {"tier": 4, "ilvl": 22, "weight": 750, "value": "10-18"},
+        {"tier": 5, "ilvl": 11, "weight": 750, "value": "7-9"},
+        {"tier": 6, "ilvl": 1, "weight": 750, "value": "4-6"}
+      ]
+    },
+    {
+      "id": "mana_on_kill",
+      "cn_name": "击败获得魔力",
+      "group": "ManaGainedFromEnemyDeath",
+      "tags": ["mana"],
+      "tiers": [
+        {"tier": 1, "ilvl": 56, "weight": 750, "value": "21-27"},
+        {"tier": 2, "ilvl": 45, "weight": 750, "value": "15-20"},
+        {"tier": 3, "ilvl": 34, "weight": 750, "value": "10-14"},
+        {"tier": 4, "ilvl": 23, "weight": 750, "value": "6-9"},
+        {"tier": 5, "ilvl": 12, "weight": 750, "value": "4-5"},
+        {"tier": 6, "ilvl": 1, "weight": 750, "value": "2-3"}
+      ]
+    },
+    {
+      "id": "item_rarity",
+      "cn_name": "物品稀有度提高",
+      "group": "ItemFoundRarityIncrease",
+      "tags": [],
+      "tiers": [
+        {"tier": 1, "ilvl": 40, "weight": 1000, "value": "15-18%"},
+        {"tier": 2, "ilvl": 24, "weight": 1000, "value": "11-14%"},
+        {"tier": 3, "ilvl": 3, "weight": 1000, "value": "6-10%"}
+      ]
+    },
+    {
+      "id": "light_and_mana_regen",
+      "cn_name": "照亮范围与魔力再生",
+      "group": "LightRadiusAndManaRegeneration",
+      "tags": ["mana"],
+      "tiers": [
+        {"tier": 1, "ilvl": 30, "weight": 1000, "value": "manaregen 18-22%, lightradius 15%"},
+        {"tier": 2, "ilvl": 15, "weight": 1000, "value": "manaregen 13-17%, lightradius 10%"},
+        {"tier": 3, "ilvl": 8, "weight": 1000, "value": "manaregen 8-12%, lightradius 5%"}
+      ]
+    },
+    {
+      "id": "cast_speed",
+      "cn_name": "施法速度提高",
+      "group": "IncreasedCastSpeed",
+      "tags": ["caster", "speed"],
+      "note": "权重数据不可靠(GGG移除合成器后无法验证)",
+      "tiers": [
+        {"tier": 1, "ilvl": 60, "weight": 1, "value": "22-24%"},
+        {"tier": 2, "ilvl": 51, "weight": 1, "value": "19-21%"},
+        {"tier": 3, "ilvl": 35, "weight": 1, "value": "16-18%"},
+        {"tier": 4, "ilvl": 18, "weight": 1, "value": "13-15%"},
+        {"tier": 5, "ilvl": 1, "weight": 1, "value": "9-12%"}
+      ]
+    }
+  ]
+}

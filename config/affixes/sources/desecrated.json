@@ -1,0 +1,190 @@
+{
+  "description": "亵渎词缀池 - 通过深渊精华+亵渎机制获得",
+  "source": "abyss_essence",
+  "notes": [
+    "权重为估计值, poe2db 社区无法获取真实权重(GGG移除合成器后)",
+    "实际游戏中通过 3选1 (+ 回响=6选1) 选择",
+    "双group词缀(如 Strength|Intelligence)与两个组都冲突"
+  ],
+  "total_weight_estimate": 14000,
+  "prefixes": [
+    {
+      "id": "desecrated_remnant_effect",
+      "cn_name": "残片效果提高",
+      "group": "RemnantEffect",
+      "source_tag": "amanamu",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "8-15%"
+    },
+    {
+      "id": "desecrated_ignite_magnitude_on_endurance",
+      "cn_name": "若消耗耐力球则点燃强度提高",
+      "group": "ElementalAilmentEffect",
+      "source_tag": "amanamu",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "20-30%"
+    },
+    {
+      "id": "desecrated_minion_damage_if_hit",
+      "cn_name": "若近期击中则召唤伤害提高",
+      "group": "IncreasedMinionDamageIfYouHitEnemy",
+      "source_tag": "amanamu",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "15-25%"
+    },
+    {
+      "id": "desecrated_freeze_buildup_on_power",
+      "cn_name": "若消耗暴击球则冻结积蓄提高",
+      "group": "ElementalAilmentEffect",
+      "source_tag": "kurgal",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "20-30%"
+    },
+    {
+      "id": "desecrated_spell_damage_on_full_es",
+      "cn_name": "能量护盾全满时法术伤害提高",
+      "group": "IncreasedSpellDamageOnFullEnergyShield",
+      "source_tag": "kurgal",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "15-25%"
+    },
+    {
+      "id": "desecrated_attack_damage_on_low_life",
+      "cn_name": "低血时攻击伤害提高",
+      "group": "AttackDamage",
+      "source_tag": "ulaman",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "15-25%"
+    },
+    {
+      "id": "desecrated_shock_magnitude_on_frenzy",
+      "cn_name": "若消耗狂怒球则感电强度提高",
+      "group": "ElementalAilmentEffect",
+      "source_tag": "ulaman",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "20-30%"
+    }
+  ],
+  "suffixes": [
+    {
+      "id": "desecrated_strength_intelligence",
+      "cn_name": "力量和智慧",
+      "group": "Strength|Intelligence",
+      "source_tag": "amanamu",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "9-15"
+    },
+    {
+      "id": "desecrated_skill_effect_duration",
+      "cn_name": "技能效果持续时间提高",
+      "group": "SkillEffectDuration",
+      "source_tag": "amanamu",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "8-12%"
+    },
+    {
+      "id": "desecrated_remnant_pickup_radius",
+      "cn_name": "残片收集距离延长",
+      "group": "RemnantPickupRadius",
+      "source_tag": "amanamu",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "20-30%"
+    },
+    {
+      "id": "desecrated_life_leech_amount",
+      "cn_name": "生命偷取量提高",
+      "group": "LifeLeech",
+      "source_tag": "amanamu",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "12-20%"
+    },
+    {
+      "id": "desecrated_fire_chaos_resistance",
+      "cn_name": "火焰与混沌抗性",
+      "group": "FireAndChaosDamageResistance",
+      "source_tag": "amanamu",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "13-17%"
+    },
+    {
+      "id": "desecrated_dexterity_intelligence",
+      "cn_name": "敏捷和智慧",
+      "group": "Dexterity|Intelligence",
+      "source_tag": "kurgal",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "9-15"
+    },
+    {
+      "id": "desecrated_cold_chaos_resistance",
+      "cn_name": "冰霜与混沌抗性",
+      "group": "ColdAndChaosDamageResistance",
+      "source_tag": "kurgal",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "13-17%"
+    },
+    {
+      "id": "desecrated_cooldown_recovery",
+      "cn_name": "冷却回复速度提高",
+      "group": "CooldownRecovery",
+      "source_tag": "kurgal",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "8-12%"
+    },
+    {
+      "id": "desecrated_exposure_effect",
+      "cn_name": "曝露效果提高",
+      "group": "ExposureEffect",
+      "source_tag": "kurgal",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "10-15%"
+    },
+    {
+      "id": "desecrated_mana_on_kill_percent",
+      "cn_name": "击败时恢复魔力百分比",
+      "group": "ManaGainedOnKillPercentage",
+      "source_tag": "kurgal",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "2-3%"
+    },
+    {
+      "id": "desecrated_mana_leech_amount",
+      "cn_name": "魔力偷取量提高",
+      "group": "ManaLeechAmount",
+      "source_tag": "kurgal",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "12-20%"
+    },
+    {
+      "id": "desecrated_strength_dexterity",
+      "cn_name": "力量和敏捷",
+      "group": "Strength|Dexterity",
+      "source_tag": "ulaman",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "9-15"
+    },
+    {
+      "id": "desecrated_lightning_chaos_resistance",
+      "cn_name": "闪电与混沌抗性",
+      "group": "LightningAndChaosDamageResistance",
+      "source_tag": "ulaman",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "13-17%"
+    },
+    {
+      "id": "desecrated_life_on_kill_percent",
+      "cn_name": "击败时恢复生命百分比",
+      "group": "RecoverPercentMaxLifeOnKill",
+      "source_tag": "ulaman",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "2-3%"
+    },
+    {
+      "id": "desecrated_skill_speed",
+      "cn_name": "技能速度提高",
+      "group": "IncreasedSpeed",
+      "source_tag": "ulaman",
+      "tier": 1, "ilvl": 65, "weight": 1000,
+      "value": "3-6%"
+    }
+  ]
+}

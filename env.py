@@ -291,34 +291,49 @@ class GameEnv:
             return 0.0
 
         slot_groups = entry.get("slot_groups", {})
-        affix_type_file = self.game_data.affix_file
+        if not slot_groups:
+            return 0.0
 
-        for sgrp_key, sgrp_data in slot_groups.items():
+        affix_type_file = self.game_data.affix_file
+        with open(affix_type_file, "r", encoding="utf-8") as f:
+            eq_data = json.load(f)
+
+        added = False
+        for sgrp_data in slot_groups.values():
             affix_id = sgrp_data.get("affix_id", "")
             if not affix_id:
                 continue
-            tier_target = sgrp_data.get("tier", 1)
-            affix_data = None
-            is_prefix = True
-            with open(affix_type_file, "r", encoding="utf-8") as f:
-                eq_data = json.load(f)
-            for pool, is_pref in [(eq_data.get("prefixes", []), True), (eq_data.get("suffixes", []), False)]:
-                for a in pool:
+            p_affixes = eq_data.get("prefixes", [])
+            s_affixes = eq_data.get("suffixes", [])
+            found = None
+            is_pref = True
+            for a in p_affixes:
+                if a["id"] == affix_id:
+                    found = a; is_pref = True; break
+            if not found:
+                for a in s_affixes:
                     if a["id"] == affix_id:
-                        affix_data = a
-                        is_prefix = is_pref
-                        break
-            if affix_data:
-                for t in affix_data["tiers"]:
-                    if t["tier"] == tier_target:
-                        new_affix = Affix(
-                            name=affix_id,
-                            group=affix_data["group"],
-                            weight=t["weight"],
-                            is_prefix=is_prefix,
-                        )
-                        self.current_affixes.append(new_affix)
-                        break
+                        found = a; is_pref = False; break
+            if found:
+                possible_affixes = sgrp_data.get("possible_affixes", [affix_id])
+                chosen_id = random.choice(possible_affixes)
+                if chosen_id != affix_id:
+                    for a in p_affixes + s_affixes:
+                        if a["id"] == chosen_id:
+                            found = a; break
+                latest_tier = max(t["tier"] for t in found["tiers"])
+                lt = found["tiers"][0]
+                for t in found["tiers"]:
+                    if t["tier"] == latest_tier:
+                        lt = t; break
+                new_affix = Affix(
+                    name=chosen_id,
+                    group=found["group"],
+                    weight=lt["weight"],
+                    is_prefix=is_pref,
+                )
+                self.current_affixes.append(new_affix)
+                added = True
             break
 
         if self.omen in (OMEN_ESSENCE_PREFIX, OMEN_ESSENCE_SUFFIX):

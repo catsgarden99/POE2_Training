@@ -1,291 +1,698 @@
 {
-  "_readme": "从 poe2db.tw 官方数据提取，仅包含 RL 可用的精华类型",
+  "_readme": "通用精华数据库，从 poe2db.tw 官方数据完整提取，共95条",
   "notes": [
-    "essence_normal: 魔法→稀有, 指定词缀",
-    "essence_reroll: 稀有, 移除一条+添加指定词缀 (浮夸/谵妄/极恐/错乱)",  
-    "essence_abyss: 稀有, 移除一条+添加亵渎词缀",
-    "essence_special: 特殊效果 (裂隙/完美系列)",
-    "所有次级/普通版排除 (只有Greater+及以上有价值的保留)"
+    "essence_tiers: lesser(次级) / normal(普通) / greater(强效) / perfect(完美)",
+    "lesser/normal/greater: 魔法→稀有, 必定添加一条指定词缀 (upgrade_rarity_to=2)",
+    "perfect/corrupted: 稀有, 移除一条随机词缀+添加指定词缀 (type=essence_reroll)",
+    "corrupted: 浮夸/谵妄/极恐/错乱 (需要瓦尔污染精华怪物掉落)",
+    "abyss: 移除一条+添加亵渎词缀 (type=essence_abyss)",
+    "breach: 稀有, 移除一条+品质上限+20% (type=essence_special)",
+    "每种精华作用槽位不同 (见 slot_groups)",
+    "affix_id=null 表示该槽位组的词缀未被支持的数据文件收录"
   ],
-  "excluded": [
-    "所有Lesser(次级)版 — 排除 (低T阶无crafting价值)",
-    "所有Normal(普通无前缀)版 — 排除 (低T阶, Greater是主力)",
-    "谵妄精华(Delirium) — 排除 (分配随机核心天赋, 模拟困难)",
-    "极恐精华(Horror) — 排除 (镶嵌物品效果提高, 无词缀)",
-    "错乱精华(Insanity) — 排除 (腐化时附魔, 无词缀)",
-    "完美身躯精华(Perfect Body) — 排除 (胸甲生命%, 仅胸甲)",
-    "完美增强精华(Perfect Enhancement) — 排除 (项链全局防御%, 仅项链)",
-    "完美磨蚀精华(Perfect Abrasion) — 排除 (武器额外物理伤)",
-    "完美烈焰精华(Perfect Flames) — 排除 (武器额外火伤)",
-    "完美冰霜精华(Perfect Ice) — 排除 (武器额外冰伤)",
-    "完美电光精华(Perfect Electricity) — 排除 (武器额外电伤)",
-    "完美摧灭精华(Perfect Ruin) — 排除 (胸甲物理转混沌)",
-    "完美激战精华(Perfect Battle) — 排除 (武器攻击技能等级)",
-    "完美魔法精华(Perfect Sorcery) — 排除 (法杖法术技能等级)",
-    "完美急速精华(Perfect Haste) — 排除 (武器猛攻几率)",
-    "完美永恒精华(Perfect Infinite) — 排除 (项链属性%)",
-    "完美寻觅精华(Perfect Seeking) — 排除 (胸甲暴击减伤)",
-    "完美绝缘精华(Perfect Insulation) — 排除 (腰带火焰吸纳)",
-    "完美熔解精华(Perfect Thawing) — 排除 (头盔冰霜吸纳)",
-    "完美接地精华(Perfect Grounding) — 排除 (手套闪电吸纳)",
-    "完美迅捷精华(Perfect Alacrity) — 排除 (法杖魔力效能)",
-    "完美丰裕精华(Perfect Opulence) — 排除 (手套金币数量)",
-    "完美命令精华(Perfect Command) — 排除 (短杖光环强度)"
+  "families": [
+    "body", "mind", "enhancement", "abrasion", "flames", "ice", "electricity",
+    "ruin", "battle", "sorcery", "haste", "seeking", "insulation", "thawing",
+    "grounding", "alacrity", "opulence", "command", "infinite"
   ],
   "essences": {
-    "greater_essence_of_the_body": {
-      "name": "强效身躯精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+    "lesser_essence_of_the_body": {
+      "name": "次级身躯精华", "family": "body", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 12,
       "slot_groups": {
-        "belt_armour_helmet_shield": {"affix_id": "maximum_life", "tier": 3, "range": [100, 119]},
-        "necklace_gloves_boots": {"affix_id": "maximum_life", "tier": 3, "range": [85, 99]}
+        "armour_belt": {"affix_id": "maximum_life", "range": [30, 39]},
+        "jewellery": {"affix_id": "maximum_life", "range": [20, 29]}
+      }
+    },
+    "essence_of_the_body": {
+      "name": "身躯精华", "family": "body", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "belt_armour_helmet_shield": {"affix_id": "maximum_life", "range": [85, 99]},
+        "necklace_boots_gloves_ring": {"affix_id": "maximum_life", "range": [70, 84]}
+      }
+    },
+    "greater_essence_of_the_body": {
+      "name": "强效身躯精华", "family": "body", "tier": "greater",
+      "type": "essence_normal", "price": 12,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "belt_armour_helmet_shield": {"affix_id": "maximum_life", "range": [100, 119]},
+        "necklace_boots_gloves": {"affix_id": "maximum_life", "range": [85, 99]}
+      }
+    },
+    "perfect_essence_of_the_body": {
+      "name": "完美身躯精华", "family": "body", "tier": "perfect",
+      "type": "essence_reroll", "price": 80,
+      "slot_groups": {
+        "chest": {"note": "生命上限提高8-10% (精华专属, 不占词缀)", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_the_mind": {
+      "name": "次级心灵精华", "family": "mind", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "belt_boots_gloves_helmet_jewellery": {"affix_id": "maximum_mana", "range": [25, 34]}
+      }
+    },
+    "essence_of_the_mind": {
+      "name": "心灵精华", "family": "mind", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "belt_boots_gloves_helmet": {"affix_id": "maximum_mana", "range": [65, 79]},
+        "jewellery": {"affix_id": "maximum_mana", "range": [80, 89]}
       }
     },
     "greater_essence_of_the_mind": {
-      "name": "强效心灵精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效心灵精华", "family": "mind", "tier": "greater",
+      "type": "essence_normal", "price": 12,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 12,
       "slot_groups": {
-        "belt_boots_gloves_helmet": {"affix_id": "maximum_mana", "tier": 5, "range": [80, 89]},
-        "jewellery": {"affix_id": "maximum_mana", "tier": 7, "range": [90, 104]}
+        "belt_boots_gloves_helmet": {"affix_id": "maximum_mana", "range": [80, 89]},
+        "jewellery": {"affix_id": "maximum_mana", "range": [90, 104]}
+      }
+    },
+    "perfect_essence_of_the_mind": {
+      "name": "完美心灵精华", "family": "mind", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "ring": {"note": "魔力上限提高4-6% (精华专属, 不占词缀)", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_enhancement": {
+      "name": "次级强化精华", "family": "enhancement", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour": {"note": "护甲/闪避/能量护盾提高27-42%", "affix_id": null}
+      }
+    },
+    "essence_of_enhancement": {
+      "name": "强化精华", "family": "enhancement", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour": {"note": "护甲/闪避/能量护盾提高56-67%", "affix_id": null}
       }
     },
     "greater_essence_of_enhancement": {
-      "name": "强效增强精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效增强精华", "family": "enhancement", "tier": "greater",
+      "type": "essence_normal", "price": 15,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
       "slot_groups": {
         "armour": {"note": "护甲/闪避/能量护盾提高68-79%", "affix_id": null}
       }
     },
-    "greater_essence_of_abrasion": {
-      "name": "强效磨蚀精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
-      "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
+    "perfect_essence_of_enhancement": {
+      "name": "完美强化精华", "family": "enhancement", "tier": "perfect",
+      "type": "essence_reroll", "price": 80,
       "slot_groups": {
-        "one_hand_bow": {"note": "物理伤害", "affix_id": null},
-        "two_hand_crossbow": {"note": "物理伤害", "affix_id": null}
+        "necklace": {"note": "全局护甲/闪避/能量护盾提高20-30%", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_abrasion": {
+      "name": "次级磨蚀精华", "family": "abrasion", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "one_hand_bow": {"note": "附加4-6至7-11物理伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加5-8至10-15物理伤害", "affix_id": null}
+      }
+    },
+    "essence_of_abrasion": {
+      "name": "磨蚀精华", "family": "abrasion", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "one_hand_bow": {"note": "附加10-15至18-26物理伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加14-21至25-37物理伤害", "affix_id": null}
+      }
+    },
+    "greater_essence_of_abrasion": {
+      "name": "强效磨蚀精华", "family": "abrasion", "tier": "greater",
+      "type": "essence_normal", "price": 15,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "one_hand_bow": {"note": "附加16-24至28-42物理伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加23-35至39-59物理伤害", "affix_id": null}
+      }
+    },
+    "perfect_essence_of_abrasion": {
+      "name": "完美磨蚀精华", "family": "abrasion", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "one_hand_bow": {"note": "获得15-20%额外物理伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "获得25-33%额外物理伤害", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_flames": {
+      "name": "次级烈焰精华", "family": "flames", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "one_hand_bow": {"note": "附加4-6至7-10火焰伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加6-9至10-16火焰伤害", "affix_id": null}
+      }
+    },
+    "essence_of_flames": {
+      "name": "烈焰精华", "family": "flames", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "one_hand_bow": {"note": "附加20-24至32-37火焰伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加30-37至45-56火焰伤害", "affix_id": null}
       }
     },
     "greater_essence_of_flames": {
-      "name": "强效火焰精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效火焰精华", "family": "flames", "tier": "greater",
+      "type": "essence_normal", "price": 15,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
       "slot_groups": {
-        "one_hand_bow": {"note": "火焰伤害", "affix_id": null},
-        "two_hand_crossbow": {"note": "火焰伤害", "affix_id": null}
+        "one_hand_bow": {"note": "附加35-44至56-71火焰伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加56-70至84-107火焰伤害", "affix_id": null}
+      }
+    },
+    "perfect_essence_of_flames": {
+      "name": "完美烈焰精华", "family": "flames", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "one_hand_bow": {"note": "获得15-20%额外火焰伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "获得25-33%额外火焰伤害", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_ice": {
+      "name": "次级冰霜精华", "family": "ice", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "one_hand_bow": {"note": "附加3-5至6-9冰霜伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加5-8至9-14冰霜伤害", "affix_id": null}
+      }
+    },
+    "essence_of_ice": {
+      "name": "冰霜精华", "family": "ice", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "one_hand_bow": {"note": "附加17-20至26-32冰霜伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加25-30至38-46冰霜伤害", "affix_id": null}
       }
     },
     "greater_essence_of_ice": {
-      "name": "强效冰霜精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效冰霜精华", "family": "ice", "tier": "greater",
+      "type": "essence_normal", "price": 15,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
       "slot_groups": {
-        "one_hand_bow": {"note": "冰霜伤害", "affix_id": null},
-        "two_hand_crossbow": {"note": "冰霜伤害", "affix_id": null}
+        "one_hand_bow": {"note": "附加31-38至47-59冰霜伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加46-57至70-88冰霜伤害", "affix_id": null}
+      }
+    },
+    "perfect_essence_of_ice": {
+      "name": "完美冰霜精华", "family": "ice", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "one_hand_bow": {"note": "获得15-20%额外冰霜伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "获得25-33%额外冰霜伤害", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_electricity": {
+      "name": "次级电光精华", "family": "electricity", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "one_hand_bow": {"note": "附加1至13-19闪电伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加1-2至19-27闪电伤害", "affix_id": null}
+      }
+    },
+    "essence_of_electricity": {
+      "name": "电光精华", "family": "electricity", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "one_hand_bow": {"note": "附加1-3至55-60闪电伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加1-4至80-88闪电伤害", "affix_id": null}
       }
     },
     "greater_essence_of_electricity": {
-      "name": "强效电光精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效电光精华", "family": "electricity", "tier": "greater",
+      "type": "essence_normal", "price": 15,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
       "slot_groups": {
-        "one_hand_bow": {"note": "闪电伤害", "affix_id": null},
-        "two_hand_crossbow": {"note": "闪电伤害", "affix_id": null}
+        "one_hand_bow": {"note": "附加1-6至85-107闪电伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "附加1-8至128-162闪电伤害", "affix_id": null}
+      }
+    },
+    "perfect_essence_of_electricity": {
+      "name": "完美电光精华", "family": "electricity", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "one_hand_bow": {"note": "获得15-20%额外闪电伤害", "affix_id": null},
+        "two_hand_crossbow": {"note": "获得25-33%额外闪电伤害", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_ruin": {
+      "name": "次级摧灭精华", "family": "ruin", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour_belt_jewellery": {"affix_id": "chaos_resistance", "range": [4, 7]}
+      }
+    },
+    "essence_of_ruin": {
+      "name": "摧灭精华", "family": "ruin", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour_belt_jewellery": {"affix_id": "chaos_resistance", "range": [8, 11]}
       }
     },
     "greater_essence_of_ruin": {
-      "name": "强效摧灭精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效摧灭精华", "family": "ruin", "tier": "greater",
+      "type": "essence_normal", "price": 15,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
       "slot_groups": {
-        "armour_belt_jewellery": {"affix_id": "chaos_resistance", "tier": 3, "range": [16, 19]}
+        "armour_belt_jewellery": {"affix_id": "chaos_resistance", "range": [16, 19]}
+      }
+    },
+    "perfect_essence_of_ruin": {
+      "name": "完美摧灭精华", "family": "ruin", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "chest": {"note": "受到击中物理伤害的10-15%转化为混沌伤害", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_battle": {
+      "name": "次级激战精华", "family": "battle", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "martial_weapon": {"affix_id": "accuracy", "range": [61, 84]}
+      }
+    },
+    "essence_of_battle": {
+      "name": "激战精华", "family": "battle", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "martial_weapon": {"affix_id": "accuracy", "range": [124, 167]}
       }
     },
     "greater_essence_of_battle": {
-      "name": "强效激战精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效激战精华", "family": "battle", "tier": "greater",
+      "type": "essence_normal", "price": 15,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
       "slot_groups": {
-        "weapon_gloves_quiver": {"affix_id": "accuracy", "tier": 3, "range": [237, 346]}
+        "weapon_gloves_quiver": {"affix_id": "accuracy", "range": [237, 346]}
+      }
+    },
+    "perfect_essence_of_battle": {
+      "name": "完美激战精华", "family": "battle", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "one_hand_bow": {"note": "所有攻击技能等级+2", "affix_id": null},
+        "two_hand_crossbow": {"note": "所有攻击技能等级+3", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_sorcery": {
+      "name": "次级魔法精华", "family": "sorcery", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "focus_wand": {"note": "法术伤害提高35-44%", "affix_id": null},
+        "staff": {"note": "法术伤害提高69-88%", "affix_id": null}
+      }
+    },
+    "essence_of_sorcery": {
+      "name": "魔法精华", "family": "sorcery", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "focus_wand": {"note": "法术伤害提高55-64%", "affix_id": null},
+        "staff": {"note": "法术伤害提高109-128%", "affix_id": null}
       }
     },
     "greater_essence_of_sorcery": {
-      "name": "强效魔法精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效魔法精华", "family": "sorcery", "tier": "greater",
+      "type": "essence_normal", "price": 15,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
       "slot_groups": {
         "focus_wand": {"note": "法术伤害提高75-89%", "affix_id": null},
         "staff": {"note": "法术伤害提高149-188%", "affix_id": null}
       }
     },
-    "greater_essence_of_haste": {
-      "name": "强效急速精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+    "perfect_essence_of_sorcery": {
+      "name": "完美魔法精华", "family": "sorcery", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "wand": {"note": "所有法术技能等级+3", "affix_id": null},
+        "staff": {"note": "所有法术技能等级+5", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_haste": {
+      "name": "次级急速精华", "family": "haste", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
+      "slot_groups": {
+        "melee_weapon": {"note": "攻击速度提高11-13%", "affix_id": null},
+        "bow_crossbow": {"note": "攻击速度提高8-10%", "affix_id": null}
+      }
+    },
+    "essence_of_haste": {
+      "name": "急速精华", "family": "haste", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "melee_weapon": {"note": "攻击速度提高17-19%", "affix_id": null},
+        "bow_crossbow": {"note": "攻击速度提高11-13%", "affix_id": null}
+      }
+    },
+    "greater_essence_of_haste": {
+      "name": "强效急速精华", "family": "haste", "tier": "greater",
+      "type": "essence_normal", "price": 15,
+      "effect": {"upgrade_rarity_to": 2},
       "slot_groups": {
         "melee_weapon": {"note": "攻击速度提高23-25%", "affix_id": null},
         "bow_crossbow": {"note": "攻击速度提高14-16%", "affix_id": null}
       }
     },
-    "greater_essence_of_seeking": {
-      "name": "强效寻觅精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+    "perfect_essence_of_haste": {
+      "name": "完美急速精华", "family": "haste", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "martial_weapon": {"note": "最后一击20-25%几率获得猛攻", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_seeking": {
+      "name": "次级寻觅精华", "family": "seeking", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
+      "slot_groups": {
+        "martial_weapon": {"note": "暴击几率+1.51-2.1%", "affix_id": null},
+        "focus_wand": {"note": "法术暴击率提高34-39%", "affix_id": null},
+        "staff": {"note": "法术暴击率提高50-59%", "affix_id": null}
+      }
+    },
+    "essence_of_seeking": {
+      "name": "寻觅精华", "family": "seeking", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "martial_weapon": {"note": "暴击几率+2.11-2.7%", "affix_id": null},
+        "focus_wand": {"note": "法术暴击率提高40-46%", "affix_id": null},
+        "staff": {"note": "法术暴击率提高60-69%", "affix_id": null}
+      }
+    },
+    "greater_essence_of_seeking": {
+      "name": "强效寻觅精华", "family": "seeking", "tier": "greater",
+      "type": "essence_normal", "price": 15,
+      "effect": {"upgrade_rarity_to": 2},
       "slot_groups": {
         "martial_weapon": {"note": "暴击几率+3.11-3.8%", "affix_id": null},
         "focus_wand": {"note": "法术暴击率提高47-53%", "affix_id": null},
         "staff": {"note": "法术暴击率提高70-79%", "affix_id": null}
       }
     },
-    "greater_essence_of_insulation": {
-      "name": "强效绝缘精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
-      "effect": {"upgrade_rarity_to": 2},
-      "price": 10,
+    "perfect_essence_of_seeking": {
+      "name": "完美寻觅精华", "family": "seeking", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
       "slot_groups": {
-        "armour_belt_jewellery": {"affix_id": "fire_resistance", "tier": 3, "range": [31, 35]}
+        "chest": {"note": "暴击伤害加成降低40-50%", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_insulation": {
+      "name": "次级绝缘精华", "family": "insulation", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour_belt_jewellery": {"affix_id": "fire_resistance", "range": [11, 15]}
+      }
+    },
+    "essence_of_insulation": {
+      "name": "绝缘精华", "family": "insulation", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour_belt_jewellery": {"affix_id": "fire_resistance", "range": [21, 25]}
+      }
+    },
+    "greater_essence_of_insulation": {
+      "name": "强效绝缘精华", "family": "insulation", "tier": "greater",
+      "type": "essence_normal", "price": 10,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour_belt_jewellery": {"affix_id": "fire_resistance", "range": [31, 35]}
+      }
+    },
+    "perfect_essence_of_insulation": {
+      "name": "完美绝缘精华", "family": "insulation", "tier": "perfect",
+      "type": "essence_reroll", "price": 80,
+      "slot_groups": {
+        "belt": {"note": "将承受的火焰伤害的26-30%吸纳为生命", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_thawing": {
+      "name": "次级熔解精华", "family": "thawing", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour_belt_jewellery": {"affix_id": "cold_resistance", "range": [11, 15]}
+      }
+    },
+    "essence_of_thawing": {
+      "name": "熔解精华", "family": "thawing", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour_belt_jewellery": {"affix_id": "cold_resistance", "range": [21, 25]}
       }
     },
     "greater_essence_of_thawing": {
-      "name": "强效熔解精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效熔解精华", "family": "thawing", "tier": "greater",
+      "type": "essence_normal", "price": 10,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 10,
       "slot_groups": {
-        "armour_belt_jewellery": {"affix_id": "cold_resistance", "tier": 3, "range": [31, 35]}
+        "armour_belt_jewellery": {"affix_id": "cold_resistance", "range": [31, 35]}
+      }
+    },
+    "perfect_essence_of_thawing": {
+      "name": "完美熔解精华", "family": "thawing", "tier": "perfect",
+      "type": "essence_reroll", "price": 80,
+      "slot_groups": {
+        "helmet": {"note": "将承受的冰霜伤害的26-30%吸纳为生命", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_grounding": {
+      "name": "次级接地精华", "family": "grounding", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour_belt_jewellery": {"affix_id": "lightning_resistance", "range": [11, 15]}
+      }
+    },
+    "essence_of_grounding": {
+      "name": "接地精华", "family": "grounding", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "armour_belt_jewellery": {"affix_id": "lightning_resistance", "range": [21, 25]}
       }
     },
     "greater_essence_of_grounding": {
-      "name": "强效接地精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效接地精华", "family": "grounding", "tier": "greater",
+      "type": "essence_normal", "price": 10,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 10,
       "slot_groups": {
-        "armour_belt_jewellery": {"affix_id": "lightning_resistance", "tier": 3, "range": [31, 35]}
+        "armour_belt_jewellery": {"affix_id": "lightning_resistance", "range": [31, 35]}
+      }
+    },
+    "perfect_essence_of_grounding": {
+      "name": "完美接地精华", "family": "grounding", "tier": "perfect",
+      "type": "essence_reroll", "price": 80,
+      "slot_groups": {
+        "gloves": {"note": "将承受的闪电伤害的26-30%吸纳为生命", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_alacrity": {
+      "name": "次级迅捷精华", "family": "alacrity", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "focus_wand": {"note": "施法速度提高13-16%", "affix_id": null},
+        "staff": {"note": "施法速度提高20-25%", "affix_id": null}
+      }
+    },
+    "essence_of_alacrity": {
+      "name": "迅捷精华", "family": "alacrity", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "focus_wand": {"note": "施法速度提高17-20%", "affix_id": null},
+        "staff": {"note": "施法速度提高26-31%", "affix_id": null}
       }
     },
     "greater_essence_of_alacrity": {
-      "name": "强效迅捷精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效迅捷精华", "family": "alacrity", "tier": "greater",
+      "type": "essence_normal", "price": 15,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
       "slot_groups": {
         "focus_wand": {"note": "施法速度提高25-28%", "affix_id": null},
         "staff": {"note": "施法速度提高38-43%", "affix_id": null}
       }
     },
-    "greater_essence_of_opulence": {
-      "name": "强效丰裕精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
-      "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
+    "perfect_essence_of_alacrity": {
+      "name": "完美迅捷精华", "family": "alacrity", "tier": "perfect",
+      "type": "essence_reroll", "price": 80,
       "slot_groups": {
-        "boots_gloves_helmet_jewellery": {"affix_id": "item_rarity", "tier": 1, "range": [15, 18]}
+        "focus_wand": {"note": "魔力消耗效能提高18-20%", "affix_id": null},
+        "staff": {"note": "魔力消耗效能提高28-32%", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_opulence": {
+      "name": "次级丰裕精华", "family": "opulence", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "boots_gloves_helmet_jewellery": {"affix_id": "item_rarity", "range": [6, 10]}
+      }
+    },
+    "essence_of_opulence": {
+      "name": "丰裕精华", "family": "opulence", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "boots_gloves_helmet_jewellery": {"affix_id": "item_rarity", "range": [11, 14]}
+      }
+    },
+    "greater_essence_of_opulence": {
+      "name": "强效丰裕精华", "family": "opulence", "tier": "greater",
+      "type": "essence_normal", "price": 15,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "boots_gloves_helmet_jewellery": {"affix_id": "item_rarity", "range": [15, 18]}
+      }
+    },
+    "perfect_essence_of_opulence": {
+      "name": "完美丰裕精华", "family": "opulence", "tier": "perfect",
+      "type": "essence_reroll", "price": 80,
+      "slot_groups": {
+        "gloves": {"note": "被击败的敌人掉落的金币数量提高10-15%", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_command": {
+      "name": "次级命令精华", "family": "command", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "sceptre": {"note": "在场的友军造成的伤害提高35-44%", "affix_id": null}
+      }
+    },
+    "essence_of_command": {
+      "name": "命令精华", "family": "command", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "sceptre": {"note": "在场的友军造成的伤害提高55-64%", "affix_id": null}
       }
     },
     "greater_essence_of_command": {
-      "name": "强效命令精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效命令精华", "family": "command", "tier": "greater",
+      "type": "essence_normal", "price": 15,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 15,
       "slot_groups": {
-        "sceptre": {"note": "友军伤害提高75-89%", "affix_id": null}
+        "sceptre": {"note": "在场的友军造成的伤害提高75-89%", "affix_id": null}
+      }
+    },
+    "perfect_essence_of_command": {
+      "name": "完美命令精华", "family": "command", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "sceptre": {"note": "光环技能的强度提高15-20%", "affix_id": null}
+      }
+    },
+    "lesser_essence_of_the_infinite": {
+      "name": "次级永恒精华", "family": "infinite", "tier": "lesser",
+      "type": "essence_normal", "price": 1,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "equipment": {"note": "力量/敏捷/智慧 +9-12", "possible_affixes": ["strength", "dexterity", "intelligence"]}
+      }
+    },
+    "essence_of_the_infinite": {
+      "name": "永恒精华", "family": "infinite", "tier": "normal",
+      "type": "essence_normal", "price": 3,
+      "effect": {"upgrade_rarity_to": 2},
+      "slot_groups": {
+        "equipment": {"note": "力量/敏捷/智慧 +17-20", "possible_affixes": ["strength", "dexterity", "intelligence"]}
       }
     },
     "greater_essence_of_the_infinite": {
-      "name": "强效永恒精华", "type": "essence_normal",
-      "conditions": {"rarity": 1},
+      "name": "强效永恒精华", "family": "infinite", "tier": "greater",
+      "type": "essence_normal", "price": 25,
       "effect": {"upgrade_rarity_to": 2},
-      "price": 25,
       "slot_groups": {
-        "equipment": {"note": "随机属性(力/敏/智) +25-27", "possible_affixes": ["strength", "dexterity", "intelligence"], "tier": 3}
+        "equipment": {"note": "力量/敏捷/智慧 +25-27", "possible_affixes": ["strength", "dexterity", "intelligence"]}
+      }
+    },
+    "perfect_essence_of_the_infinite": {
+      "name": "完美永恒精华", "family": "infinite", "tier": "perfect",
+      "type": "essence_reroll", "price": 100,
+      "slot_groups": {
+        "necklace": {"note": "力量/敏捷/智慧提高7-10%", "affix_id": null}
       }
     },
     "essence_of_hysteria": {
-      "name": "浮夸精华", "type": "essence_reroll",
-      "conditions": {"rarity": 2, "min_affix_count": 1},
-      "price": 20,
+      "name": "浮夸精华", "family": "hysteria", "tier": "corrupted",
+      "type": "essence_reroll", "price": 20,
       "slot_groups": {
         "helmet": {"note": "所有召唤生物技能等级+1"},
-        "chest": {"note": "物理荆棘伤害"},
+        "chest": {"note": "物理荆棘伤害(64-97至97-145)"},
         "gloves": {"note": "暴击伤害加成提高25-29%"},
         "boots": {"note": "移动速度提高30%"},
-        "ring": {"affix_id": "mana_regeneration", "tier": 2, "range": [50, 59]},
-        "necklace": {"note": "伤害吸纳19-21%"},
-        "belt": {"note": "晕眩阈值"},
-        "shield": {"note": "格挡几率20-24%"},
-        "quiver": {"note": "弓类技能伤害43-50%"},
-        "focus": {"note": "能量护盾充能率20-23%"}
+        "ring": {"affix_id": "mana_regeneration", "range": [50, 59]},
+        "necklace": {"note": "将所受伤害的19-21%吸纳为生命"},
+        "belt": {"note": "晕眩阈值+254-304"},
+        "shield": {"note": "格挡几率提高20-24%"},
+        "quiver": {"note": "弓类技能伤害提高43-50%"},
+        "focus": {"note": "能量护盾充能率提高20-23%"}
       }
     },
     "essence_of_delirium": {
-      "name": "谵妄精华", "type": "essence_reroll",
-      "conditions": {"rarity": 2, "min_affix_count": 1},
-      "price": 30,
+      "name": "谵妄精华", "family": "delirium", "tier": "corrupted",
+      "type": "essence_reroll", "price": 30,
       "slot_groups": {
         "chest": {"note": "分配一个随机核心天赋"}
       }
     },
     "essence_of_horror": {
-      "name": "极恐精华", "type": "essence_reroll",
-      "conditions": {"rarity": 2, "min_affix_count": 1},
-      "price": 25,
+      "name": "极恐精华", "family": "horror", "tier": "corrupted",
+      "type": "essence_reroll", "price": 25,
       "slot_groups": {
         "gloves_boots": {"note": "镶嵌的物品效果提高60%"}
       }
     },
     "essence_of_insanity": {
-      "name": "错乱精华", "type": "essence_reroll",
-      "conditions": {"rarity": 2, "min_affix_count": 1},
-      "price": 40,
+      "name": "错乱精华", "family": "insanity", "tier": "corrupted",
+      "type": "essence_reroll", "price": 40,
       "slot_groups": {
         "belt": {"note": "被腐化时，物品获得两项附魔"}
       }
     },
     "essence_of_the_abyss": {
-      "name": "深渊精华", "type": "essence_abyss",
-      "conditions": {"rarity": 2, "min_affix_count": 1},
-      "price": 80,
+      "name": "深渊精华", "family": "abyss", "tier": "special",
+      "type": "essence_abyss", "price": 80,
       "slot_groups": {
         "equipment": {"note": "添加亵渎词缀: 深渊领主的印记"}
       }
     },
     "essence_of_the_breach": {
-      "name": "裂隙精华", "type": "essence_special",
-      "conditions": {"rarity": 2},
-      "price": 50,
+      "name": "裂隙精华", "family": "breach", "tier": "special",
+      "type": "essence_special", "price": 50,
       "slot_groups": {
         "jewellery": {"note": "品质上限+20% (基底词缀)"}
-      }
-    },
-    "perfect_essence_of_the_body": {
-      "name": "完美身躯精华", "type": "essence_special",
-      "conditions": {"rarity": 2, "min_affix_count": 1},
-      "price": 80,
-      "slot_groups": {
-        "chest": {"note": "生命上限提高8-10% (不占词缀槽)"}
-      }
-    },
-    "perfect_essence_of_the_mind": {
-      "name": "完美心灵精华", "type": "essence_special",
-      "conditions": {"rarity": 2, "min_affix_count": 1},
-      "price": 100,
-      "slot_groups": {
-        "ring": {"note": "魔力上限提高4-6% (不占词缀槽)"}
       }
     }
   }

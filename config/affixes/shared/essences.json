@@ -1,161 +1,115 @@
 {
-  "description": "精华映射表 - 使用精华等价于固定花费 + 固定词缀, 不走权重抽样",
+  "description": "精华映射表 (v2)",
+  "notes": [
+    "essence_normal: 用在魔法物品上, 升级为稀有, 必定添加指定词缀",
+    "essence_greater: 同上但更高T阶",
+    "essence_reroll: 用在稀有物品上, 移除一条随机词缀并添加指定词缀",
+    "essence_abyss: 用在稀有物品上, 移除一条 + 添加亵渎词缀",
+    "essence_special: 特殊效果"
+  ],
+  "excluded": [
+    "lesser_essence_of_the_body - 次级, 排除",
+    "essence_of_the_body - 普通版(身躯~永恒范围低T阶), 排除",
+    "lesser_essence_of_the_mind - 次级, 排除",
+    "essence_of_the_mind - 普通版, 排除",
+    "lesser_essence_of_insulation - 次级, 排除",
+    "essence_of_insulation - 普通版, 排除",
+    "lesser_essence_of_thawing - 次级, 排除",
+    "essence_of_thawing - 普通版, 排除",
+    "lesser_essence_of_grounding - 次级, 排除",
+    "essence_of_grounding - 普通版, 排除",
+    "lesser_essence_of_ruin - 次级, 排除",
+    "essence_of_ruin - 普通版, 排除",
+    "lesser_essence_of_the_infinite - 次级, 排除",
+    "essence_of_the_infinite - 普通版, 排除",
+    "lesser_essence_of_opulence - 次级, 排除",
+    "essence_of_opulence - 普通版, 排除"
+  ],
   "essences": {
-    "lesser_essence_of_the_body": {
-      "name": "次级身躯精华",
-      "cost": 3,
-      "reqlvl": 6,
-      "grants": { "affix_id": "maximum_life", "tier": 7 }
-    },
-    "essence_of_the_body": {
-      "name": "身躯精华",
-      "cost": 10,
-      "reqlvl": 38,
-      "grants": { "affix_id": "maximum_life", "tier": 3 }
-    },
-    "lesser_essence_of_the_mind": {
-      "name": "次级心灵精华",
-      "cost": 2,
-      "reqlvl": 16,
-      "grants": { "affix_id": "maximum_mana", "tier": 10 }
-    },
-    "essence_of_the_mind": {
-      "name": "心灵精华",
-      "cost": 6,
-      "reqlvl": 46,
-      "grants": { "affix_id": "maximum_mana", "tier": 6 }
-    },
-    "greater_essence_of_the_mind": {
-      "name": "强效心灵精华",
-      "cost": 12,
-      "reqlvl": 54,
-      "grants": { "affix_id": "maximum_mana", "tier": 5 }
-    },
-    "lesser_essence_of_insulation": {
-      "name": "次级绝缘精华",
-      "cost": 2,
-      "reqlvl": 12,
-      "grants": { "affix_id": "fire_resistance", "tier": 7 }
-    },
-    "essence_of_insulation": {
-      "name": "绝缘精华",
-      "cost": 5,
-      "reqlvl": 36,
-      "grants": { "affix_id": "fire_resistance", "tier": 5 }
-    },
     "greater_essence_of_insulation": {
       "name": "强效绝缘精华",
-      "cost": 10,
-      "reqlvl": 60,
-      "grants": { "affix_id": "fire_resistance", "tier": 3 }
-    },
-    "lesser_essence_of_thawing": {
-      "name": "次级熔解精华",
-      "cost": 2,
-      "reqlvl": 14,
-      "grants": { "affix_id": "cold_resistance", "tier": 7 }
-    },
-    "essence_of_thawing": {
-      "name": "熔解精华",
-      "cost": 5,
-      "reqlvl": 38,
-      "grants": { "affix_id": "cold_resistance", "tier": 5 }
+      "type": "essence_normal",
+      "conditions": {"rarity": 1},
+      "effect": {"upgrade_rarity_to": 2},
+      "price": 10,
+      "grants": {"affix_id": "fire_resistance", "tier": 3}
     },
     "greater_essence_of_thawing": {
       "name": "强效熔解精华",
-      "cost": 10,
-      "reqlvl": 60,
-      "grants": { "affix_id": "cold_resistance", "tier": 3 }
-    },
-    "lesser_essence_of_grounding": {
-      "name": "次级接地精华",
-      "cost": 2,
-      "reqlvl": 13,
-      "grants": { "affix_id": "lightning_resistance", "tier": 7 }
-    },
-    "essence_of_grounding": {
-      "name": "接地精华",
-      "cost": 5,
-      "reqlvl": 37,
-      "grants": { "affix_id": "lightning_resistance", "tier": 5 }
+      "type": "essence_normal",
+      "conditions": {"rarity": 1},
+      "effect": {"upgrade_rarity_to": 2},
+      "price": 10,
+      "grants": {"affix_id": "cold_resistance", "tier": 3}
     },
     "greater_essence_of_grounding": {
       "name": "强效接地精华",
-      "cost": 10,
-      "reqlvl": 60,
-      "grants": { "affix_id": "lightning_resistance", "tier": 3 }
-    },
-    "lesser_essence_of_ruin": {
-      "name": "次级摧灭精华",
-      "cost": 3,
-      "reqlvl": 16,
-      "grants": { "affix_id": "chaos_resistance", "tier": 6 }
-    },
-    "essence_of_ruin": {
-      "name": "摧灭精华",
-      "cost": 8,
-      "reqlvl": 30,
-      "grants": { "affix_id": "chaos_resistance", "tier": 5 }
+      "type": "essence_normal",
+      "conditions": {"rarity": 1},
+      "effect": {"upgrade_rarity_to": 2},
+      "price": 10,
+      "grants": {"affix_id": "lightning_resistance", "tier": 3}
     },
     "greater_essence_of_ruin": {
       "name": "强效摧灭精华",
-      "cost": 15,
-      "reqlvl": 56,
-      "grants": { "affix_id": "chaos_resistance", "tier": 3 }
+      "type": "essence_normal",
+      "conditions": {"rarity": 1},
+      "effect": {"upgrade_rarity_to": 2},
+      "price": 15,
+      "grants": {"affix_id": "chaos_resistance", "tier": 3}
     },
-    "lesser_essence_of_the_infinite": {
-      "name": "次级永恒精华",
-      "cost": 5,
-      "reqlvl": 11,
-      "grants": { "affix_group": "Strength", "tier": 7 }
-    },
-    "essence_of_the_infinite": {
-      "name": "永恒精华",
-      "cost": 12,
-      "reqlvl": 33,
-      "grants": { "affix_group": "Strength", "tier": 5 }
-    },
-    "greater_essence_of_the_infinite": {
-      "name": "强效永恒精华",
-      "cost": 25,
-      "reqlvl": 55,
-      "grants": { "affix_group": "Strength", "tier": 3 }
-    },
-    "lesser_essence_of_opulence": {
-      "name": "次级丰裕精华",
-      "cost": 3,
-      "reqlvl": 3,
-      "grants": { "affix_id": "item_rarity", "tier": 3 }
-    },
-    "essence_of_opulence": {
-      "name": "丰裕精华",
-      "cost": 8,
-      "reqlvl": 24,
-      "grants": { "affix_id": "item_rarity", "tier": 2 }
+    "greater_essence_of_the_mind": {
+      "name": "强效心灵精华",
+      "type": "essence_normal",
+      "conditions": {"rarity": 1},
+      "effect": {"upgrade_rarity_to": 2},
+      "price": 12,
+      "grants": {"affix_id": "maximum_mana", "tier": 5}
     },
     "greater_essence_of_opulence": {
       "name": "强效丰裕精华",
-      "cost": 15,
-      "reqlvl": 40,
-      "grants": { "affix_id": "item_rarity", "tier": 1 }
+      "type": "essence_normal",
+      "conditions": {"rarity": 1},
+      "effect": {"upgrade_rarity_to": 2},
+      "price": 15,
+      "grants": {"affix_id": "item_rarity", "tier": 1}
+    },
+    "greater_essence_of_the_infinite": {
+      "name": "强效永恒精华",
+      "type": "essence_normal",
+      "conditions": {"rarity": 1},
+      "effect": {"upgrade_rarity_to": 2},
+      "price": 25,
+      "grants": {"note": "给随机属性(力量/敏捷/智慧)中一条, T3"},
+      "possible_affixes": ["strength", "dexterity", "intelligence"],
+      "tier": 3
     },
     "essence_of_hysteria": {
       "name": "浮夸精华",
-      "cost": 20,
-      "reqlvl": 55,
-      "grants": { "affix_id": "mana_regeneration", "tier": 2 }
+      "type": "essence_reroll",
+      "conditions": {"rarity": 2, "min_affix_count": 1},
+      "price": 20,
+      "grants": {"affix_id": "mana_regeneration", "tier": 2}
     },
     "essence_of_the_abyss": {
       "name": "深渊精华",
-      "cost": 80,
-      "effect": "remove_one_affix_and_add_desecrated"
+      "type": "essence_abyss",
+      "conditions": {"rarity": 2, "min_affix_count": 1},
+      "price": 80
+    },
+    "essence_of_the_breach": {
+      "name": "裂隙精华",
+      "type": "essence_special",
+      "conditions": {"rarity": 2},
+      "price": 50,
+      "grants": {"note": "品质上限+20%(基底词缀), 不与其余词缀冲突"}
     },
     "perfect_essence_of_the_mind": {
       "name": "完美心灵精华",
-      "cost": 50,
-      "reqlvl": 72,
-      "grants": { "affix_id": "maximum_mana_percent", "tier": 1,
-        "note": "魔力上限提高(4-6)% — 普通词缀池中没有此词缀, 是完美精华专属" }
+      "type": "essence_special",
+      "conditions": {"rarity": 2},
+      "price": 100,
+      "grants": {"note": "此词缀不存在于基础词缀池中, 魔力上限提高4-6%"}
     }
   }
 }

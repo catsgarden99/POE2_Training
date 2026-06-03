@@ -166,11 +166,13 @@ class GameEnv:
                 continue
             if "min_affix_count" in conds and current_total < conds["min_affix_count"]:
                 continue
-            if etype == "essence_add":
-                # 精华只能用在稀有或魔法物品上, 需要有对应空位
+            if etype in ("essence_normal", "essence_add"):
                 if self.rarity == 0 or not has_room:
                     continue
-            if etype == "essence_abyss":
+            if etype == "essence_reroll":
+                if self.rarity < 1 or not has_affixes:
+                    continue
+            if etype in ("essence_special", "essence_abyss"):
                 if self.rarity == 0 or not has_affixes:
                     continue
             if etype == "omen":
@@ -210,8 +212,16 @@ class GameEnv:
                 self._handle_remove(action)
             elif etype == "reroll_values":
                 pass
-            elif etype == "essence_add":
+            elif etype in ("essence_normal", "essence_add"):
+                if "upgrade_rarity_to" in effect:
+                    self.rarity = effect["upgrade_rarity_to"]
                 reward += self._handle_essence_add(action)
+            elif etype == "essence_reroll":
+                if self.current_affixes:
+                    self._remove_random_affix()
+                reward += self._handle_essence_add(action)
+            elif etype == "essence_special":
+                reward += self._handle_essence_special(action)
             elif etype == "essence_abyss":
                 reward += self._handle_essence_abyss()
             elif etype == "omen":
@@ -322,6 +332,16 @@ class GameEnv:
                 self._handle_remove(action)
             self.omen = OMEN_NONE
 
+        return 0.0
+
+    def _handle_essence_special(self, action: ItemAction) -> float:
+        essence_key = action.effect.get("essence_key", "")
+        entry = self.essence_map.get(essence_key)
+        if not entry:
+            return 0.0
+        # 裂隙精华: 品质上限+20% (基底修改, 不占词缀)
+        # 完美心灵精华: 魔力上限提高4-6% (不占前缀/后缀, 精华专属)
+        # 目前实现: 直接应用效果, 不影响词缀计数
         return 0.0
 
     def _handle_essence_abyss(self) -> float:

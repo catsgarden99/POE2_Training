@@ -1,163 +1,144 @@
 {
     "Orb_of_Transmutation": {
-        "name": "蜕变石",
-        "enabled": true,
+        "name": "蜕变石", "enabled": true,
         "conditions": {"rarity": 0},
         "effect": {"type": "add_random", "delta_affix_count": 1, "min_ilvl": 1, "upgrade_rarity_to": 1},
         "price": 1
     },
     "Greater_Orb_of_Transmutation": {
-        "name": "高级蜕变石",
-        "enabled": true,
+        "name": "高级蜕变石", "enabled": true,
         "conditions": {"rarity": 0},
         "effect": {"type": "add_random", "delta_affix_count": 1, "min_ilvl": 55, "upgrade_rarity_to": 1},
         "price": 10
     },
     "Perfect_Orb_of_Transmutation": {
-        "name": "完美蜕变石",
-        "enabled": true,
+        "name": "完美蜕变石", "enabled": true,
         "conditions": {"rarity": 0},
         "effect": {"type": "add_random", "delta_affix_count": 1, "min_ilvl": 70, "upgrade_rarity_to": 1},
         "price": 50
     },
     "Orb_of_Augmentation": {
-        "name": "增幅石",
-        "enabled": true,
+        "name": "增幅石", "enabled": true,
         "conditions": {"rarity": 1, "has_empty_slot": true},
         "effect": {"type": "add_random", "delta_affix_count": 1, "min_ilvl": 1},
         "price": 20
     },
     "Regal_Orb": {
-        "name": "富豪石",
-        "enabled": true,
+        "name": "富豪石", "enabled": true,
         "conditions": {"rarity": 1},
         "effect": {"type": "add_random", "delta_affix_count": 1, "min_ilvl": 1, "upgrade_rarity_to": 2},
         "price": 100
     },
     "Chaos_Orb": {
-        "name": "混沌石",
-        "enabled": true,
+        "name": "混沌石", "enabled": true,
         "conditions": {"rarity": 2, "min_affix_count": 1},
         "effect": {"type": "reroll_single_mod", "delta_affix_count": 0, "min_ilvl": 1},
         "price": 200
     },
     "Exalted_Orb": {
-        "name": "崇高石",
-        "enabled": true,
+        "name": "崇高石", "enabled": true,
         "conditions": {"rarity": 2, "has_empty_slot": true},
         "effect": {"type": "add_random", "delta_affix_count": 1, "min_ilvl": 1},
         "price": 100
     },
     "Orb_of_Annulment": {
-        "name": "剥离石",
-        "enabled": true,
+        "name": "剥离石", "enabled": true,
         "conditions": {"min_affix_count": 1},
         "effect": {"type": "remove_random_mod", "delta_affix_count": -1},
         "price": 1000
     },
-    "Essence_of_the_Body": {
-        "name": "身躯精华",
-        "enabled": true,
-        "conditions": {"rarity": 2, "has_empty_slot": true},
-        "effect": {"type": "essence_add", "essence_key": "essence_of_the_body"},
+    "Greater_Essence_of_Insulation": {
+        "name": "强效绝缘精华", "enabled": true,
+        "conditions": {"rarity": 1, "has_empty_slot": true},
+        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_insulation", "upgrade_rarity_to": 2},
         "price": 10
     },
+    "Greater_Essence_of_Thawing": {
+        "name": "强效熔解精华", "enabled": true,
+        "conditions": {"rarity": 1, "has_empty_slot": true},
+        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_thawing", "upgrade_rarity_to": 2},
+        "price": 10
+    },
+    "Greater_Essence_of_Grounding": {
+        "name": "强效接地精华", "enabled": true,
+        "conditions": {"rarity": 1, "has_empty_slot": true},
+        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_grounding", "upgrade_rarity_to": 2},
+        "price": 10
+    },
+    "Greater_Essence_of_Ruin": {
+        "name": "强效摧灭精华", "enabled": true,
+        "conditions": {"rarity": 1, "has_empty_slot": true},
+        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_ruin", "upgrade_rarity_to": 2},
+        "price": 15
+    },
     "Greater_Essence_of_the_Mind": {
-        "name": "强效心灵精华",
-        "enabled": true,
-        "conditions": {"rarity": 2, "has_empty_slot": true},
-        "effect": {"type": "essence_add", "essence_key": "greater_essence_of_the_mind"},
+        "name": "强效心灵精华", "enabled": true,
+        "conditions": {"rarity": 1, "has_empty_slot": true},
+        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_the_mind", "upgrade_rarity_to": 2},
         "price": 12
     },
-    "Essence_of_Insulation": {
-        "name": "绝缘精华",
-        "enabled": true,
-        "conditions": {"rarity": 2, "has_empty_slot": true},
-        "effect": {"type": "essence_add", "essence_key": "essence_of_insulation"},
-        "price": 5
+    "Greater_Essence_of_Opulence": {
+        "name": "强效丰裕精华", "enabled": true,
+        "conditions": {"rarity": 1, "has_empty_slot": true},
+        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_opulence", "upgrade_rarity_to": 2},
+        "price": 15
     },
-    "Essence_of_Ruin": {
-        "name": "摧灭精华",
-        "enabled": true,
-        "conditions": {"rarity": 2, "has_empty_slot": true},
-        "effect": {"type": "essence_add", "essence_key": "essence_of_ruin"},
-        "price": 8
-    },
-    "Essence_of_the_Infinite": {
-        "name": "永恒精华",
-        "enabled": true,
-        "conditions": {"rarity": 2, "has_empty_slot": true},
-        "effect": {"type": "essence_add", "essence_key": "essence_of_the_infinite"},
-        "price": 12
-    },
-    "Essence_of_Opulence": {
-        "name": "丰裕精华",
-        "enabled": true,
-        "conditions": {"rarity": 2, "has_empty_slot": true},
-        "effect": {"type": "essence_add", "essence_key": "essence_of_opulence"},
-        "price": 8
+    "Greater_Essence_of_the_Infinite": {
+        "name": "强效永恒精华", "enabled": true,
+        "conditions": {"rarity": 1, "has_empty_slot": true},
+        "effect": {"type": "essence_normal", "essence_key": "greater_essence_of_the_infinite", "upgrade_rarity_to": 2},
+        "price": 25
     },
     "Essence_of_Hysteria": {
-        "name": "浮夸精华",
-        "enabled": true,
-        "conditions": {"rarity": 2, "has_empty_slot": true},
-        "effect": {"type": "essence_add", "essence_key": "essence_of_hysteria"},
+        "name": "浮夸精华", "enabled": true,
+        "conditions": {"rarity": 2, "min_affix_count": 1},
+        "effect": {"type": "essence_reroll", "essence_key": "essence_of_hysteria"},
         "price": 20
     },
     "Essence_of_the_Abyss": {
-        "name": "深渊精华",
-        "enabled": true,
+        "name": "深渊精华", "enabled": true,
         "conditions": {"rarity": 2, "min_affix_count": 1},
         "effect": {"type": "essence_abyss"},
         "price": 80
     },
-    "Omen_of_Sinistral_Annulment": {
-        "name": "左旋剥离预兆",
-        "enabled": true,
-        "conditions": {},
-        "effect": {"type": "omen", "omen_type": 1},
-        "price": 200
+    "Essence_of_the_Breach": {
+        "name": "裂隙精华", "enabled": true,
+        "conditions": {"rarity": 2},
+        "effect": {"type": "essence_special", "essence_key": "essence_of_the_breach"},
+        "price": 50
     },
-    "Omen_of_Dextral_Annulment": {
-        "name": "右旋剥离预兆",
-        "enabled": true,
-        "conditions": {},
-        "effect": {"type": "omen", "omen_type": 2},
-        "price": 200
-    },
-    "Omen_of_Light": {
-        "name": "光明预兆",
-        "enabled": true,
-        "conditions": {},
-        "effect": {"type": "omen", "omen_type": 3},
+    "Perfect_Essence_of_the_Mind": {
+        "name": "完美心灵精华", "enabled": true,
+        "conditions": {"rarity": 2, "has_empty_slot": true},
+        "effect": {"type": "essence_special", "essence_key": "perfect_essence_of_the_mind"},
         "price": 100
     },
+    "Omen_of_Sinistral_Annulment": {
+        "name": "左旋剥离预兆", "enabled": true, "conditions": {},
+        "effect": {"type": "omen", "omen_type": 1}, "price": 200
+    },
+    "Omen_of_Dextral_Annulment": {
+        "name": "右旋剥离预兆", "enabled": true, "conditions": {},
+        "effect": {"type": "omen", "omen_type": 2}, "price": 200
+    },
+    "Omen_of_Light": {
+        "name": "光明预兆", "enabled": true, "conditions": {},
+        "effect": {"type": "omen", "omen_type": 3}, "price": 100
+    },
     "Omen_of_Sinistral_Exaltation": {
-        "name": "左旋崇高预兆",
-        "enabled": true,
-        "conditions": {},
-        "effect": {"type": "omen", "omen_type": 4},
-        "price": 500
+        "name": "左旋崇高预兆", "enabled": true, "conditions": {},
+        "effect": {"type": "omen", "omen_type": 4}, "price": 500
     },
     "Omen_of_Dextral_Exaltation": {
-        "name": "右旋崇高预兆",
-        "enabled": true,
-        "conditions": {},
-        "effect": {"type": "omen", "omen_type": 5},
-        "price": 500
+        "name": "右旋崇高预兆", "enabled": true, "conditions": {},
+        "effect": {"type": "omen", "omen_type": 5}, "price": 500
     },
     "Omen_of_Sinistral_Crystallisation": {
-        "name": "左旋结晶预兆",
-        "enabled": true,
-        "conditions": {},
-        "effect": {"type": "omen", "omen_type": 6},
-        "price": 150
+        "name": "左旋结晶预兆", "enabled": true, "conditions": {},
+        "effect": {"type": "omen", "omen_type": 6}, "price": 150
     },
     "Omen_of_Dextral_Crystallisation": {
-        "name": "右旋结晶预兆",
-        "enabled": true,
-        "conditions": {},
-        "effect": {"type": "omen", "omen_type": 7},
-        "price": 150
+        "name": "右旋结晶预兆", "enabled": true, "conditions": {},
+        "effect": {"type": "omen", "omen_type": 7}, "price": 150
     }
 }
